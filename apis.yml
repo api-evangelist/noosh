@@ -1,7 +1,25 @@
 aid: noosh
 name: Noosh
-description: Noosh is a company surfaced as a portfolio company of accel and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Noosh is a marketing execution and print/procurement management platform that gives
+  enterprise marketing teams visibility and control over campaigns spanning direct mail, print, and
+  point-of-sale (POS) materials. The software coordinates collaborative marketing workflows, agency
+  and supplier performance tracking, vendor diversity management, and cost, quality, time, and
+  sustainability data, and integrates with procurement and other enterprise systems. Noosh was
+  surfaced as a portfolio company of Accel and profiled in the API Evangelist network. Noosh operates
+  a customer-facing web application (Procurement Portal and Administration Portal) but does not
+  publish a public developer API, SDK, or developer portal.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://www.noosh.com/wp-content/uploads/2021/03/noosh-logo.png
 url: https://raw.githubusercontent.com/api-evangelist/noosh/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,9 +29,16 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- Marketing
+- Marketing Execution
+- Procurement
+- Print
+- Direct Mail
+- Workflow
+- Sourcing
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -23,3 +48,22 @@ maintainers:
 common:
 - type: Website
   url: https://noosh.com/
+- type: Support
+  url: https://noosh.com/support/
+- type: StatusPage
+  url: https://stats.pingdom.com/qcecd0tzzhpr/667653
+- type: Blog
+  url: https://www.noosh.com/resources/
+- type: Login
+  url: https://nooshauth.noosh.com/login
+- type: PrivacyPolicy
+  url: https://www.noosh.com/privacy-policy/
+- type: TermsOfService
+  url: https://www.noosh.com/terms-of-service/
+- type: DomainSecurity
+  url: security/noosh-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
