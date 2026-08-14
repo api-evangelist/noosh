@@ -4,32 +4,44 @@ description: Noosh is a marketing execution and print/procurement management pla
   enterprise marketing teams visibility and control over campaigns spanning direct mail, print, and
   point-of-sale (POS) materials. The software coordinates collaborative marketing workflows, agency
   and supplier performance tracking, vendor diversity management, and cost, quality, time, and
-  sustainability data, and integrates with procurement and other enterprise systems. Noosh was
-  surfaced as a portfolio company of Accel and profiled in the API Evangelist network. Noosh operates
-  a customer-facing web application (Procurement Portal and Administration Portal) but does not
-  publish a public developer API, SDK, or developer portal.
+  sustainability data, and integrates with procurement and other enterprise systems. Noosh publishes
+  a public, machine-readable Swagger 2.0 contract for the Noosh API at api.noosh.com — 86 paths, 107
+  operations and 214 schema definitions covering projects, specs, RFQs, quotes, estimates, buy and
+  sell orders, shipments, invoices, files, tasks, time cards and workgroups — with a Swagger UI as its
+  only documentation surface. There is no developer portal, no SDK in any registry, no published
+  pricing and no rate limits; authentication is HTTP Basic and every route is customer-credentialed.
+  Noosh was surfaced as a portfolio company of Accel and profiled in the API Evangelist network.
 accessModel:
-  pricing: unknown
-  onboarding: unknown
+  pricing: contact-sales
+  onboarding: sales-gate
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  label: Enterprise, contact sales
+  confidence: high
+  source:
+  - https://www.noosh.com/pricing/
+  - https://nooshauth.noosh.com/login
+  - https://www.noosh.com/contact/
+  generated: '2026-08-13'
+  method: searched
+  note: >-
+    Corrected from the mechanical derivation, which read the API's HTTP Basic scheme as self-serve
+    signup. Probed 2026-08-13: noosh.com/pricing/ returns 404, there is no sign-up route anywhere on
+    noosh.com (nooshauth.noosh.com serves a login only), and the site's call to action is a contact
+    form. The API contract is public and anonymously readable at api.noosh.com/api/swagger.json, but
+    every route requires customer credentials — api.noosh.com answers 403 to unauthenticated callers.
 image: https://www.noosh.com/wp-content/uploads/2021/03/noosh-logo.png
 url: https://raw.githubusercontent.com/api-evangelist/noosh/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - accel
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: published-openapi-harvested
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-13'
 tags:
 - Company
 - Marketing
@@ -39,13 +51,66 @@ tags:
 - Direct Mail
 - Workflow
 - Sourcing
-apis: []
+- Print Procurement
+- Project Management
+- Supplier Management
+- Quotes
+- Purchase Orders
+- Shipments
+- Invoicing
+apis:
+- name: Noosh API
+  description: >-
+    The Noosh API is the integration surface behind Noosh's marketing-execution platform — the API
+    Noosh's own partners page credits for "over 60 integrations to enterprise software systems". It is
+    published as a Swagger 2.0 document with 86 paths and 107 operations across 25 tags: Project, Spec,
+    Spec Template, Estimate, RFE, Rfq, Quote, Order, Shipment, Invoice, File, Task, Time Card, Team
+    Member, Team Member Role, Contact, Country, Exchange Rate, Workgroup, Workgroup Members, Project
+    Category, Project Status, Deactivation Reason, User Fields and My Info. Everything is scoped to a
+    workgroup — workgroup_id is a path parameter on 105 of the 107 operations — and most resources sit
+    under a project. Authentication is HTTP Basic with no scope model. Four URI-path generations (/v1,
+    /1.1, /1.2 and /3) are served simultaneously with no operation marked deprecated. The API documents
+    no pagination, no idempotency key, no webhooks and no rate limits.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Print Procurement
+  - Marketing Execution
+  - Project Management
+  - Quotes
+  - Purchase Orders
+  - Shipments
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-openapi.yml
+  - type: OpenAPI
+    url: openapi/_original/noosh-openapi.json
+  - type: Overlay
+    url: overlays/noosh-openapi-overlay.yaml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/noosh-agentic-access.yml
+- type: Authentication
+  url: authentication/noosh-authentication.yml
 - type: Website
   url: https://noosh.com/
 - type: Support
@@ -62,8 +127,74 @@ common:
   url: https://www.noosh.com/terms-of-service/
 - type: DomainSecurity
   url: security/noosh-domain-security.yml
+- type: APIReference
+  url: https://api.noosh.com/api/developer/index.html
+- type: Documentation
+  url: https://api.noosh.com/api/developer/index.html
+- type: HelpCenter
+  url: https://support.noosh.com/hc/en-us
+- type: ChangeLog
+  url: changelog/noosh-changelog.yml
+- type: Lifecycle
+  url: lifecycle/noosh-lifecycle.yml
+- type: Conventions
+  url: conventions/noosh-conventions.yml
+- type: ErrorCatalog
+  url: errors/noosh-problem-types.yml
+- type: DataModel
+  url: data-model/noosh-data-model.yml
+- type: Conformance
+  url: conformance/noosh-conformance.yml
+- type: Packages
+  url: packages/noosh-packages.yml
+- type: Plans
+  url: plans/noosh-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/noosh-rate-limits.yml
+- type: LLMsTxt
+  url: llms/noosh-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/noosh-openapi-overlay.yaml
 x-enrichment:
-  date: '2026-07-20'
-  status: minimal
-  artifacts_added: 1
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 21
   pass: local-v1
+x-pointers-deliberately-omitted:
+- type: MCPServer
+  reason: >-
+    Noosh ships no MCP server. mcp/noosh-mcp.yml carries deployment.mode none and a candidate tool
+    list derived from the OpenAPI. The only server that exists is a third-party generated one
+    (github.com/ag2-mcp-servers/noosh-api-application, built by mcp.ag2.ai from the public Swagger
+    document) and it is not a Noosh product.
+- type: SDKs
+  reason: >-
+    No first-party client library exists in npm, PyPI, RubyGems, Packagist or crates.io, and there is
+    no github.com/noosh organisation. The only npm package, @datafire/noosh, is a third-party
+    generated wrapper last published 2020-12-21.
+- type: WellKnown
+  reason: >-
+    Every /.well-known/ path 404s on noosh.com/www.noosh.com and 403s on api.noosh.com. The 200s on
+    nooshauth.noosh.com are the login SPA's HTML catch-all, not documents.
+- type: AgentCard
+  reason: /.well-known/agent-card.json and /.well-known/agent.json miss on every Noosh host.
+- type: Idempotency
+  reason: No Idempotency-Key header or parameter appears in any of the 107 published operations.
+- type: Security
+  reason: No security.txt, no disclosure page, no bug bounty. probe-security-programs.py returned vdp=none.
+- type: TrustCenter
+  reason: trust.noosh.com, security.noosh.com, noosh.com/trust and noosh.com/security all return 404.
+- type: Compliance
+  reason: No certification (SOC 2, ISO 27001, PCI, HIPAA, FedRAMP) is named anywhere on the public site.
+- type: Deprecation
+  reason: No deprecation policy, no Sunset header, and zero operations marked deprecated despite four live path generations.
+- type: AsyncAPI / Webhooks
+  reason: No events, callbacks or webhook documentation anywhere in the contract or on the site.
+- type: Pricing / SignUp
+  reason: noosh.com/pricing/ returns 404 and there is no self-serve sign-up — login only.
+- type: GitHubOrganization
+  reason: api.github.com/orgs/noosh returns 404.
+- type: Postman
+  reason: No public Noosh collection or workspace found in Postman search.
