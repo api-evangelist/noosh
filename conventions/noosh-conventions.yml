@@ -1,0 +1,116 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/noosh-openapi.yml
+note: >-
+  Cross-cutting request/response semantics for the Noosh API, derived from the Swagger 2.0 document
+  harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. Noosh publishes no
+  prose developer guide — the Swagger UI at https://api.noosh.com/api/developer/index.html is the only
+  documentation surface, and support.noosh.com carries no developer/API articles — so every field below
+  is read out of the contract itself rather than searched. Absences recorded here (no idempotency key,
+  no pagination, no rate-limit headers, no request-id header) are genuine absences in the published
+  contract, not gaps in this pass.
+
+authentication:
+  style: http-basic
+  scheme: HTTP_BASIC
+  header: 'Authorization: Basic <base64(user:password)>'
+  transport: https
+  detail: >-
+    The spec declares exactly one securityDefinition, HTTP_BASIC (type basic), and no top-level
+    security requirement. There is no OAuth, no API-key scheme and no scope surface. Unauthenticated
+    calls to api.noosh.com are answered HTTP 403 {"message":"Forbidden"} by AWS API Gateway.
+  artifact: authentication/noosh-authentication.yml
+
+idempotency:
+  supported: false
+  header: null
+  detail: >-
+    No Idempotency-Key header, parameter or extension appears anywhere in the 107 published operations.
+    Retrying a POST (postProject, postBuyOrder, uploadFile, postTeamMemberOfProject) is not
+    de-duplicated by any documented mechanism. No Idempotency pointer is emitted in apis.yml because
+    the provider ships no idempotency contract.
+
+pagination:
+  supported: false
+  style: null
+  detail: >-
+    None of the 40 List operations (getWorkgroupList, getProjectList, getBuyOrderList, getQuoteList,
+    getFiles, getContactList, …) declare page, offset, limit, per_page, cursor or pageSize parameters, and
+    no list envelope carries next/prev/total fields. List responses are whole-collection VOs
+    (CountryListVO, ContactsListVO, FileListResponseVO, …) with a results/result array plus
+    status_code + status_reason.
+
+filtering:
+  supported: partial
+  detail: >-
+    Only four query parameters exist across the whole surface. getWorkgroupList takes workgroup_name
+    and workgroup_types (1000001 Buyer, 1000002 Supplier, 1000003 Agent, 1000004 Broker/Outsourcer,
+    1000005 Partner). getQuoteList documents a JSON-object filter expressed as
+    filters={"quote_state_id":111111}, with valid values read from
+    /workgroups/{workgroup_id}/quoteStates.
+  parameters:
+    - {operation: getWorkgroupList, name: workgroup_name, in: query, type: string}
+    - {operation: getWorkgroupList, name: workgroup_types, in: query, type: array}
+    - {operation: getQuoteList, name: filters, in: query, type: string, form: 'filters={"quote_state_id":111111}'}
+
+resource_addressing:
+  style: hierarchical-path
+  detail: >-
+    Every resource is nested under a workgroup, and most under a project:
+    /{version}/workgroups/{workgroup_id}/projects/{project_id}/{resource}. workgroup_id appears as a
+    path parameter on 105 of 107 operations and project_id on 55. There are 200 path parameters against
+    27 body parameters and 4 query parameters — the surface is path-shaped, not query-shaped.
+
+content_negotiation:
+  request_media_types: [application/json, application/xml, text/xml, application/x-yaml, text/x-yaml, text/csv, application/x-json-smile, multipart/form-data]
+  response_media_types: [application/json, application/xml, text/xml, application/x-yaml, text/x-yaml, text/csv, application/x-json-smile, '*/*']
+  detail: >-
+    The Spring/springfox stack advertises the same seven representations on every operation, including
+    YAML, CSV and Smile. File upload operations (uploadFile on /files, /filesByRole and the V3 route)
+    take multipart/form-data with two parts, "file" and "tags".
+
+versioning:
+  scheme: uri-path
+  detail: >-
+    Versions are baked into the path segment and several generations run side by side rather than one
+    current version: /v1/*, /1.1/*, /1.2/* and /3/*. The same capability is republished under a new
+    prefix instead of superseding the old one — uploadFile exists at /1.1/.../files,
+    /1.1/.../filesByRole, /1.2/.../filesByRole and /3/.../files, all four still published. info.version
+    on the document is a flat "1.0" and does not track the path versions.
+  current: mixed (v1, 1.1, 1.2, 3)
+  artifact: lifecycle/noosh-lifecycle.yml
+
+error_envelope:
+  format: vendor
+  schema: HTTPStatusVO
+  fields: [status_code, status_reason]
+  detail: >-
+    Not RFC 9457. Every documented 4xx/5xx returns HTTPStatusVO; a few resource-scoped variants add
+    identity fields (SpecHTTPStatusVO, WorkgroupHTTPStatusVO). Notably the SAME status_code/status_reason
+    pair is also carried on 200 responses, so success and failure share one envelope shape.
+  artifact: errors/noosh-problem-types.yml
+
+request_tracing:
+  supported: false
+  detail: No request-id / correlation-id header is documented on any operation or response.
+
+rate_limit_signaling:
+  supported: unknown
+  detail: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header is documented in the spec and no limits are
+    published anywhere on noosh.com or support.noosh.com. Live observation is impossible because every
+    route returns 403 to unauthenticated callers.
+  artifact: rate-limits/noosh-rate-limits.yml
+
+field_expansion:
+  supported: partial
+  detail: >-
+    There is no ?expand= parameter, but the schema layer models expansion explicitly: 17 definitions are
+    named *ExpandVO (EstimateExpandVO, EstimateListExpandVO, ClientWorkgroupExpandVO, …) and are returned
+    by dedicated operations rather than selected by a query parameter.
+
+webhooks:
+  supported: false
+  detail: >-
+    No callbacks, no event/subscription operations, and no webhook documentation on noosh.com or
+    support.noosh.com. Integration is poll-and-push over the REST surface.

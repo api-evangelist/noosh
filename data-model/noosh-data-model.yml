@@ -1,0 +1,2819 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/noosh-openapi.yml
+note: Entity graph derived from the 214 definitions and $ref links in the Noosh API Swagger 2.0 document harvested from https://api.noosh.com/api/swagger.json. Noosh publishes no separate object reference,
+  so id-prefixes and domains are not available; relationships are read from $ref links and *_id reference fields only.
+summary:
+  entities: 214
+  entities_returned_by_operations: 81
+  relationships: 640
+entities:
+- name: HTTPStatusVO
+  properties: 2
+  returned_by_operations: 6
+  description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+- name: FileResponseVO
+  properties: 3
+  returned_by_operations: 4
+  description: 'Java type: com.noosh.nooshapi.vo.file.FileResponseVO'
+  relationships:
+  - type: has_one
+    target: FileVO
+    via: result
+- name: OrderDetailVO
+  properties: 49
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.OrderDetailVO'
+  relationships:
+  - type: has_one
+    target: UserVO
+    via: buyer
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: buyer_workgroup
+  - type: has_many
+    target: OrderDetailBaseVO
+    via: change_orders
+  - type: has_many
+    target: OrderDetailBaseVO
+    via: closing_change_orders
+  - type: belongs_to
+    target_field: creator_user_id
+    via: creator_user_id
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: has_one
+    target: BigDecimal
+    via: grand_total_with_changes
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+  - type: has_many
+    target: OrderItemSimpleVO
+    via: order_items
+  - type: has_one
+    target: BigDecimal
+    via: order_total
+  - type: belongs_to
+    target_field: parent_order_id
+    via: parent_order_id
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: UserVO
+    via: supplier
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total_with_changes
+  - type: has_one
+    target: BigDecimal
+    via: transactional_order_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+- name: ProjectHomeUserFieldsListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectHomeUserFieldsListVO'
+  relationships:
+  - type: has_many
+    target: UserFieldsSimpleVO
+    via: results
+- name: ProjectStatusListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectStatusListVO'
+  relationships:
+  - type: has_many
+    target: ProjectStatusSimpleVO
+    via: results
+- name: OrderWorkgroupLevelListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.OrderWorkgroupLevelListVO'
+  relationships:
+  - type: has_many
+    target: OrderWorkgroupLevelSimpleVO
+    via: results
+- name: TeamMemberListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TeamMemberListVO'
+  relationships:
+  - type: has_many
+    target: TeamMemberSimpleVO
+    via: results
+- name: SpecHTTPStatusVO
+  properties: 4
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.SpecHTTPStatusVO'
+  relationships:
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+- name: WorkgroupAttributeListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupAttributeListVO'
+  relationships:
+  - type: has_many
+    target: WorkgroupAttributeVO
+    via: result
+- name: UserDetailsExpandVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.UserDetailsExpandVO'
+  relationships:
+  - type: has_one
+    target: UserDetailsVO
+    via: result
+- name: OrderListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.OrderListVO'
+  relationships:
+  - type: has_many
+    target: OrderSimpleVO
+    via: results
+- name: ContactsListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ContactsListVO'
+  relationships:
+  - type: has_many
+    target: ContactsSimpleVO
+    via: results
+- name: OrderVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.OrderVO'
+  relationships:
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+- name: TeamMemberBaseInfVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TeamMemberBaseInfVO'
+  relationships:
+  - type: belongs_to
+    target_field: teammember_id
+    via: teammember_id
+- name: FileListResponseVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.file.FileListResponseVO'
+  relationships:
+  - type: has_many
+    target: FileVO
+    via: result
+- name: TaskTypeListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TaskTypeListVO'
+  relationships:
+  - type: has_many
+    target: TaskTypeSimpleVO
+    via: results
+- name: ProjectCategoryListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectCategoryListVO'
+  relationships:
+  - type: has_many
+    target: ProjectCategorySimpleVO
+    via: results
+- name: TimeCardListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TimeCardListVO'
+  relationships:
+  - type: has_many
+    target: TimeCardSimpleVO
+    via: results
+- name: OrderExpandWorkgroupLevelVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.OrderExpandWorkgroupLevelVO'
+  relationships:
+  - type: has_one
+    target: OrderDetailWorkgroupLevelVO
+    via: result
+- name: SpecListVO
+  properties: 3
+  returned_by_operations: 2
+  description: 'Java type: com.noosh.nooshapi.vo.SpecListVO'
+  relationships:
+  - type: has_many
+    target: SpecSimpleVO
+    via: results
+- name: OrderDetailWithIndicatorVO
+  properties: 50
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.OrderDetailWithIndicatorVO'
+  relationships:
+  - type: has_one
+    target: UserVO
+    via: buyer
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: buyer_workgroup
+  - type: has_many
+    target: OrderDetailBaseVO
+    via: change_orders
+  - type: has_many
+    target: OrderDetailBaseVO
+    via: closing_change_orders
+  - type: belongs_to
+    target_field: creator_user_id
+    via: creator_user_id
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: has_one
+    target: BigDecimal
+    via: grand_total_with_changes
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+  - type: has_many
+    target: OrderItemSimpleVO
+    via: order_items
+  - type: has_one
+    target: BigDecimal
+    via: order_total
+  - type: belongs_to
+    target_field: parent_order_id
+    via: parent_order_id
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: UserVO
+    via: supplier
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total_with_changes
+  - type: has_one
+    target: BigDecimal
+    via: transactional_order_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+- name: OrderPO
+  properties: 18
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.OrderPO'
+  relationships:
+  - type: belongs_to
+    target_field: buyer_user_id
+    via: buyer_user_id
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: custom_fields
+  - type: has_many
+    target: OrderItemPersistVO
+    via: order_items
+  - type: belongs_to
+    target_field: payment_method_id
+    via: payment_method_id
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: belongs_to
+    target_field: supplier_selection_reason_id
+    via: supplier_selection_reason_id
+  - type: belongs_to
+    target_field: supplier_user_id
+    via: supplier_user_id
+- name: TimeCardReceivedDetailVO
+  properties: 11
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TimeCardReceivedDetailVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: billable_hours
+  - type: has_one
+    target: BigDecimal
+    via: nonbillable_hours
+  - type: has_one
+    target: PersonVO
+    via: owner
+  - type: has_many
+    target: TimeCardLineVO
+    via: time_card_line
+  - type: belongs_to
+    target_field: timecard_id
+    via: timecard_id
+  - type: has_one
+    target: BigDecimal
+    via: total_hours
+- name: TimeCardDetailVO
+  properties: 10
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TimeCardDetailVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: billable_hours
+  - type: has_one
+    target: BigDecimal
+    via: nonbillable_hours
+  - type: has_many
+    target: TimeCardLineVO
+    via: time_card_line
+  - type: belongs_to
+    target_field: timecard_id
+    via: timecard_id
+  - type: has_one
+    target: BigDecimal
+    via: total_hours
+- name: QuoteOfWgLevelSimpleVO
+  properties: 10
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.QuoteOfWgLevelSimpleVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: has_one
+    target: ProjectBaseVO
+    via: project
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+  - type: has_one
+    target: RfqBaseVO
+    via: rfq
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+- name: FolderVO
+  properties: 4
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.file.FolderVO'
+  relationships:
+  - type: has_many
+    target: FolderVO
+    via: child_folders
+  - type: belongs_to
+    target_field: folder_id
+    via: folder_id
+- name: ShipmentExpandVO
+  properties: 4
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ShipmentExpandVO'
+  relationships:
+  - type: has_one
+    target: ShipmentDetailVO
+    via: result
+  - type: has_one
+    target: ShipmentDetailVO
+    via: resut
+- name: EstimatePO
+  properties: 7
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.EstimatePO'
+  relationships:
+  - type: has_many
+    target: EstimateItemPO
+    via: estimate_items
+  - type: belongs_to
+    target_field: rfe_id
+    via: rfe_id
+- name: QuoteExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.QuoteExpandVO'
+  relationships:
+  - type: has_one
+    target: QuoteDetailVO
+    via: result
+- name: ClientWorkgroupExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupExpandVO'
+  relationships:
+  - type: has_one
+    target: ClientWorkgroupDetailVO
+    via: result
+- name: RfqListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.RfqListVO'
+  relationships:
+  - type: has_many
+    target: RfqSimpleVO
+    via: result
+- name: SpecVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.SpecVO'
+  relationships:
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+- name: ObjectStateListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ObjectStateListVO'
+  relationships:
+  - type: has_many
+    target: ObjectStateSimpleVO
+    via: results
+- name: WorkgroupMembersListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupMembersListVO'
+  relationships:
+  - type: has_many
+    target: WorkgroupMembersSimpleVO
+    via: results
+- name: ShipmentLocationsPOSTResultVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ShipmentLocationsPOSTResultVO'
+  relationships:
+  - type: has_many
+    target: ShipmentLocationsPOSTVO
+    via: results
+- name: SupplierWorkgroupListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupListVO'
+  relationships:
+  - type: has_many
+    target: SupplierWorkgroupSimpleVO
+    via: result
+- name: RfqExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.RfqExpandVO'
+  relationships:
+  - type: has_one
+    target: RfqDetailsVO
+    via: result
+- name: WorkgroupListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupListVO'
+  relationships:
+  - type: has_many
+    target: WorkgroupSimpleVO
+    via: results
+- name: DeactivationReasonListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.DeactivationReasonListVO'
+  relationships:
+  - type: has_many
+    target: DeactivationReasonVO
+    via: results
+- name: ProjectListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectListVO'
+  relationships:
+  - type: has_many
+    target: ProjectSimpleVO
+    via: results
+- name: AutomaticInvitationsListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationsListVO'
+  relationships:
+  - type: has_many
+    target: AutomaticInvitationVO
+    via: results
+- name: TaskCreatedVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ne.TaskCreatedVO'
+  relationships:
+  - type: belongs_to
+    target_field: task_id
+    via: task_id
+- name: RfqVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.RfqVO'
+  relationships:
+  - type: belongs_to
+    target_field: rfq_id
+    via: rfq_id
+- name: FileV3ResponseVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.file.FileV3ResponseVO'
+  relationships:
+  - type: has_one
+    target: FileV3VO
+    via: result
+- name: RoleListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.RoleListVO'
+  relationships:
+  - type: has_many
+    target: RoleSimpleVO
+    via: result
+- name: CountryListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.CountryListVO'
+  relationships:
+  - type: has_many
+    target: CountryVO
+    via: result
+- name: ClientWorkgroupListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupListVO'
+  relationships:
+  - type: has_many
+    target: ClientWorkgroupSimpleVO
+    via: results
+- name: WorkgroupExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupExpandVO'
+  relationships:
+  - type: has_one
+    target: WorkgroupDetailVO
+    via: result
+- name: TaskPriorityListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TaskPriorityListVO'
+  relationships:
+  - type: has_many
+    target: TaskPriorityVO
+    via: results
+- name: EstimateListExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.EstimateListExpandVO'
+  relationships:
+  - type: has_many
+    target: EstimateBaseVO
+    via: result
+- name: SpecTemplateExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateExpandVO'
+  relationships:
+  - type: has_one
+    target: SpecTemplateDetailVO
+    via: result
+- name: WgTaskStatusListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.WgTaskStatusListVO'
+  relationships:
+  - type: has_many
+    target: WgTaskStatusVO
+    via: result
+- name: TeamTemplateListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateListVO'
+  relationships:
+  - type: has_many
+    target: TeamTemplateSimpleVO
+    via: results
+- name: FileTagResponseVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.file.FileTagResponseVO'
+  relationships:
+  - type: has_many
+    target: TagRepoVO
+    via: result
+- name: V1x1SpecExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecExpandVO'
+  relationships:
+  - type: has_one
+    target: V1x1SpecDetailVO
+    via: result
+- name: SpecTemplateListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateListVO'
+  relationships:
+  - type: has_many
+    target: SpecTemplateSimpleVO
+    via: results
+- name: ShipmentListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ShipmentListVO'
+  relationships:
+  - type: has_many
+    target: ShipmentSimpleVO
+    via: result
+- name: V1x1InvitedTeamMemberResultsVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberResultsVO'
+  relationships:
+  - type: has_many
+    target: V1x1InvitedTeamMemberVO
+    via: results
+- name: TaskExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TaskExpandVO'
+  relationships:
+  - type: has_one
+    target: TaskDetailVO
+    via: result
+- name: TeamTemplateExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateExpandVO'
+  relationships:
+  - type: has_one
+    target: TeamTemplateDetailVO
+    via: results
+- name: RfeExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.RfeExpandVO'
+  relationships:
+  - type: has_one
+    target: RfeDetailsVO
+    via: result
+- name: ProjectVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectVO'
+  relationships:
+  - type: belongs_to
+    target_field: project_id
+    via: project_id
+- name: ProjectExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectExpandVO'
+  relationships:
+  - type: has_one
+    target: ProjectDetailVO
+    via: result
+- name: QuoteListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.QuoteListVO'
+  relationships:
+  - type: has_many
+    target: QuoteSimpleVO
+    via: result
+- name: FolderListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.file.FolderListVO'
+  relationships:
+  - type: has_many
+    target: FolderBaseVO
+    via: result
+- name: InvoiceDetailListExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.InvoiceDetailListExpandVO'
+  relationships:
+  - type: has_many
+    target: InvoiceSimpleVO
+    via: result
+- name: TaskWorkgroupLevelListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TaskWorkgroupLevelListVO'
+  relationships:
+  - type: has_many
+    target: TaskWorkgroupLevelSimpleVO
+    via: results
+- name: SpecTypeFieldsListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.v1x1.SpecTypeFieldsListVO'
+  relationships:
+  - type: has_one
+    target: SpecTypeFieldsVO
+    via: result
+- name: SupplierWorkgroupExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupExpandVO'
+  relationships:
+  - type: has_one
+    target: SupplierWorkgroupDetailVO
+    via: result
+- name: PropertyParamListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.PropertyParamListVO'
+  relationships:
+  - type: has_many
+    target: PropertyParamSimpleVO
+    via: result
+- name: WgSpecPrdTypeRegPersistVO
+  properties: 2
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.WgSpecPrdTypeRegPersistVO'
+  relationships:
+  - type: has_many
+    target: SpecTypePersistVO
+    via: spec_prdType_list
+- name: InvoiceExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.InvoiceExpandVO'
+  relationships:
+  - type: has_one
+    target: InvoiceDetailVO
+    via: result
+- name: TaskListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TaskListVO'
+  relationships:
+  - type: has_many
+    target: TaskSimpleVO
+    via: results
+- name: EstimateExpandVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.EstimateExpandVO'
+  relationships:
+  - type: has_one
+    target: EstimateDetailsVO
+    via: result
+- name: TaskExpandWorkgroupLevelVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TaskExpandWorkgroupLevelVO'
+  relationships:
+  - type: has_one
+    target: TaskDetailWorkgroupLevelVO
+    via: result
+- name: WorkgroupHTTPStatusVO
+  properties: 4
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupHTTPStatusVO'
+  relationships:
+  - type: belongs_to
+    target_field: workgroup_id
+    via: workgroup_id
+- name: TaskStatusListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.TaskStatusListVO'
+  relationships:
+  - type: has_many
+    target: TaskStatusVO
+    via: results
+- name: RfeListVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.RfeListVO'
+  relationships:
+  - type: has_many
+    target: RfeSimpleVO
+    via: results
+- name: MultiExchangeRateListVO
+  properties: 2
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.MultiExchangeRateListVO'
+- name: ProfileImageVO
+  properties: 3
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.nooshapi.vo.ProfileImageVO'
+- name: HTTPStatus
+  properties: 0
+  returned_by_operations: 1
+  description: 'Java type: com.noosh.domain.constant.HTTPStatus'
+- name: OrderDetailWorkgroupLevelVO
+  properties: 50
+  description: 'Java type: com.noosh.nooshapi.vo.OrderDetailWorkgroupLevelVO'
+  relationships:
+  - type: has_one
+    target: UserVO
+    via: buyer
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: buyer_workgroup
+  - type: has_many
+    target: OrderDetailBaseVO
+    via: change_orders
+  - type: has_many
+    target: OrderDetailBaseVO
+    via: closing_change_orders
+  - type: belongs_to
+    target_field: creator_user_id
+    via: creator_user_id
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: has_one
+    target: BigDecimal
+    via: grand_total_with_changes
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+  - type: has_many
+    target: OrderItemSimpleVO
+    via: order_items
+  - type: has_one
+    target: BigDecimal
+    via: order_total
+  - type: belongs_to
+    target_field: parent_order_id
+    via: parent_order_id
+  - type: has_one
+    target: ProjectBaseVO
+    via: project
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: UserVO
+    via: supplier
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total_with_changes
+  - type: has_one
+    target: BigDecimal
+    via: transactional_order_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+- name: QuotePriceDetailVO
+  properties: 25
+  description: 'Java type: com.noosh.nooshapi.vo.QuotePriceDetailVO'
+  relationships:
+  - type: has_many
+    target: BreakoutVO
+    via: breakouts
+  - type: has_one
+    target: BigDecimal
+    via: cost
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: fixed
+  - type: belongs_to
+    target_field: parent_price_id
+    via: parent_price_id
+  - type: belongs_to
+    target_field: price_id
+    via: price_id
+  - type: has_one
+    target: BigDecimal
+    via: quantity
+  - type: has_one
+    target: BigDecimal
+    via: sell_price
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: QuotePriceSourceVO
+    via: source
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_cost
+  - type: has_one
+    target: BigDecimal
+    via: transactional_fixed
+  - type: has_one
+    target: BigDecimal
+    via: transactional_sell_price
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_variable
+  - type: has_one
+    target: BigDecimal
+    via: variable
+  - type: has_one
+    target: BigDecimal
+    via: variable_percent
+- name: OrderDetailBaseVO
+  properties: 44
+  description: 'Java type: com.noosh.nooshapi.vo.OrderDetailBaseVO'
+  relationships:
+  - type: has_one
+    target: UserVO
+    via: buyer
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: buyer_workgroup
+  - type: belongs_to
+    target_field: creator_user_id
+    via: creator_user_id
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+  - type: has_one
+    target: BigDecimal
+    via: order_total
+  - type: belongs_to
+    target_field: parent_order_id
+    via: parent_order_id
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: UserVO
+    via: supplier
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_order_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+- name: EstimateItemPO
+  properties: 17
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.EstimateItemPO'
+  relationships:
+  - type: has_many
+    target: PaperItemPO
+    via: paper_items
+  - type: has_one
+    target: BigDecimal
+    via: quantity_1_price
+  - type: has_one
+    target: BigDecimal
+    via: quantity_1_shipping
+  - type: has_one
+    target: BigDecimal
+    via: quantity_1_tax
+  - type: has_one
+    target: BigDecimal
+    via: quantity_2_price
+  - type: has_one
+    target: BigDecimal
+    via: quantity_2_shipping
+  - type: has_one
+    target: BigDecimal
+    via: quantity_2_tax
+  - type: has_one
+    target: BigDecimal
+    via: quantity_3_price
+  - type: has_one
+    target: BigDecimal
+    via: quantity_3_shipping
+  - type: has_one
+    target: BigDecimal
+    via: quantity_3_tax
+  - type: has_one
+    target: BigDecimal
+    via: quantity_4_price
+  - type: has_one
+    target: BigDecimal
+    via: quantity_4_shipping
+  - type: has_one
+    target: BigDecimal
+    via: quantity_4_tax
+  - type: has_one
+    target: BigDecimal
+    via: quantity_5_price
+  - type: has_one
+    target: BigDecimal
+    via: quantity_5_shipping
+  - type: has_one
+    target: BigDecimal
+    via: quantity_5_tax
+  - type: belongs_to
+    target_field: rfe_item_id
+    via: rfe_item_id
+- name: QuoteDetailVO
+  properties: 27
+  description: 'Java type: com.noosh.nooshapi.vo.QuoteDetailVO'
+  relationships:
+  - type: belongs_to
+    target_field: client_user_id
+    via: client_user_id
+  - type: belongs_to
+    target_field: creator_user_id
+    via: creator_user_id
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: belongs_to
+    target_field: last_update_by_user_id
+    via: last_update_by_user_id
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+  - type: has_many
+    target: QuoteItemDetailVO
+    via: quote_items
+  - type: has_one
+    target: BigDecimal
+    via: quote_items_total
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_quote_items_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+  - type: has_one
+    target: BigDecimal
+    via: vat_rate
+- name: EstimateItemPriceVO
+  properties: 13
+  description: 'Java type: com.noosh.nooshapi.vo.EstimateItemPriceVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: add_price
+  - type: has_many
+    target: BreakoutVO
+    via: breakouts
+  - type: belongs_to
+    target_field: em_estimate_item_price_id
+    via: em_estimate_item_price_id
+  - type: has_one
+    target: ItemOptionVO
+    via: item_option
+  - type: has_one
+    target: BigDecimal
+    via: price
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: total_price
+  - type: has_one
+    target: BigDecimal
+    via: transactional_add_price
+  - type: has_one
+    target: BigDecimal
+    via: transactional_price
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_total_price
+- name: InvoiceItemDetailVO
+  properties: 14
+  description: 'Java type: com.noosh.nooshapi.vo.InvoiceItemDetailVO'
+  relationships:
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: invoice_item_id
+    via: invoice_item_id
+  - type: has_one
+    target: BigDecimal
+    via: item_cost
+  - type: has_one
+    target: BigDecimal
+    via: item_quantity
+  - type: has_one
+    target: BigDecimal
+    via: item_shipping
+  - type: has_one
+    target: BigDecimal
+    via: item_sub_total
+  - type: has_one
+    target: BigDecimal
+    via: item_tax
+  - type: belongs_to
+    target_field: job_id
+    via: job_id
+  - type: belongs_to
+    target_field: shipment_id
+    via: shipment_id
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_cost
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_sub_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_tax
+- name: QuoteItemDetailVO
+  properties: 17
+  description: 'Java type: com.noosh.nooshapi.vo.QuoteItemDetailVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: chosen_quantity
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: item_id
+    via: item_id
+  - type: has_many
+    target: QuotePriceDetailVO
+    via: item_prices
+  - type: has_one
+    target: BigDecimal
+    via: item_shipping_total
+  - type: has_one
+    target: BigDecimal
+    via: item_tax_total
+  - type: has_one
+    target: BigDecimal
+    via: item_total
+  - type: has_one
+    target: SpecBaseVO
+    via: spec
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_shipping_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_tax_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_total
+  - type: has_one
+    target: BigDecimal
+    via: vat_rate
+- name: PaperItemPO
+  properties: 21
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.PaperItemPO'
+  relationships:
+  - type: belongs_to
+    target_field: paper_id
+    via: paper_id
+  - type: has_one
+    target: BigDecimal
+    via: price_1
+  - type: has_one
+    target: BigDecimal
+    via: price_2
+  - type: has_one
+    target: BigDecimal
+    via: price_3
+  - type: has_one
+    target: BigDecimal
+    via: price_4
+  - type: has_one
+    target: BigDecimal
+    via: price_5
+  - type: has_one
+    target: BigDecimal
+    via: price_per_tonne
+  - type: has_one
+    target: BigDecimal
+    via: unit_price_1
+  - type: has_one
+    target: BigDecimal
+    via: unit_price_2
+  - type: has_one
+    target: BigDecimal
+    via: unit_price_3
+  - type: has_one
+    target: BigDecimal
+    via: unit_price_4
+  - type: has_one
+    target: BigDecimal
+    via: unit_price_5
+- name: V1x1SpecDetailVO
+  properties: 26
+  description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecDetailVO'
+  relationships:
+  - type: has_one
+    target: PersonVO
+    via: created_by
+  - type: has_one
+    target: V1x1ProperyVO
+    via: first_level_custom_fields
+  - type: has_one
+    target: V1x1ProperyVO
+    via: header_custom_fields
+  - type: belongs_to
+    target_field: job_id
+    via: job_id
+  - type: has_one
+    target: ProductTypeVO
+    via: product_type_info
+  - type: has_many
+    target: V1x1ProperyVO
+    via: second_level_custom_fields
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+  - type: has_many
+    target: SpecSimplestVO
+    via: spec_options
+  - type: has_many
+    target: SpecSimpleVO
+    via: spec_options_complete
+  - type: has_one
+    target: SpecSimplestVO
+    via: spec_original
+  - type: has_one
+    target: SpecTypeVO
+    via: spec_type
+  - type: has_many
+    target: UofmSimpleVO
+    via: uofms
+- name: InvoiceDetailVO
+  properties: 27
+  description: 'Java type: com.noosh.nooshapi.vo.InvoiceDetailVO'
+  relationships:
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: belongs_to
+    target_field: invoice_id
+    via: invoice_id
+  - type: has_many
+    target: InvoiceItemDetailVO
+    via: items
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: BigDecimal
+    via: sub_total
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_sub_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+- name: InvoiceSimpleVO
+  properties: 27
+  description: 'Java type: com.noosh.nooshapi.vo.InvoiceSimpleVO'
+  relationships:
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: belongs_to
+    target_field: invoice_id
+    via: invoice_id
+  - type: has_many
+    target: InvoiceItemSimpleVO
+    via: items
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: BigDecimal
+    via: sub_total
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_sub_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+- name: InvoiceItemSimpleVO
+  properties: 12
+  description: 'Java type: com.noosh.nooshapi.vo.InvoiceItemSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: invoice_item_id
+    via: invoice_item_id
+  - type: has_one
+    target: BigDecimal
+    via: item_cost
+  - type: has_one
+    target: BigDecimal
+    via: item_quantity
+  - type: has_one
+    target: BigDecimal
+    via: item_shipping
+  - type: has_one
+    target: BigDecimal
+    via: item_sub_total
+  - type: has_one
+    target: BigDecimal
+    via: item_tax
+  - type: belongs_to
+    target_field: job_id
+    via: job_id
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_cost
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_sub_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_item_tax
+- name: TimeCardLineVO
+  properties: 12
+  description: 'Java type: com.noosh.nooshapi.vo.TimeCardLineVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: day1_hours_spent
+  - type: has_one
+    target: BigDecimal
+    via: day2_hours_spent
+  - type: has_one
+    target: BigDecimal
+    via: day3_hours_spent
+  - type: has_one
+    target: BigDecimal
+    via: day4_hours_spent
+  - type: has_one
+    target: BigDecimal
+    via: day5_hours_spent
+  - type: has_one
+    target: BigDecimal
+    via: day6_hours_spent
+  - type: has_one
+    target: BigDecimal
+    via: day7_hours_spent
+  - type: has_one
+    target: ProjectTimeCardVO
+    via: project
+  - type: has_one
+    target: TaskTimeCardVO
+    via: task
+  - type: belongs_to
+    target_field: time_card_line_id
+    via: time_card_line_id
+  - type: has_one
+    target: BigDecimal
+    via: total_hours_spent
+- name: TaskDetailWorkgroupLevelVO
+  properties: 28
+  description: 'Java type: com.noosh.nooshapi.vo.TaskDetailWorkgroupLevelVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: actual_duration
+  - type: has_one
+    target: BigDecimal
+    via: actual_hours
+  - type: has_one
+    target: PersonVO
+    via: assign_to
+  - type: has_one
+    target: BigDecimal
+    via: baseline_duration
+  - type: has_one
+    target: BigDecimal
+    via: current_duration
+  - type: has_one
+    target: PersonVO
+    via: last_updated_by
+  - type: has_one
+    target: BigDecimal
+    via: plan_duration
+  - type: has_one
+    target: ProjectBaseVO
+    via: project
+  - type: has_one
+    target: PersonVO
+    via: requested_by
+  - type: belongs_to
+    target_field: task_id
+    via: task_id
+- name: OrderWorkgroupLevelSimpleVO
+  properties: 24
+  description: 'Java type: com.noosh.nooshapi.vo.OrderWorkgroupLevelSimpleVO'
+  relationships:
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: buyer_workgroup
+  - type: has_many
+    target: OrderSimpleBaseVO
+    via: change_orders
+  - type: has_many
+    target: OrderSimpleBaseVO
+    via: closing_change_orders
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: has_one
+    target: BigDecimal
+    via: grand_total_with_changes
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+  - type: has_one
+    target: ProjectBaseVO
+    via: project
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total_with_changes
+- name: OrderSimpleVO
+  properties: 23
+  description: 'Java type: com.noosh.nooshapi.vo.OrderSimpleVO'
+  relationships:
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: buyer_workgroup
+  - type: has_many
+    target: OrderSimpleBaseVO
+    via: change_orders
+  - type: has_many
+    target: OrderSimpleBaseVO
+    via: closing_change_orders
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: has_one
+    target: BigDecimal
+    via: grand_total_with_changes
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total_with_changes
+- name: OrderItemSimpleVO
+  properties: 15
+  description: 'Java type: com.noosh.nooshapi.vo.OrderItemSimpleVO'
+  relationships:
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: item_id
+    via: item_id
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: has_one
+    target: SpecBaseVO
+    via: spec
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_shipping
+  - type: has_one
+    target: BigDecimal
+    via: transactional_tax
+  - type: has_one
+    target: BigDecimal
+    via: transactional_unit_price
+  - type: has_one
+    target: BigDecimal
+    via: unit_price
+- name: TaskDetailVO
+  properties: 27
+  description: 'Java type: com.noosh.nooshapi.vo.TaskDetailVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: actual_duration
+  - type: has_one
+    target: BigDecimal
+    via: actual_hours
+  - type: has_one
+    target: PersonVO
+    via: assign_to
+  - type: has_one
+    target: BigDecimal
+    via: baseline_duration
+  - type: has_one
+    target: BigDecimal
+    via: current_duration
+  - type: has_one
+    target: PersonVO
+    via: last_updated_by
+  - type: has_one
+    target: BigDecimal
+    via: plan_duration
+  - type: has_one
+    target: PersonVO
+    via: requested_by
+  - type: belongs_to
+    target_field: task_id
+    via: task_id
+- name: OrderUpdPersistVO
+  properties: 13
+  description: 'Java type: com.noosh.nooshapi.vo.OrderUpdPersistVO'
+  relationships:
+  - type: belongs_to
+    target_field: budget_type_field_id
+    via: budget_type_field_id
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+  - type: has_one
+    target: BigDecimal
+    via: overs_percent
+  - type: belongs_to
+    target_field: payment_method_id
+    via: payment_method_id
+  - type: belongs_to
+    target_field: supplier_selection_reason_id
+    via: supplier_selection_reason_id
+  - type: has_one
+    target: BigDecimal
+    via: unders_percent
+- name: EstimateDetailsVO
+  properties: 18
+  description: 'Java type: com.noosh.nooshapi.vo.EstimateDetailsVO'
+  relationships:
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: estimate_id
+    via: estimate_id
+  - type: has_many
+    target: EstimateItemDetailsVO
+    via: items
+  - type: has_one
+    target: ProjectBaseVO
+    via: project
+  - type: has_one
+    target: RfeBaseVO
+    via: rfe
+  - type: belongs_to
+    target_field: submitted_by_user_id
+    via: submitted_by_user_id
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+- name: OrderItemPersistVO
+  properties: 11
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.OrderItemPersistVO'
+  relationships:
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: ex_tax_value_calculated
+  - type: has_one
+    target: BigDecimal
+    via: price
+  - type: has_one
+    target: BigDecimal
+    via: quantity
+  - type: has_one
+    target: BigDecimal
+    via: shipping
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+  - type: belongs_to
+    target_field: spec_reference_id
+    via: spec_reference_id
+- name: ProjectPersistVO
+  properties: 16
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ProjectPersistVO'
+  relationships:
+  - type: belongs_to
+    target_field: client_user_id
+    via: client_user_id
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: deactivation_reason_id
+    via: deactivation_reason_id
+  - type: belongs_to
+    target_field: project_category_id
+    via: project_category_id
+  - type: belongs_to
+    target_field: project_owner_user_id
+    via: project_owner_user_id
+  - type: belongs_to
+    target_field: project_status_id
+    via: project_status_id
+- name: ClientWorkgroupDetailVO
+  properties: 7
+  description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupDetailVO'
+  relationships:
+  - type: belongs_to
+    target_field: client_ac_workgroup_id
+    via: client_ac_workgroup_id
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: BigDecimal
+    via: margin_percent
+  - type: has_one
+    target: BigDecimal
+    via: markup
+  - type: has_one
+    target: BigDecimal
+    via: markup_percent
+- name: TaskWorkgroupLevelSimpleVO
+  properties: 19
+  description: 'Java type: com.noosh.nooshapi.vo.TaskWorkgroupLevelSimpleVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: actual_hours
+  - type: has_one
+    target: PersonVO
+    via: assign_to
+  - type: has_one
+    target: BigDecimal
+    via: baseline_duration
+  - type: has_one
+    target: BigDecimal
+    via: current_duration
+  - type: has_one
+    target: ProjectBaseVO
+    via: project
+  - type: belongs_to
+    target_field: task_id
+    via: task_id
+- name: V1X1SpecUpdatingPO
+  properties: 14
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1X1SpecUpdatingPO'
+  relationships:
+  - type: has_one
+    target: V1x1ProperyPO
+    via: first_level_custom_fields
+  - type: has_one
+    target: V1x1ProperyPO
+    via: header_custom_fields
+  - type: belongs_to
+    target_field: product_type_id
+    via: product_type_id
+  - type: has_many
+    target: V1x1ProperyPO
+    via: second_level_custom_fields
+  - type: belongs_to
+    target_field: spec_type_id
+    via: spec_type_id
+  - type: has_many
+    target: SpecVersionPersistVO
+    via: versions
+- name: ProjectPatchPO
+  properties: 13
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.ProjectPatchPO'
+  relationships:
+  - type: belongs_to
+    target_field: client_user_id
+    via: client_user_id
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: deactivation_reason_id
+    via: deactivation_reason_id
+  - type: belongs_to
+    target_field: project_category_id
+    via: project_category_id
+  - type: belongs_to
+    target_field: project_status_id
+    via: project_status_id
+- name: SpecSimpleVO
+  properties: 12
+  description: 'Java type: com.noosh.nooshapi.vo.SpecSimpleVO'
+  relationships:
+  - type: has_one
+    target: PersonVO
+    via: created_by
+  - type: belongs_to
+    target_field: job_id
+    via: job_id
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+  - type: has_many
+    target: SpecSimpleVO
+    via: spec_options_complete
+  - type: has_many
+    target: UofmSimpleVO
+    via: uofms
+- name: OrderSimpleBaseVO
+  properties: 19
+  description: 'Java type: com.noosh.nooshapi.vo.OrderSimpleBaseVO'
+  relationships:
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: buyer_workgroup
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: belongs_to
+    target_field: order_id
+    via: order_id
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+- name: BreakoutVO
+  properties: 6
+  description: 'Java type: com.noosh.nooshapi.vo.BreakoutVO'
+  relationships:
+  - type: belongs_to
+    target_field: breakout_id
+    via: breakout_id
+  - type: has_one
+    target: BigDecimal
+    via: breakout_pre_markup
+  - type: has_one
+    target: BigDecimal
+    via: breakout_price
+  - type: has_one
+    target: BigDecimal
+    via: transactional_breakout_pre_markup
+  - type: has_one
+    target: BigDecimal
+    via: transactional_breakout_price
+- name: ProjectDetailVO
+  properties: 22
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectDetailVO'
+  relationships:
+  - type: belongs_to
+    target_field: client_user_id
+    via: client_user_id
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: has_one
+    target: ProjectParentVO
+    via: parent_project
+  - type: belongs_to
+    target_field: project_id
+    via: project_id
+- name: TaskPersistVO
+  properties: 19
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.TaskPersistVO'
+  relationships:
+  - type: belongs_to
+    target_field: assign_to_user_id
+    via: assign_to_user_id
+  - type: belongs_to
+    target_field: custom_status_id
+    via: custom_status_id
+  - type: belongs_to
+    target_field: status_id
+    via: status_id
+  - type: belongs_to
+    target_field: task_id
+    via: task_id
+  - type: belongs_to
+    target_field: task_type_id
+    via: task_type_id
+- name: TaskSimpleVO
+  properties: 18
+  description: 'Java type: com.noosh.nooshapi.vo.TaskSimpleVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: actual_hours
+  - type: has_one
+    target: PersonVO
+    via: assign_to
+  - type: has_one
+    target: BigDecimal
+    via: baseline_duration
+  - type: has_one
+    target: BigDecimal
+    via: current_duration
+  - type: belongs_to
+    target_field: task_id
+    via: task_id
+- name: EstimateItemDetailsVO
+  properties: 8
+  description: 'Java type: com.noosh.nooshapi.vo.EstimateItemDetailsVO'
+  relationships:
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: estimate_item_id
+    via: estimate_item_id
+  - type: has_many
+    target: EstimateItemPriceVO
+    via: option_prices
+  - type: belongs_to
+    target_field: pc_job_id
+    via: pc_job_id
+  - type: belongs_to
+    target_field: spec_reference_id
+    via: spec_reference_id
+- name: ShipmentRequestBaseVO
+  properties: 41
+  description: 'Java type: com.noosh.nooshapi.vo.ShipmentRequestBaseVO'
+  relationships:
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: location_id
+    via: location_id
+  - type: has_one
+    target: BigDecimal
+    via: shipping_cost
+  - type: has_one
+    target: BigDecimal
+    via: tax
+  - type: has_one
+    target: BigDecimal
+    via: weight
+- name: SpecTemplateDetailVO
+  properties: 11
+  description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateDetailVO'
+  relationships:
+  - type: has_one
+    target: PersonVO
+    via: created_by
+  - type: has_one
+    target: ProductTypeVO
+    via: product_type_info
+  - type: belongs_to
+    target_field: spec_template_id
+    via: spec_template_id
+  - type: has_one
+    target: SpecTypeVO
+    via: spec_type
+- name: RfeItemSimpleEXTVO
+  properties: 5
+  description: 'Java type: com.noosh.nooshapi.vo.RfeItemSimpleEXTVO'
+  relationships:
+  - type: belongs_to
+    target_field: job_id
+    via: job_id
+  - type: belongs_to
+    target_field: rfe_item_id
+    via: rfe_item_id
+  - type: has_many
+    target: RfeItemOptionVO
+    via: rfe_item_options
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+- name: EstimateBaseVO
+  properties: 11
+  description: 'Java type: com.noosh.nooshapi.vo.EstimateBaseVO'
+  relationships:
+  - type: belongs_to
+    target_field: estimate_id
+    via: estimate_id
+  - type: has_one
+    target: ProjectBaseVO
+    via: project
+  - type: has_one
+    target: RfeBaseVO
+    via: rfe
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: supplier_workgroup
+- name: SpecPersistVO
+  properties: 12
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecPersistVO'
+  relationships:
+  - type: belongs_to
+    target_field: product_type_id
+    via: product_type_id
+  - type: belongs_to
+    target_field: spec_template_id
+    via: spec_template_id
+  - type: belongs_to
+    target_field: spec_type_id
+    via: spec_type_id
+  - type: has_many
+    target: SpecVersionPersistVO
+    via: versions
+- name: QuoteSimpleVO
+  properties: 9
+  description: 'Java type: com.noosh.nooshapi.vo.QuoteSimpleVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+  - type: has_one
+    target: RfqBaseVO
+    via: rfq
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+- name: ProjectParentVO
+  properties: 11
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectParentVO'
+  relationships:
+  - type: belongs_to
+    target_field: client_user_id
+    via: client_user_id
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+  - type: has_one
+    target: PersonVO
+    via: created_by
+  - type: belongs_to
+    target_field: project_id
+    via: project_id
+- name: SupplierWorkgroupDetailVO
+  properties: 9
+  description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupDetailVO'
+  relationships:
+  - type: has_many
+    target: SupplierWorkgroupBasicVO
+    via: additional_workgroups_contain_same_supplier
+  - type: belongs_to
+    target_field: bu_supplier_workgroup_id
+    via: bu_supplier_workgroup_id
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+  - type: belongs_to
+    target_field: supplier_workgroup_id
+    via: supplier_workgroup_id
+- name: RfqDetailsVO
+  properties: 12
+  description: 'Java type: com.noosh.nooshapi.vo.RfqDetailsVO'
+  relationships:
+  - type: has_many
+    target: QuoteBaseVO
+    via: quotes
+  - type: belongs_to
+    target_field: rfq_id
+    via: rfq_id
+  - type: has_many
+    target: RfqItemBaseVO
+    via: rfq_items
+- name: V1x1InvitedTeamMemberVO
+  properties: 4
+  description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberVO'
+  relationships:
+  - type: has_one
+    target: RoleSimpleVO
+    via: role
+  - type: belongs_to
+    target_field: team_member_id
+    via: team_member_id
+  - type: has_one
+    target: UserPersonVO
+    via: user
+- name: FileVO
+  properties: 12
+  description: 'Java type: com.noosh.nooshapi.vo.file.FileVO'
+  relationships:
+  - type: belongs_to
+    target_field: file_id
+    via: file_id
+  - type: has_one
+    target: BigDecimal
+    via: file_size
+  - type: has_many
+    target: TagVO
+    via: tagList
+- name: RfeDetailsVO
+  properties: 14
+  description: 'Java type: com.noosh.nooshapi.vo.RfeDetailsVO'
+  relationships:
+  - type: belongs_to
+    target_field: rfe_id
+    via: rfe_id
+  - type: has_many
+    target: RfeItemSimpleEXTVO
+    via: rfe_items
+  - type: has_many
+    target: RfeSuEstimateSimpleVO
+    via: supplier_estimates
+- name: QuoteBaseVO
+  properties: 8
+  description: 'Java type: com.noosh.nooshapi.vo.QuoteBaseVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: grand_total
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+  - type: has_one
+    target: BigDecimal
+    via: transactional_grand_total
+- name: V1x1SpecPamAndAttVO
+  properties: 5
+  description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecPamAndAttVO'
+  relationships:
+  - type: belongs_to
+    target_field: attribute_id
+    via: attribute_id
+  - type: has_one
+    target: Object
+    via: attribute_value
+  - type: belongs_to
+    target_field: param_id
+    via: param_id
+- name: ShipmentDetailVO
+  properties: 10
+  description: 'Java type: com.noosh.nooshapi.vo.ShipmentDetailVO'
+  relationships:
+  - type: has_many
+    target: ShipmentRequestBaseVO
+    via: locations
+  - type: belongs_to
+    target_field: shipment_id
+    via: shipment_id
+  - type: has_one
+    target: SpecBaseVO
+    via: spec
+- name: RfqItemBaseVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.RfqItemBaseVO'
+  relationships:
+  - type: belongs_to
+    target_field: job_id
+    via: job_id
+  - type: belongs_to
+    target_field: rfq_item_id
+    via: rfq_item_id
+  - type: has_one
+    target: ErgoSpecSimpleVO
+    via: spec
+- name: TeamMemberPO
+  properties: 3
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.TeamMemberPO'
+  relationships:
+  - type: belongs_to
+    target_field: role_id
+    via: role_id
+  - type: belongs_to
+    target_field: team_template_id
+    via: team_template_id
+  - type: belongs_to
+    target_field: user_id
+    via: user_id
+- name: ShipmentLocationsPOSTVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.ShipmentLocationsPOSTVO'
+  relationships:
+  - type: belongs_to
+    target_field: location_id
+    via: location_id
+  - type: belongs_to
+    target_field: shipment_id
+    via: shipment_id
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+- name: PropertyPaAndAttVO
+  properties: 6
+  description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: number_value
+  - type: belongs_to
+    target_field: param_id
+    via: param_id
+  - type: belongs_to
+    target_field: property_attribute_id
+    via: property_attribute_id
+- name: V1x1SpecPamAndAttPO
+  properties: 5
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1x1SpecPamAndAttPO'
+  relationships:
+  - type: belongs_to
+    target_field: attribute_id
+    via: attribute_id
+  - type: has_one
+    target: Object
+    via: attribute_value
+  - type: belongs_to
+    target_field: param_id
+    via: param_id
+- name: FileV3VO
+  properties: 12
+  description: 'Java type: com.noosh.nooshapi.vo.file.FileV3VO'
+  relationships:
+  - type: belongs_to
+    target_field: file_id
+    via: file_id
+  - type: has_one
+    target: BigDecimal
+    via: file_size
+  - type: belongs_to
+    target_field: folder_id
+    via: folder_id
+- name: RfeSimpleVO
+  properties: 5
+  description: 'Java type: com.noosh.nooshapi.vo.RfeSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: rfe_id
+    via: rfe_id
+  - type: has_many
+    target: RfeItemSimpleVO
+    via: rfe_items
+  - type: has_many
+    target: RfeSuEstimateSimpleVO
+    via: supplier_estimates
+- name: SupplierWorkgroupSimpleVO
+  properties: 8
+  description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: bu_supplier_workgroup_id
+    via: bu_supplier_workgroup_id
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+  - type: belongs_to
+    target_field: supplier_workgroup_id
+    via: supplier_workgroup_id
+- name: V1x1ProperyPO
+  properties: 3
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1x1ProperyPO'
+  relationships:
+  - type: has_many
+    target: V1x1SpecPamAndAttPO
+    via: property_attributes
+  - type: belongs_to
+    target_field: property_id
+    via: property_id
+- name: SpecUpdatePersistVO
+  properties: 9
+  description: 'Java type: com.noosh.nooshapi.vo.SpecUpdatePersistVO'
+  relationships:
+  - type: has_many
+    target: PropertyPersistVO
+    via: inks_and_paper
+  - type: belongs_to
+    target_field: product_type_id
+    via: product_type_id
+- name: ContactUserVO
+  properties: 2
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ContactUserVO'
+  relationships:
+  - type: belongs_to
+    target_field: role_id
+    via: role_id
+  - type: belongs_to
+    target_field: user_id
+    via: user_id
+- name: ProjectSimpleVO
+  properties: 10
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+  - type: belongs_to
+    target_field: project_id
+    via: project_id
+- name: RfqSimpleVO
+  properties: 5
+  description: 'Java type: com.noosh.nooshapi.vo.RfqSimpleVO'
+  relationships:
+  - type: has_many
+    target: QuoteBaseVO
+    via: quotes
+  - type: belongs_to
+    target_field: rfq_id
+    via: rfq_id
+- name: ShipmentLocationPostPersistVO
+  properties: 29
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ShipmentLocationPostPersistVO'
+  relationships:
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: shipment_custom_fields
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: shipment_request_custom_fields
+- name: FolderBaseVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.file.FolderBaseVO'
+  relationships:
+  - type: has_many
+    target: FolderVO
+    via: child_folders
+  - type: belongs_to
+    target_field: folder_id
+    via: folder_id
+- name: SpecTemplateSimpleVO
+  properties: 8
+  description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateSimpleVO'
+  relationships:
+  - type: has_one
+    target: PersonVO
+    via: created_by
+  - type: belongs_to
+    target_field: spec_template_id
+    via: spec_template_id
+- name: TimeCardSimpleVO
+  properties: 7
+  description: 'Java type: com.noosh.nooshapi.vo.TimeCardSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: timecard_id
+    via: timecard_id
+  - type: has_one
+    target: BigDecimal
+    via: total_hours
+- name: TeamTemplateDetailVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateDetailVO'
+  relationships:
+  - type: has_many
+    target: TeamTemplateItemVO
+    via: team_teample_item
+  - type: belongs_to
+    target_field: team_template_id
+    via: team_template_id
+- name: WorkgroupDetailVO
+  properties: 13
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupDetailVO'
+  relationships:
+  - type: has_many
+    target: PropertyPaAndAttVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: workgroup_id
+    via: workgroup_id
+- name: ShipmentSimpleVO
+  properties: 9
+  description: 'Java type: com.noosh.nooshapi.vo.ShipmentSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: shipment_id
+    via: shipment_id
+  - type: has_one
+    target: SpecBaseVO
+    via: spec
+- name: RfeSuEstimateSimpleVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.RfeSuEstimateSimpleVO'
+  relationships:
+  - type: has_many
+    target: EstimateSimpleVO
+    via: supplier_estimates
+  - type: belongs_to
+    target_field: workgroup_id
+    via: workgroup_id
+- name: PropertyPersistVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.PropertyPersistVO'
+  relationships:
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: custom_fields
+  - type: belongs_to
+    target_field: paper_id
+    via: paper_id
+- name: WorkgroupSimpleVO
+  properties: 4
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupSimpleVO'
+  relationships:
+  - type: has_one
+    target: WorkgroupBaseVO
+    via: parent_workgroup
+  - type: belongs_to
+    target_field: workgroup_id
+    via: workgroup_id
+- name: ClientWorkgroupSimpleVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: client_ac_workgroup_id
+    via: client_ac_workgroup_id
+  - type: belongs_to
+    target_field: client_workgroup_id
+    via: client_workgroup_id
+- name: TeamTemplateItemVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateItemVO'
+  relationships:
+  - type: has_one
+    target: RoleSimpleVO
+    via: role
+  - type: has_one
+    target: UserPersonVO
+    via: user
+- name: RfeItemOptionVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.RfeItemOptionVO'
+  relationships:
+  - type: belongs_to
+    target_field: item_option_id
+    via: item_option_id
+  - type: has_one
+    target: BigDecimal
+    via: quantity
+- name: UserDetailsVO
+  properties: 13
+  description: 'Java type: com.noosh.nooshapi.vo.UserDetailsVO'
+  relationships:
+  - type: has_one
+    target: Map
+    via: address
+  - type: belongs_to
+    target_field: user_id
+    via: user_id
+- name: SpecBaseVO
+  properties: 4
+  description: 'Java type: com.noosh.nooshapi.vo.SpecBaseVO'
+  relationships:
+  - type: belongs_to
+    target_field: job_id
+    via: job_id
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+- name: V1x1ProperyVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1ProperyVO'
+  relationships:
+  - type: has_many
+    target: V1x1SpecPamAndAttVO
+    via: property_attributes
+  - type: belongs_to
+    target_field: property_id
+    via: property_id
+- name: TeamMemberSimpleVO
+  properties: 8
+  description: 'Java type: com.noosh.nooshapi.vo.TeamMemberSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: teammember_id
+    via: teammember_id
+  - type: belongs_to
+    target_field: user_id
+    via: user_id
+- name: FolderPersisitVO
+  properties: 3
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.FolderPersisitVO'
+  relationships:
+  - type: belongs_to
+    target_field: parent_folder_id
+    via: parent_folder_id
+  - type: belongs_to
+    target_field: project_id
+    via: project_id
+- name: ProjectTimeCardVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectTimeCardVO'
+  relationships:
+  - type: belongs_to
+    target_field: project_id
+    via: project_id
+- name: TaskStatusVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TaskStatusVO'
+  relationships:
+  - type: belongs_to
+    target_field: task_status_id
+    via: task_status_id
+- name: DeactivationReasonVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.DeactivationReasonVO'
+  relationships:
+  - type: belongs_to
+    target_field: deactivation_reason_id
+    via: deactivation_reason_id
+- name: ErgoSpecSimpleVO
+  properties: 10
+  description: 'Java type: com.noosh.nooshapi.vo.ergo.ErgoSpecSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+- name: TaskTypeSimpleVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TaskTypeSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: task_type_id
+    via: task_type_id
+- name: AutomaticInvitationVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationVO'
+  relationships:
+  - type: has_one
+    target: TeamTemplateSimpleVO
+    via: team_template
+- name: UofmSimpleVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.UofmSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: uofm_id
+    via: uofm_id
+- name: UserVO
+  properties: 5
+  description: 'Java type: com.noosh.nooshapi.vo.UserVO'
+  relationships:
+  - type: belongs_to
+    target_field: user_id
+    via: user_id
+- name: WorkgroupAttributeVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupAttributeVO'
+  relationships:
+  - type: belongs_to
+    target_field: product_type_id
+    via: product_type_id
+- name: RoleSimpleVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: role_id
+    via: role_id
+- name: SpecSimplestVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.SpecSimplestVO'
+  relationships:
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+- name: ProjectBaseVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
+  relationships:
+  - type: belongs_to
+    target_field: project_id
+    via: project_id
+- name: RfeSpecPO
+  properties: 6
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.RfeSpecPO'
+  relationships:
+  - type: belongs_to
+    target_field: spec_id
+    via: spec_id
+- name: WorkgroupUpdPersistVO
+  properties: 10
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupUpdPersistVO'
+  relationships:
+  - type: has_many
+    target: CustomFieldPersistVO
+    via: custom_fields
+- name: QuotePutPersistVO
+  properties: 4
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.QuotePutPersistVO'
+  relationships:
+  - type: belongs_to
+    target_field: quote_id
+    via: quote_id
+- name: CountryVO
+  properties: 3
+  description: 'Java type: com.noosh.nooshapi.vo.CountryVO'
+  relationships:
+  - type: belongs_to
+    target_field: country_id
+    via: country_id
+- name: MultiExchangeRatePersistListVO
+  properties: 1
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersistListVO'
+  relationships:
+  - type: has_many
+    target: MultiExchangeRatePersisitVO
+    via: exchange_rates
+- name: ItemOptionVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ItemOptionVO'
+  relationships:
+  - type: belongs_to
+    target_field: item_option_id
+    via: item_option_id
+- name: ProjectCategorySimpleVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectCategorySimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: project_category_id
+    via: project_category_id
+- name: RfePO
+  properties: 8
+  description: 'Java type: com.noosh.domain.nooshapi.persist.po.RfePO'
+  relationships:
+  - type: has_many
+    target: RfeSpecPO
+    via: specs
+- name: TeamTemplateSimpleVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: team_template_id
+    via: team_template_id
+- name: ProductTypeVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
+  relationships:
+  - type: belongs_to
+    target_field: product_type_id
+    via: product_type_id
+- name: TaskTimeCardVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TaskTimeCardVO'
+  relationships:
+  - type: belongs_to
+    target_field: task_id
+    via: task_id
+- name: ContactsSimpleVO
+  properties: 8
+  description: 'Java type: com.noosh.nooshapi.vo.ContactsSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: user_id
+    via: user_id
+- name: ProjectStatusSimpleVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ProjectStatusSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: project_status_id
+    via: project_status_id
+- name: SupplierWorkgroupBasicVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupBasicVO'
+  relationships:
+  - type: belongs_to
+    target_field: bu_supplier_workgroup_id
+    via: bu_supplier_workgroup_id
+- name: TaskPriorityVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.TaskPriorityVO'
+  relationships:
+  - type: belongs_to
+    target_field: task_priority_id
+    via: task_priority_id
+- name: ObjectStateSimpleVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.ObjectStateSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: object_state_id
+    via: object_state_id
+- name: EstimateSimpleVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.EstimateSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: estimate_id
+    via: estimate_id
+- name: RfqBaseVO
+  properties: 4
+  description: 'Java type: com.noosh.nooshapi.vo.RfqBaseVO'
+  relationships:
+  - type: belongs_to
+    target_field: rfq_id
+    via: rfq_id
+- name: ShipmentLocationPersistVO
+  properties: 8
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ShipmentLocationPersistVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: shipping_cost
+- name: WorkgroupBaseVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupBaseVO'
+  relationships:
+  - type: belongs_to
+    target_field: workgroup_id
+    via: workgroup_id
+- name: SpecTypePersistVO
+  properties: 2
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecTypePersistVO'
+  relationships:
+  - type: belongs_to
+    target_field: spec_type_id
+    via: spec_type_id
+- name: RfeBaseVO
+  properties: 4
+  description: 'Java type: com.noosh.nooshapi.vo.RfeBaseVO'
+  relationships:
+  - type: belongs_to
+    target_field: rfe_id
+    via: rfe_id
+- name: CustomFieldPersistVO
+  properties: 4
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: number_value
+- name: WorkgroupMembersSimpleVO
+  properties: 4
+  description: 'Java type: com.noosh.nooshapi.vo.WorkgroupMembersSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: user_id
+    via: user_id
+- name: MultiExchangeRatePersisitVO
+  properties: 5
+  description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersisitVO'
+  relationships:
+  - type: has_one
+    target: BigDecimal
+    via: rate
+- name: UserPersonVO
+  properties: 5
+  description: 'Java type: com.noosh.nooshapi.vo.UserPersonVO'
+  relationships:
+  - type: belongs_to
+    target_field: user_id
+    via: user_id
+- name: UserFieldsSimpleVO
+  properties: 6
+  description: 'Java type: com.noosh.nooshapi.vo.UserFieldsSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: user_field_id
+    via: user_field_id
+- name: RfeItemSimpleVO
+  properties: 1
+  description: 'Java type: com.noosh.nooshapi.vo.RfeItemSimpleVO'
+  relationships:
+  - type: belongs_to
+    target_field: rfe_item_id
+    via: rfe_item_id
+- name: WgTaskStatusVO
+  properties: 5
+  description: 'Java type: com.noosh.nooshapi.vo.WgTaskStatusVO'
+  relationships:
+  - type: belongs_to
+    target_field: tasks_status_id
+    via: tasks_status_id
+- name: SpecTypeVO
+  properties: 2
+  description: 'Java type: com.noosh.nooshapi.vo.SpecTypeVO'
+  relationships:
+  - type: belongs_to
+    target_field: spec_type_id
+    via: spec_type_id

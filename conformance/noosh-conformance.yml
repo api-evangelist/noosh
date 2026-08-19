@@ -1,0 +1,70 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/noosh-openapi.yml
+note: >-
+  Standards conformance read from the published Noosh Swagger 2.0 contract plus live probes of
+  noosh.com and api.noosh.com on 2026-08-13. Noosh publishes no compliance or trust page (probes of
+  noosh.com/security, noosh.com/trust, trust.noosh.com and security.noosh.com all returned 404), and
+  no certification is named anywhere on the public site — so no Compliance pointer is emitted.
+
+standards:
+  - id: openapi-3
+    conforms: false
+    evidence: The published document is Swagger 2.0, not OpenAPI 3.x — https://api.noosh.com/api/swagger.json declares "swagger":"2.0".
+  - id: swagger-2.0
+    conforms: true
+    evidence: 'swagger: "2.0" with 86 paths, 107 operations, 214 definitions and one securityDefinition (HTTP_BASIC).'
+  - id: http-basic-auth
+    conforms: true
+    evidence: securityDefinitions.HTTP_BASIC type basic (RFC 7617).
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityDefinition; no OAuth documentation on noosh.com.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on noosh.com and www.noosh.com; the 200 on nooshauth.noosh.com is the login SPA's HTML catch-all, not a discovery document.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Error responses use the vendor HTTPStatusVO envelope (status_code + status_reason), not application/problem+json.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset or Deprecation header documented; no operation carries deprecated true.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on noosh.com and www.noosh.com.
+  - id: rfc8615-well-known
+    conforms: false
+    evidence: Every probed /.well-known/* path 404s on noosh.com; api.noosh.com answers 403 (AWS API Gateway) for all of them.
+  - id: a2a-agent-card
+    conforms: false
+    evidence: /.well-known/agent-card.json and /.well-known/agent.json 404 on noosh.com, www.noosh.com, app.noosh.com and developer.noosh.com; the 200s on nooshauth.noosh.com are SPA HTML, not agent cards.
+  - id: json-api
+    conforms: false
+    evidence: Responses are vendor VO envelopes (results/result + status_code + status_reason), not JSON:API documents.
+  - id: pagination
+    conforms: false
+    evidence: No page/offset/limit/cursor parameter on any of the 40 List operations; no next/prev/total in list envelopes.
+  - id: idempotency
+    conforms: false
+    evidence: No Idempotency-Key header or parameter anywhere in the contract.
+  - id: hsts
+    conforms: true
+    evidence: noosh.com serves Strict-Transport-Security with max-age 31536000 (security/noosh-domain-security.yml). api.noosh.com does not.
+  - id: dmarc
+    conforms: true
+    evidence: noosh.com publishes a DMARC record with policy reject (security/noosh-domain-security.yml).
+  - id: dnssec
+    conforms: false
+    evidence: noosh.com is not DNSSEC-signed (security/noosh-domain-security.yml).
+  - id: caa
+    conforms: false
+    evidence: No CAA record on noosh.com (security/noosh-domain-security.yml).
+
+compliance_program:
+  published: false
+  certifications: []
+  evidence:
+    - {url: 'https://www.noosh.com/security/', status: 404}
+    - {url: 'https://www.noosh.com/trust/', status: 404}
+    - {url: 'https://trust.noosh.com/', status: 404}
+    - {url: 'https://security.noosh.com/', status: 404}

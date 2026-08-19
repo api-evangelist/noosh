@@ -1,0 +1,778 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: openapi/noosh-openapi.yml
+note: Noosh ships NO MCP server. Searched the Noosh site, support.noosh.com, npm (@modelcontextprotocol and "noosh"), and GitHub; the only result is github.com/ag2-mcp-servers/noosh-api-application, a machine-generated
+  server produced by mcp.ag2.ai from the public Swagger document — a third party, not Noosh, and not published to any registry. The tools below are DERIVED from the 107 published operations as a candidate
+  surface only. No MCPServer pointer is wired into apis.yml, because no MCP server exists to point at.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+third_party_servers:
+- name: ag2-mcp-servers/noosh-api-application
+  url: https://github.com/ag2-mcp-servers/noosh-api-application
+  generator: mcp.ag2.ai
+  official: false
+  last_pushed: '2025-07-16'
+  registry: null
+  note: Generated from the public Noosh Swagger document. Recorded as a lead; not a Noosh product.
+server:
+  name: noosh
+  transport: null
+  url: null
+auth_note: Any real server would carry the API's single scheme, HTTP Basic (securityDefinitions.HTTP_BASIC). There is no OAuth and no scope surface.
+tool_count: 107
+tools:
+- name: get_file_tags
+  description: List Tags from Workgroup and Project.
+  tags:
+  - File
+  method: GET
+  path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/fileTags
+  source_operation: openapi/noosh-openapi.yml#getFileTags
+- name: get_files
+  description: List Files from Project.  Works for Regular and Remote Files
+  tags:
+  - File
+  method: GET
+  path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/files
+  source_operation: openapi/noosh-openapi.yml#getFiles
+- name: upload_file
+  description: Upload File to Project.
+  tags:
+  - File
+  method: POST
+  path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/files
+  source_operation: openapi/noosh-openapi.yml#uploadFile
+- name: get_file
+  description: Get File from Project.  Works for Regular and Remote Files
+  tags:
+  - File
+  method: GET
+  path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/files/{file_id}
+  source_operation: openapi/noosh-openapi.yml#getFile
+- name: upload_file_v1_1
+  description: Upload File to Project.
+  tags:
+  - File
+  method: POST
+  path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/filesByRole
+  source_operation: openapi/noosh-openapi.yml#uploadFile
+- name: get_spec
+  description: List a specific spec of project Level
+  tags:
+  - Spec
+  method: GET
+  path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}
+  source_operation: openapi/noosh-openapi.yml#getSpec
+- name: put_spec
+  description: Update a specific Spec
+  tags:
+  - Spec
+  method: PUT
+  path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}
+  source_operation: openapi/noosh-openapi.yml#putSpec
+- name: post_team_member_of_project
+  description: Invite a team member or all the members of team template for the specific project.
+  tags:
+  - Team Member
+  method: POST
+  path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/teammembers
+  source_operation: openapi/noosh-openapi.yml#postTeamMemberOfProject
+- name: get_spec_type_fields
+  description: Get Spec Type Fields
+  tags:
+  - Spec
+  method: GET
+  path: /1.1/workgroups/{workgroup_id}/specTypes/{spec_type_id}/specTypeFields
+  source_operation: openapi/noosh-openapi.yml#getSpecTypeFields
+- name: upload_file_v1_2
+  description: Upload File to Project With Notification.
+  tags:
+  - File
+  method: POST
+  path: /1.2/workgroups/{workgroup_id}/projects/{project_id}/filesByRole
+  source_operation: openapi/noosh-openapi.yml#uploadFile
+- name: upload_file_v3
+  description: Upload File V3 to Project With Notification
+  tags:
+  - File
+  method: POST
+  path: /3/workgroups/{workgroup_id}/projects/{project_id}/files
+  source_operation: openapi/noosh-openapi.yml#uploadFile
+- name: get_folders
+  description: List all folders under a project
+  tags:
+  - File
+  method: GET
+  path: /3/workgroups/{workgroup_id}/projects/{project_id}/folders
+  source_operation: openapi/noosh-openapi.yml#getFolders
+- name: create_folder
+  description: Create a new folder under a project
+  tags:
+  - File
+  method: POST
+  path: /3/workgroups/{workgroup_id}/projects/{project_id}/folders
+  source_operation: openapi/noosh-openapi.yml#createFolder
+- name: get_country_list
+  description: List all countries
+  tags:
+  - Country
+  method: GET
+  path: /v1/countries
+  source_operation: openapi/noosh-openapi.yml#getCountryList
+- name: get_workgroup_list
+  description: List the workgroups
+  tags:
+  - Workgroup
+  method: GET
+  path: /v1/workgroups
+  source_operation: openapi/noosh-openapi.yml#getWorkgroupList
+- name: get_automatic_invitation_list
+  description: List current user's automatic invitations info
+  tags:
+  - My Info
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/automaticInvitations
+  source_operation: openapi/noosh-openapi.yml#getAutomaticInvitationList
+- name: get_billing_recipients
+  description: List Billing Recipients
+  tags:
+  - Contact
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/billingRecipients
+  source_operation: openapi/noosh-openapi.yml#getBillingRecipients
+- name: get_buy_order_list_of_workgroup
+  description: List the buy orders of workgroup
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/buyOrders
+  source_operation: openapi/noosh-openapi.yml#getBuyOrderListOfWorkgroup
+- name: get_buy_order_of_workgroup
+  description: Get a specific buy order of workgroup
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/buyOrders/{order_id}
+  source_operation: openapi/noosh-openapi.yml#getBuyOrderOfWorkgroup
+- name: get_client_workgroup_list
+  description: List client workgroups
+  tags:
+  - Workgroup
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/clientWorkgroups
+  source_operation: openapi/noosh-openapi.yml#getClientWorkgroupList
+- name: get_specific_client_workgroup
+  description: Get a specific client workgroups
+  tags:
+  - Workgroup
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}
+  source_operation: openapi/noosh-openapi.yml#getSpecificClientWorkgroup
+- name: get_project_category_list_of_client
+  description: List the project categories of client side
+  tags:
+  - Project Category
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectCategory
+  source_operation: openapi/noosh-openapi.yml#getProjectCategoryListOfClient
+- name: get_project_home_user_field_list_of_client
+  description: List projec home user fields of client workgroup
+  tags:
+  - User Fields
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectHomeUserFields
+  source_operation: openapi/noosh-openapi.yml#getProjectHomeUserFieldListOfClient
+- name: get_project_status_of_client
+  description: List the project status of client
+  tags:
+  - Project Status
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectStatus
+  source_operation: openapi/noosh-openapi.yml#getProjectStatusOfClient
+- name: get_contact_list
+  description: List the contacts
+  tags:
+  - Contact
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/contacts
+  source_operation: openapi/noosh-openapi.yml#getContactList
+- name: get_contact_user_info
+  description: Contact Info
+  tags:
+  - Contact
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/contacts/{user_id}
+  source_operation: openapi/noosh-openapi.yml#getContactUserInfo
+- name: get_wg_task_status_list_of_workgroup
+  description: Get custom task status of workgroup level
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/customTaskStatus
+  source_operation: openapi/noosh-openapi.yml#getWgTaskStatusListOfWorkgroup
+- name: get_custom_task_types_of_wg
+  description: Get custom task types of workgroup level
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/customTaskTypes
+  source_operation: openapi/noosh-openapi.yml#getCustomTaskTypesOfWg
+- name: get_deactivation_reason_list
+  description: List all deactivation reasons
+  tags:
+  - Deactivation Reason
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/deactivationReasons
+  source_operation: openapi/noosh-openapi.yml#getDeactivationReasonList
+- name: task_priority_list
+  description: Get default task priority list
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/defaultTaskPriority
+  source_operation: openapi/noosh-openapi.yml#TaskPriorityList
+- name: get_default_task_status_list
+  description: Get default task status list
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/defaultTaskStatus
+  source_operation: openapi/noosh-openapi.yml#getDefaultTaskStatusList
+- name: get_workgroup_detail
+  description: Detail workgroup info
+  tags:
+  - Workgroup
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/detail
+  source_operation: openapi/noosh-openapi.yml#getWorkgroupDetail
+- name: put_workgroup
+  description: Update a specific Workgroup
+  tags:
+  - Workgroup
+  method: PUT
+  path: /v1/workgroups/{workgroup_id}/detail
+  source_operation: openapi/noosh-openapi.yml#putWorkgroup
+- name: get_exchange_rate_list
+  description: Get Exchange Rate List
+  tags:
+  - Exchange Rate
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/exchangeRate
+  source_operation: openapi/noosh-openapi.yml#getExchangeRateList
+- name: post_exchange_rate
+  description: Create Exchange Rates
+  tags:
+  - Exchange Rate
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/exchangeRate
+  source_operation: openapi/noosh-openapi.yml#postExchangeRate
+- name: get_my_time_card_list
+  description: List my time cards
+  tags:
+  - Time Card
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/myTimeCards
+  source_operation: openapi/noosh-openapi.yml#getMyTimeCardList
+- name: get_my_time_card
+  description: Get a specific my time cards
+  tags:
+  - Time Card
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/myTimeCards/{timeCard_id}
+  source_operation: openapi/noosh-openapi.yml#getMyTimeCard
+- name: get_product_type_list_of_workgroup
+  description: Get product type of workgroup level
+  tags:
+  - Spec
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/productTypes
+  source_operation: openapi/noosh-openapi.yml#getProductTypeListOfWorkgroup
+- name: get_spec_product_type_list_of_workgroup
+  description: Get product type of spec level by workgroupId
+  tags:
+  - Spec
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/productTypesOfSpecTypes
+  source_operation: openapi/noosh-openapi.yml#getSpecProductTypeListOfWorkgroup
+- name: post_spec_product_type_list_of_workgroup
+  description: Register product types for spec types
+  tags:
+  - Spec
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/productTypesOfSpecTypes
+  source_operation: openapi/noosh-openapi.yml#postSpecProductTypeListOfWorkgroup
+- name: upload_profile_image
+  description: Upload Profile Image.  A multipart/form-data request with a name "file"
+  tags:
+  - My Info
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/profileImage
+  source_operation: openapi/noosh-openapi.yml#uploadProfileImage
+- name: get_project_category_list
+  description: List the project categories
+  tags:
+  - Project Category
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projectCategory
+  source_operation: openapi/noosh-openapi.yml#getProjectCategoryList
+- name: get_project_home_user_fields_list
+  description: List projec home user fields
+  tags:
+  - User Fields
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projectHomeUserFields
+  source_operation: openapi/noosh-openapi.yml#getProjectHomeUserFieldsList
+- name: get_project_status
+  description: List the project status
+  tags:
+  - Project Status
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projectStatus
+  source_operation: openapi/noosh-openapi.yml#getProjectStatus
+- name: get_project_list
+  description: List the projects
+  tags:
+  - Project
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects
+  source_operation: openapi/noosh-openapi.yml#getProjectList
+- name: post_project
+  description: Create a Project
+  tags:
+  - Project
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects
+  source_operation: openapi/noosh-openapi.yml#postProject
+- name: get_project
+  description: Get a specific Project
+  tags:
+  - Project
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}
+  source_operation: openapi/noosh-openapi.yml#getProject
+- name: put_project
+  description: Update a specific Project
+  tags:
+  - Project
+  method: PUT
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}
+  source_operation: openapi/noosh-openapi.yml#putProject
+- name: delete_project
+  description: Archieve a specific Project
+  tags:
+  - Project
+  method: DELETE
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}
+  source_operation: openapi/noosh-openapi.yml#deleteProject
+- name: patch_project
+  description: Patch a specific Project
+  tags:
+  - Project
+  method: PATCH
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}
+  source_operation: openapi/noosh-openapi.yml#patchProject
+- name: get_buy_order_list
+  description: List the buy orders
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders
+  source_operation: openapi/noosh-openapi.yml#getBuyOrderList
+- name: post_buy_order
+  description: Create a quick buy order
+  tags:
+  - Order
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders
+  source_operation: openapi/noosh-openapi.yml#postBuyOrder
+- name: get_buy_order
+  description: Get a specific buy order
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders/{order_id}
+  source_operation: openapi/noosh-openapi.yml#getBuyOrder
+- name: put_buy_order
+  description: Update a specific buy order
+  tags:
+  - Order
+  method: PUT
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders/{order_id}
+  source_operation: openapi/noosh-openapi.yml#putBuyOrder
+- name: attach_project
+  description: Attach children projects to specific Project
+  tags:
+  - Project
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/children
+  source_operation: openapi/noosh-openapi.yml#attachProject
+- name: get_estimate_list
+  description: List the Estimates
+  tags:
+  - Estimate
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/estimates
+  source_operation: openapi/noosh-openapi.yml#getEstimateList
+- name: post_estimate
+  description: Create a Estimate
+  tags:
+  - Estimate
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/estimates
+  source_operation: openapi/noosh-openapi.yml#postEstimate
+- name: get_estimate
+  description: Get a specific estimate of project
+  tags:
+  - Estimate
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/estimates/{estimate_id}
+  source_operation: openapi/noosh-openapi.yml#getEstimate
+- name: get_invoices
+  description: List invoices by a specific order
+  tags:
+  - Invoice
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/orders/{order_id}
+  source_operation: openapi/noosh-openapi.yml#getInvoices
+- name: get_invoice
+  description: List a specific invoice of project Level
+  tags:
+  - Invoice
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/{invoice_id}
+  source_operation: openapi/noosh-openapi.yml#getInvoice
+- name: get_invoice_files
+  description: List files of invoice Level
+  tags:
+  - Invoice
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/{invoice_id}/files
+  source_operation: openapi/noosh-openapi.yml#getInvoiceFiles
+- name: get_member_roles
+  description: List all the role options for the user
+  tags:
+  - Team Member Role
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/memberroles/{user_id}
+  source_operation: openapi/noosh-openapi.yml#getMemberRoles
+- name: get_order
+  description: Get a specific buy/sell order
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/orders/{order_id}
+  source_operation: openapi/noosh-openapi.yml#getOrder
+- name: get_quote_list
+  description: List the quotes
+  tags:
+  - Quote
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/quotes
+  source_operation: openapi/noosh-openapi.yml#getQuoteList
+- name: get_quote
+  description: Get a specific quote of project
+  tags:
+  - Quote
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/quotes/{quote_id}
+  source_operation: openapi/noosh-openapi.yml#getQuote
+- name: put_quote
+  description: Accept / Reject a Quote
+  tags:
+  - Quote
+  method: PUT
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/quotes/{quote_id}
+  source_operation: openapi/noosh-openapi.yml#putQuote
+- name: get_rfe_list
+  description: List the RFES
+  tags:
+  - RFE
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfes
+  source_operation: openapi/noosh-openapi.yml#getRfeList
+- name: post_rfe
+  description: Create a RFE
+  tags:
+  - RFE
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfes
+  source_operation: openapi/noosh-openapi.yml#postRfe
+- name: get_rfe
+  description: Get a specific Rfe
+  tags:
+  - RFE
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfes/{rfe_id}
+  source_operation: openapi/noosh-openapi.yml#getRfe
+- name: get_rfq_list
+  description: List the rfqs
+  tags:
+  - Rfq
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfqs
+  source_operation: openapi/noosh-openapi.yml#getRfqList
+- name: get_rfq
+  description: Get a specific Rfq
+  tags:
+  - Rfq
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfqs/{rfq_id}
+  source_operation: openapi/noosh-openapi.yml#getRfq
+- name: get_sell_order_list
+  description: List the sell orders
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders
+  source_operation: openapi/noosh-openapi.yml#getSellOrderList
+- name: get_sell_order
+  description: Get a specific sell order
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders/{order_id}
+  source_operation: openapi/noosh-openapi.yml#getSellOrder
+- name: put_sell_order
+  description: Update / Accept or Reject a specific sell order
+  tags:
+  - Order
+  method: PUT
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders/{order_id}
+  source_operation: openapi/noosh-openapi.yml#putSellOrder
+- name: get_shipment_list
+  description: List shipments of project
+  tags:
+  - Shipment
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/shipments
+  source_operation: openapi/noosh-openapi.yml#getShipmentList
+- name: post_shipment
+  description: Create a shipment
+  tags:
+  - Shipment
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/shipments
+  source_operation: openapi/noosh-openapi.yml#postShipment
+- name: get_shipment
+  description: Get a specific shipment.
+  tags:
+  - Shipment
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/shipments/{shipment_id}
+  source_operation: openapi/noosh-openapi.yml#getShipment
+- name: put_shipment_location
+  description: Update a specific shipment location
+  tags:
+  - Shipment
+  method: PUT
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/shipments/{shipment_id}/locations/{location_id}
+  source_operation: openapi/noosh-openapi.yml#putShipmentLocation
+- name: get_spec_list
+  description: List specs of project Level
+  tags:
+  - Spec
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/specs
+  source_operation: openapi/noosh-openapi.yml#getSpecList
+- name: post_spec
+  description: Create a Spec
+  tags:
+  - Spec
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/specs
+  source_operation: openapi/noosh-openapi.yml#postSpec
+- name: get_spec_vv1
+  description: List a specific spec of project Level
+  tags:
+  - Spec
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}
+  source_operation: openapi/noosh-openapi.yml#getSpec
+- name: put_spec_vv1
+  description: Update a specific Spec
+  tags:
+  - Spec
+  method: PUT
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}
+  source_operation: openapi/noosh-openapi.yml#putSpec
+- name: get_task_list_of_project
+  description: Get task list of project level
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks
+  source_operation: openapi/noosh-openapi.yml#getTaskListOfProject
+- name: post_task_for_project
+  description: Create a new task
+  tags:
+  - Task
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks
+  source_operation: openapi/noosh-openapi.yml#postTaskForProject
+- name: get_task_of_project
+  description: Get a sepcific task of project level
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks/{task_id}
+  source_operation: openapi/noosh-openapi.yml#getTaskOfProject
+- name: get_team_member_list_of_client_project
+  description: List team member of client project side.
+  tags:
+  - Team Member
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/teamMembersOfClientProject
+  source_operation: openapi/noosh-openapi.yml#getTeamMemberListOfClientProject
+- name: get_team_member_list_of_project
+  description: List team member of project.
+  tags:
+  - Team Member
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers
+  source_operation: openapi/noosh-openapi.yml#getTeamMemberListOfProject
+- name: post_team_member_of_project_vv1
+  description: Deprecated, please use 1.1 Version
+  tags:
+  - Team Member
+  method: POST
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers
+  source_operation: openapi/noosh-openapi.yml#postTeamMemberOfProject
+- name: delete_team_member_of_project
+  description: Delete a team member for the specific project.
+  tags:
+  - Team Member
+  method: DELETE
+  path: /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers/{teammember_id}
+  source_operation: openapi/noosh-openapi.yml#deleteTeamMemberOfProject
+- name: get_quote_state_list
+  description: List the quote states
+  tags:
+  - Quote
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/quoteStates
+  source_operation: openapi/noosh-openapi.yml#getQuoteStateList
+- name: get_quote_list_vv1
+  description: List the quotes of workgroup level
+  tags:
+  - Quote
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/quotes
+  source_operation: openapi/noosh-openapi.yml#getQuoteList
+- name: get_received_time_card_list
+  description: List received time cards
+  tags:
+  - Time Card
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/receivedTimeCards
+  source_operation: openapi/noosh-openapi.yml#getReceivedTimeCardList
+- name: get_received_time_card
+  description: List a specific received time cards
+  tags:
+  - Time Card
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/receivedTimeCards/{timeCard_id}
+  source_operation: openapi/noosh-openapi.yml#getReceivedTimeCard
+- name: get_sell_order_list_of_workgroup
+  description: List the sell orders of workgrop
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/sellOrders
+  source_operation: openapi/noosh-openapi.yml#getSellOrderListOfWorkgroup
+- name: get_sell_order_of_workgroup
+  description: Get a specific sell order
+  tags:
+  - Order
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/sellOrders/{order_id}
+  source_operation: openapi/noosh-openapi.yml#getSellOrderOfWorkgroup
+- name: get_spec_template_list
+  description: List Spec Templates of Workgroup Level
+  tags:
+  - Spec Template
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/specTemplates
+  source_operation: openapi/noosh-openapi.yml#getSpecTemplateList
+- name: get_spec_template
+  description: Get a specific Spec Template
+  tags:
+  - Spec Template
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/specTemplates/{spec_template_id}
+  source_operation: openapi/noosh-openapi.yml#getSpecTemplate
+- name: get_spec_type_fields_vv1
+  description: Get Spec Type Fields
+  tags:
+  - Spec
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/specTypes/{spec_type_id}/specTypeFields
+  source_operation: openapi/noosh-openapi.yml#getSpecTypeFields
+- name: get_supplier_workgroup_list
+  description: List supplier workgroups
+  tags:
+  - Workgroup
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/supplierWorkgroups
+  source_operation: openapi/noosh-openapi.yml#getSupplierWorkgroupList
+- name: get_supplier_workgroup_detail
+  description: Get the specific supplier of My Group
+  tags:
+  - Workgroup
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/supplierWorkgroups/{bu_supplier_workgroup_id}
+  source_operation: openapi/noosh-openapi.yml#getSupplierWorkgroupDetail
+- name: get_task_types_of_workgroup
+  description: Get task types of workgroup level
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/taskTypes
+  source_operation: openapi/noosh-openapi.yml#getTaskTypesOfWorkgroup
+- name: get_task_list_of_workgroup
+  description: Get task list of workgroup level
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/tasks
+  source_operation: openapi/noosh-openapi.yml#getTaskListOfWorkgroup
+- name: get_task_of_workgroup
+  description: Get a sepcific task of workgroup level
+  tags:
+  - Task
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/tasks/{task_id}
+  source_operation: openapi/noosh-openapi.yml#getTaskOfWorkgroup
+- name: get_team_template_list
+  description: List current user's team templates info
+  tags:
+  - My Info
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/teamTemplates
+  source_operation: openapi/noosh-openapi.yml#getTeamTemplateList
+- name: get_team_template_detail
+  description: Get current user's team template detal info
+  tags:
+  - My Info
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/teamTemplates/{team_template_id}
+  source_operation: openapi/noosh-openapi.yml#getTeamTemplateDetail
+- name: get_workgroup_member_list
+  description: List the workgroup members
+  tags:
+  - Workgroup Members
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/workgroupMembers
+  source_operation: openapi/noosh-openapi.yml#getWorkgroupMemberList
+- name: get_workgroup_member_info
+  description: Workgroup Member Info
+  tags:
+  - Workgroup Members
+  method: GET
+  path: /v1/workgroups/{workgroup_id}/workgroupMembers/{user_id}
+  source_operation: openapi/noosh-openapi.yml#getWorkgroupMemberInfo

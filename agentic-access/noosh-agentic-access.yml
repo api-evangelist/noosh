@@ -1,0 +1,1271 @@
+generated: '2026-08-13'
+method: generated
+source: openapi/noosh-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 107
+  by_action_class:
+    connected: 78
+    acting: 29
+  by_consequence:
+    read: 78
+    write: 24
+    physical: 5
+  human_in_the_loop_required: 0
+operations:
+- path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/fileTags
+  method: get
+  operationId: getFileTags
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/files
+  method: get
+  operationId: getFiles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/files
+  method: post
+  operationId: uploadFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/files/{file_id}
+  method: get
+  operationId: getFile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/filesByRole
+  method: post
+  operationId: uploadFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}
+  method: get
+  operationId: getSpec
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}
+  method: put
+  operationId: putSpec
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1.1/workgroups/{workgroup_id}/projects/{project_id}/teammembers
+  method: post
+  operationId: postTeamMemberOfProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1.1/workgroups/{workgroup_id}/specTypes/{spec_type_id}/specTypeFields
+  method: get
+  operationId: getSpecTypeFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1.2/workgroups/{workgroup_id}/projects/{project_id}/filesByRole
+  method: post
+  operationId: uploadFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /3/workgroups/{workgroup_id}/projects/{project_id}/files
+  method: post
+  operationId: uploadFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /3/workgroups/{workgroup_id}/projects/{project_id}/folders
+  method: get
+  operationId: getFolders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /3/workgroups/{workgroup_id}/projects/{project_id}/folders
+  method: post
+  operationId: createFolder
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/countries
+  method: get
+  operationId: getCountryList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups
+  method: get
+  operationId: getWorkgroupList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/automaticInvitations
+  method: get
+  operationId: getAutomaticInvitationList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/billingRecipients
+  method: get
+  operationId: getBillingRecipients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/buyOrders
+  method: get
+  operationId: getBuyOrderListOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/buyOrders/{order_id}
+  method: get
+  operationId: getBuyOrderOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/clientWorkgroups
+  method: get
+  operationId: getClientWorkgroupList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}
+  method: get
+  operationId: getSpecificClientWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectCategory
+  method: get
+  operationId: getProjectCategoryListOfClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectHomeUserFields
+  method: get
+  operationId: getProjectHomeUserFieldListOfClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectStatus
+  method: get
+  operationId: getProjectStatusOfClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/contacts
+  method: get
+  operationId: getContactList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/contacts/{user_id}
+  method: get
+  operationId: getContactUserInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/customTaskStatus
+  method: get
+  operationId: getWgTaskStatusListOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/customTaskTypes
+  method: get
+  operationId: getCustomTaskTypesOfWg
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/deactivationReasons
+  method: get
+  operationId: getDeactivationReasonList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/defaultTaskPriority
+  method: get
+  operationId: TaskPriorityList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/defaultTaskStatus
+  method: get
+  operationId: getDefaultTaskStatusList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/detail
+  method: get
+  operationId: getWorkgroupDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/detail
+  method: put
+  operationId: putWorkgroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/exchangeRate
+  method: get
+  operationId: getExchangeRateList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/exchangeRate
+  method: post
+  operationId: postExchangeRate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/myTimeCards
+  method: get
+  operationId: getMyTimeCardList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/myTimeCards/{timeCard_id}
+  method: get
+  operationId: getMyTimeCard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/productTypes
+  method: get
+  operationId: getProductTypeListOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/productTypesOfSpecTypes
+  method: get
+  operationId: getSpecProductTypeListOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/productTypesOfSpecTypes
+  method: post
+  operationId: postSpecProductTypeListOfWorkgroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/profileImage
+  method: post
+  operationId: uploadProfileImage
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projectCategory
+  method: get
+  operationId: getProjectCategoryList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projectHomeUserFields
+  method: get
+  operationId: getProjectHomeUserFieldsList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projectStatus
+  method: get
+  operationId: getProjectStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects
+  method: get
+  operationId: getProjectList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects
+  method: post
+  operationId: postProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}
+  method: get
+  operationId: getProject
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}
+  method: put
+  operationId: putProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}
+  method: delete
+  operationId: deleteProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}
+  method: patch
+  operationId: patchProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders
+  method: get
+  operationId: getBuyOrderList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders
+  method: post
+  operationId: postBuyOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders/{order_id}
+  method: get
+  operationId: getBuyOrder
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders/{order_id}
+  method: put
+  operationId: putBuyOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/children
+  method: post
+  operationId: attachProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/estimates
+  method: get
+  operationId: getEstimateList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/estimates
+  method: post
+  operationId: postEstimate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/estimates/{estimate_id}
+  method: get
+  operationId: getEstimate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/orders/{order_id}
+  method: get
+  operationId: getInvoices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/{invoice_id}
+  method: get
+  operationId: getInvoice
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/{invoice_id}/files
+  method: get
+  operationId: getInvoiceFiles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/memberroles/{user_id}
+  method: get
+  operationId: getMemberRoles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/orders/{order_id}
+  method: get
+  operationId: getOrder
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/quotes
+  method: get
+  operationId: getQuoteList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/quotes/{quote_id}
+  method: get
+  operationId: getQuote
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/quotes/{quote_id}
+  method: put
+  operationId: putQuote
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfes
+  method: get
+  operationId: getRfeList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfes
+  method: post
+  operationId: postRfe
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfes/{rfe_id}
+  method: get
+  operationId: getRfe
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfqs
+  method: get
+  operationId: getRfqList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/rfqs/{rfq_id}
+  method: get
+  operationId: getRfq
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders
+  method: get
+  operationId: getSellOrderList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders/{order_id}
+  method: get
+  operationId: getSellOrder
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders/{order_id}
+  method: put
+  operationId: putSellOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/shipments
+  method: get
+  operationId: getShipmentList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/shipments
+  method: post
+  operationId: postShipment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/shipments/{shipment_id}
+  method: get
+  operationId: getShipment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/shipments/{shipment_id}/locations/{location_id}
+  method: put
+  operationId: putShipmentLocation
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/specs
+  method: get
+  operationId: getSpecList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/specs
+  method: post
+  operationId: postSpec
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}
+  method: get
+  operationId: getSpec
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}
+  method: put
+  operationId: putSpec
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks
+  method: get
+  operationId: getTaskListOfProject
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks
+  method: post
+  operationId: postTaskForProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks/{task_id}
+  method: get
+  operationId: getTaskOfProject
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/teamMembersOfClientProject
+  method: get
+  operationId: getTeamMemberListOfClientProject
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers
+  method: get
+  operationId: getTeamMemberListOfProject
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers
+  method: post
+  operationId: postTeamMemberOfProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers/{teammember_id}
+  method: delete
+  operationId: deleteTeamMemberOfProject
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workgroups/{workgroup_id}/quoteStates
+  method: get
+  operationId: getQuoteStateList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/quotes
+  method: get
+  operationId: getQuoteList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/receivedTimeCards
+  method: get
+  operationId: getReceivedTimeCardList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/receivedTimeCards/{timeCard_id}
+  method: get
+  operationId: getReceivedTimeCard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/sellOrders
+  method: get
+  operationId: getSellOrderListOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/sellOrders/{order_id}
+  method: get
+  operationId: getSellOrderOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/specTemplates
+  method: get
+  operationId: getSpecTemplateList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/specTemplates/{spec_template_id}
+  method: get
+  operationId: getSpecTemplate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/specTypes/{spec_type_id}/specTypeFields
+  method: get
+  operationId: getSpecTypeFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/supplierWorkgroups
+  method: get
+  operationId: getSupplierWorkgroupList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/supplierWorkgroups/{bu_supplier_workgroup_id}
+  method: get
+  operationId: getSupplierWorkgroupDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/taskTypes
+  method: get
+  operationId: getTaskTypesOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/tasks
+  method: get
+  operationId: getTaskListOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/tasks/{task_id}
+  method: get
+  operationId: getTaskOfWorkgroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/teamTemplates
+  method: get
+  operationId: getTeamTemplateList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/teamTemplates/{team_template_id}
+  method: get
+  operationId: getTeamTemplateDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/workgroupMembers
+  method: get
+  operationId: getWorkgroupMemberList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workgroups/{workgroup_id}/workgroupMembers/{user_id}
+  method: get
+  operationId: getWorkgroupMemberInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

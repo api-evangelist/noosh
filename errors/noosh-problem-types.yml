@@ -1,0 +1,62 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/noosh-openapi.yml
+format: vendor
+note: 'Noosh does NOT use RFC 9457 problem+json. Every documented 4xx/5xx response returns the same envelope, HTTPStatusVO (Java type com.noosh.core.vo.HTTPStatusVO), with two fields: status_code (integer)
+  and status_reason (string). Some resource-scoped variants add identity fields (SpecHTTPStatusVO adds spec_id/spec_name, WorkgroupHTTPStatusVO adds workgroup_id/workgroup_name). The spec documents only
+  404, 422 and 500; it documents no 401/403 response even though HTTP Basic authentication is required and unauthenticated calls to api.noosh.com are answered 403 {"message":"Forbidden"} by AWS API Gateway.
+  Noosh publishes no error-code reference in its help center (a search of support.noosh.com for "API", "swagger" and "webhook" returned no developer articles), so titles and remediation below are the spec
+  descriptions verbatim, not enriched.'
+envelope:
+  schema: HTTPStatusVO
+  fields:
+  - name: status_code
+    type: integer
+    format: int32
+    description: Noosh internal status code returned alongside the HTTP status
+  - name: status_reason
+    type: string
+    description: Human-readable reason string
+  variants:
+  - SpecHTTPStatusVO
+  - WorkgroupHTTPStatusVO
+problems:
+- status: 500
+  title: Internal server error
+  schema: HTTPStatusVO
+  operation_count: 107
+  example_operations:
+  - TaskPriorityList
+  - attachProject
+  - createFolder
+  - deleteProject
+  - deleteTeamMemberOfProject
+  source_operation: openapi/noosh-openapi.yml#getFileTags
+- status: 404
+  title: There are not any result matching your search condition
+  schema: HTTPStatusVO
+  operation_count: 76
+  example_operations:
+  - deleteTeamMemberOfProject
+  - getBillingRecipients
+  - getBuyOrder
+  - getBuyOrderList
+  - getBuyOrderListOfWorkgroup
+  source_operation: openapi/noosh-openapi.yml#getSpec
+- status: 422
+  title: Invalid data
+  schema: HTTPStatusVO
+  operation_count: 17
+  example_operations:
+  - attachProject
+  - deleteProject
+  - getProjectCategoryListOfClient
+  - patchProject
+  - postBuyOrder
+  source_operation: openapi/noosh-openapi.yml#postTeamMemberOfProject
+undocumented_observed:
+- status: 403
+  body: '{"message":"Forbidden"}'
+  observed_at: https://api.noosh.com/api/v1/countries
+  note: Returned by AWS API Gateway/CloudFront to unauthenticated callers; not present in the published spec.
+  probed: '2026-08-13'

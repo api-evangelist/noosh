@@ -1,0 +1,12 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/noosh-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: HTTP_BASIC
+  type: http
+  scheme: basic
+  sources:
+  - openapi/noosh-openapi.yml

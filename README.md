@@ -42,6 +42,10 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Noosh is a company surfaced as a portfolio company of accel and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Noosh is marketing execution and print/procurement management software for enterprise marketing teams, surfaced as a portfolio company of Accel and profiled in the API Evangelist network.
+
+Noosh publishes a public, machine-readable Swagger 2.0 contract for the Noosh API at `https://api.noosh.com/api/swagger.json` — 86 paths, 107 operations and 214 schema definitions covering projects, specs, RFQs, quotes, estimates, buy and sell orders, shipments, invoices, files, tasks, time cards and workgroups. A Swagger UI at `https://api.noosh.com/api/developer/index.html` is the only documentation Noosh publishes for it: there is no developer portal, no getting-started guide, no SDK in any public registry, no API changelog, no published pricing and no documented rate limits. Authentication is HTTP Basic with no scope model, and four URI-path generations (`/v1`, `/1.1`, `/1.2`, `/3`) are served simultaneously with no operation marked deprecated.
+
+Harvested and enriched 2026-08-13. See `apis.yml` for the artifact pointers.
 
 Backed by: accel — https://noosh.com/

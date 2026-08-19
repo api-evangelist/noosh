@@ -1,0 +1,22 @@
+generated: '2026-08-13'
+method: searched
+source: https://api.noosh.com/api/swagger.json
+note: >-
+  Noosh publishes NO rate limits. The Swagger document documents no 429 response on any of its 107
+  operations, declares no X-RateLimit-*, RateLimit-* or Retry-After response header, and the Swagger UI
+  at https://api.noosh.com/api/developer/index.html is the only documentation surface — there is no
+  prose developer guide and support.noosh.com carries no API articles. Live observation is not
+  possible: every route on api.noosh.com answers HTTP 403 {"message":"Forbidden"} to unauthenticated
+  callers (AWS API Gateway behind CloudFront), so no response headers can be read without customer
+  credentials. limit_count 0 is an honest zero — an agent integrating with Noosh has no runtime signal
+  to back off on.
+limit_count: 0
+limits: []
+headers:
+  documented: []
+  detail: No rate-limit response header is documented or observable.
+exhaustion_status: null
+retry_after: false
+evidence:
+  - {url: 'https://api.noosh.com/api/swagger.json', status: 200, finding: 'no 429 response, no rate-limit header, on any of 107 operations'}
+  - {url: 'https://api.noosh.com/api/v1/countries', status: 403, finding: 'AWS API Gateway ForbiddenException; headers not observable unauthenticated'}

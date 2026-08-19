@@ -1,0 +1,151 @@
+generated: '2026-08-13'
+method: searched
+source: https://support.noosh.com/hc/en-us/sections/203278906-Released-Enhancements
+note: Noosh publishes no API changelog. The nearest dated record is the "Released Enhancements" section of the customer help centre (category "Enhancement Releases"), which announces application features.
+  Entries below are read from the Zendesk Help Center API (support.noosh.com/api/v2/help_center) — title and created_at verbatim. None of them is scoped to an API version, and none states a breaking change,
+  so breaking/additions cannot be classified from the source and are recorded as null rather than guessed.
+scheme: undated-feature-announcements
+api_changelog: false
+current_version: 1.0 (info.version on https://api.noosh.com/api/swagger.json)
+entry_count: 38
+entries:
+- title: Quote Page Updates
+  date: '2026-08-06'
+  updated: '2026-08-06'
+  url: https://support.noosh.com/hc/en-us/articles/52213513490196-Quote-Page-Updates
+  breaking: null
+  additions: null
+  scope: application
+- title: File Association by Object
+  date: '2026-06-04'
+  updated: '2026-06-22'
+  url: https://support.noosh.com/hc/en-us/articles/49953004525588-File-Association-by-Object
+  breaking: null
+  additions: null
+  scope: application
+- title: Edit Shipments During Close Order
+  date: '2026-05-18'
+  updated: '2026-06-15'
+  url: https://support.noosh.com/hc/en-us/articles/49379734412436-Edit-Shipments-During-Close-Order
+  breaking: null
+  additions: null
+  scope: application
+- title: My Desk Enhancements
+  date: '2026-04-16'
+  updated: '2026-06-15'
+  url: https://support.noosh.com/hc/en-us/articles/48299174961428-My-Desk-Enhancements
+  breaking: null
+  additions: null
+  scope: application
+- title: AI Companion
+  date: '2025-06-17'
+  updated: '2025-06-17'
+  url: https://support.noosh.com/hc/en-us/articles/38513650129300-AI-Companion
+  breaking: null
+  additions: null
+  scope: application
+- title: File V3
+  date: '2025-05-23'
+  updated: '2026-06-15'
+  url: https://support.noosh.com/hc/en-us/articles/37786948682132-File-V3
+  breaking: null
+  additions: null
+  scope: application
+- title: Product Enhancements - May 2025
+  date: '2025-04-30'
+  updated: '2026-06-15'
+  url: https://support.noosh.com/hc/en-us/articles/37070755975700-Product-Enhancements-May-2025
+  breaking: null
+  additions: null
+  scope: application
+- title: Product Enhancements - Dec 2024 / Jan 2025
+  date: '2024-12-12'
+  updated: '2026-06-15'
+  url: https://support.noosh.com/hc/en-us/articles/33001287922068-Product-Enhancements-Dec-2024-Jan-2025
+  breaking: null
+  additions: null
+  scope: application
+- title: Grand Total - Supplier
+  date: '2024-10-16'
+  updated: '2026-06-15'
+  url: https://support.noosh.com/hc/en-us/articles/31301563986964-Grand-Total-Supplier
+  breaking: null
+  additions: null
+  scope: application
+- title: My Desk
+  date: '2024-06-26'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/27956193280916-My-Desk
+  breaking: null
+  additions: null
+  scope: application
+- title: Project Navigation Enhancements
+  date: '2023-07-20'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/17566927872532-Project-Navigation-Enhancements
+  breaking: null
+  additions: null
+  scope: application
+- title: Automate Shipment Status
+  date: '2023-06-08'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/16357157095956-Automate-Shipment-Status
+  breaking: null
+  additions: null
+  scope: application
+- title: Quote Expiration Date
+  date: '2023-04-12'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/14819352590484-Quote-Expiration-Date
+  breaking: null
+  additions: null
+  scope: application
+- title: Compare Specs and Spec Options
+  date: '2023-03-23'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/14206760115604-Compare-Specs-and-Spec-Options
+  breaking: null
+  additions: null
+  scope: application
+- title: RFEs and Estimates List Action Buttons
+  date: '2022-11-22'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/11035543000852-RFEs-and-Estimates-List-Action-Buttons
+  breaking: null
+  additions: null
+  scope: application
+- title: Product Enhancements - June 2022
+  date: '2022-05-26'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/6560362054420-Product-Enhancements-June-2022
+  breaking: null
+  additions: null
+  scope: application
+- title: Charts
+  date: '2022-05-05'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/6072884632852-Charts
+  breaking: null
+  additions: null
+  scope: application
+- title: Product Enhancements - March 2022
+  date: '2022-02-17'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/4432877857684-Product-Enhancements-March-2022
+  breaking: null
+  additions: null
+  scope: application
+- title: Product Enhancements - January 2022
+  date: '2022-01-13'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/4415787771540-Product-Enhancements-January-2022
+  breaking: null
+  additions: null
+  scope: application
+- title: Workspace Manager Pages - Material UI
+  date: '2021-11-18'
+  updated: '2026-03-04'
+  url: https://support.noosh.com/hc/en-us/articles/4410780677396-Workspace-Manager-Pages-Material-UI
+  breaking: null
+  additions: null
+  scope: application

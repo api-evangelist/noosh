@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: probed
+source: live GET probes 2026-08-13
+note: >-
+  Every /.well-known/ path was probed on all six Noosh hosts. NOTHING was served. noosh.com,
+  www.noosh.com, app.noosh.com and developer.noosh.com return 404 on every path. api.noosh.com returns
+  403 {"message":"Forbidden"} from AWS API Gateway on every path, including paths outside the API
+  surface. nooshauth.noosh.com returns HTTP 200 for EVERY path probed — including
+  /.well-known/agent-card.json, /openapi.json and /llms.txt — but the body is always the same
+  "Noosh Login" single-page-app HTML shell, which is a catch-all, not a document. Those 200s are
+  recorded as misses. No WellKnown, SecurityTxt or AgentCard pointer is emitted, because Noosh serves
+  no well-known document.
+hosts:
+  - host: https://noosh.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://www.noosh.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://api.noosh.com
+    note: AWS API Gateway behind CloudFront; answers 403 ForbiddenException to unauthenticated callers on every path.
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/openid-configuration, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+      - {path: /.well-known/api-catalog, status: 403}
+      - {path: /.well-known/ai-plugin.json, status: 403}
+      - {path: /.well-known/agent-card.json, status: 403}
+      - {path: /.well-known/agent.json, status: 403}
+  - host: https://nooshauth.noosh.com
+    note: >-
+      SPA catch-all. Returns 200 with content-type text/html and the "Noosh Login" React shell for every
+      path. Confirmed by fetching the body of /.well-known/agent-card.json, which begins <!DOCTYPE html>.
+      Treated as a MISS on every path.
+    documents:
+      - {path: /.well-known/security.txt, status: 200, body: html-spa-shell, document: false}
+      - {path: /.well-known/openid-configuration, status: 200, body: html-spa-shell, document: false}
+      - {path: /.well-known/oauth-authorization-server, status: 200, body: html-spa-shell, document: false}
+      - {path: /.well-known/api-catalog, status: 200, body: html-spa-shell, document: false}
+      - {path: /.well-known/ai-plugin.json, status: 200, body: html-spa-shell, document: false}
+      - {path: /.well-known/agent-card.json, status: 200, body: html-spa-shell, document: false}
+      - {path: /.well-known/agent.json, status: 200, body: html-spa-shell, document: false}
+  - host: https://app.noosh.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://developer.noosh.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+summary:
+  documents_found: 0
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false

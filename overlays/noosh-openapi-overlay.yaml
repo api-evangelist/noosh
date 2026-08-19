@@ -1,0 +1,54 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Noosh API
+  version: 1.0.0
+extends: openapi/_original/noosh-openapi.json
+x-generated: '2026-08-13'
+x-method: generated
+x-source: https://api.noosh.com/api/swagger.json
+x-note: >-
+  Records every change API Evangelist applied to the harvested Noosh Swagger 2.0 document to produce
+  openapi/noosh-openapi.yml. The harvested document is preserved unmodified at
+  openapi/_original/noosh-openapi.json. Only the transport identity was repaired — no operation,
+  parameter, schema or description was added, removed or altered.
+actions:
+  - target: $.host
+    description: >-
+      The published document declares host "example.com:80", a build-time placeholder (the APIs.guru
+      mirror of the same document carries the equally placeholder "noosh.local:80"). Replaced with
+      api.noosh.com, the host that actually serves both this document and the Swagger UI at
+      /api/developer/index.html.
+    update: api.noosh.com
+  - target: $.schemes
+    description: >-
+      The published document declares schemes ["http"]. api.noosh.com serves HTTPS with TLS 1.3 and
+      does not offer plaintext, so the scheme list is corrected to https.
+    update:
+      - https
+  - target: $.basePath
+    description: >-
+      The published basePath "/v1" is wrong for most of the surface — paths already carry their own
+      version prefix (/v1, /1.1, /1.2, /3), so prepending /v1 would produce /v1/1.1/... Removed rather
+      than replaced, because every route on api.noosh.com returns 403 to unauthenticated callers and
+      the deployment path prefix could not be confirmed live.
+    remove: true
+  - target: $.info
+    description: Provenance note recording the harvest and the repairs above.
+    update:
+      x-apievangelist-harvested: '2026-08-13'
+      x-apievangelist-source: https://api.noosh.com/api/swagger.json
+gaps_observed:
+  - id: swagger-2.0
+    detail: The contract is Swagger 2.0, not OpenAPI 3.x. Not repaired here — conversion is a separate step and would change the artifact the provider actually publishes.
+  - id: duplicate-operation-ids
+    detail: >-
+      6 operationIds are reused across different paths (uploadFile x4, getSpec, putSpec,
+      postTeamMemberOfProject, getSpecTypeFields, getQuoteList), so 107 operations carry only 99 unique
+      ids. This breaks code generation. Not repaired — renaming would invent identifiers the provider
+      does not publish.
+  - id: no-descriptions
+    detail: Operations carry summaries but no descriptions, and schema properties carry empty description strings throughout.
+  - id: no-401-403
+    detail: No operation documents a 401 or 403 response despite HTTP Basic being required.
+  - id: no-examples
+    detail: Schema properties carry generated placeholder examples ("sample status_reason", "1"); no request or response examples are published.

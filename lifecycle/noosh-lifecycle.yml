@@ -1,0 +1,60 @@
+generated: '2026-08-13'
+method: searched
+source: https://api.noosh.com/api/swagger.json
+docs:
+  - https://api.noosh.com/api/developer/index.html
+  - https://support.noosh.com/hc/en-us/categories/115000167586-Enhancement-Releases
+note: >-
+  Noosh publishes no written versioning policy, no deprecation policy and no SLA. What follows is what
+  the published contract and the customer help centre actually show. Versioning is visible in the URI
+  path only; four generations are served simultaneously and none of the older ones is marked
+  deprecated in the spec.
+
+versioning:
+  scheme: uri-path
+  current: null
+  generations_served: ['/v1', '/1.1', '/1.2', '/3']
+  document_version: '1.0'
+  policy_url: null
+  detail: >-
+    The Swagger document declares info.version "1.0" for the whole API while serving four path
+    generations at once. File upload alone is published four times — /1.1/workgroups/{workgroup_id}/projects/{project_id}/files,
+    /1.1/.../filesByRole, /1.2/.../filesByRole and /3/.../files — all sharing the operationId
+    uploadFile. There is no documented rule for which generation a consumer should target.
+
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  detail: >-
+    Zero of the 107 published operations carry deprecated: true, including the three superseded file
+    upload routes that /3/.../files replaces. No RFC 8594 Sunset or Deprecation header is documented.
+    A deprecation-policy page could not be found on noosh.com or support.noosh.com.
+
+deprecated_operations: []
+
+sla:
+  url: null
+  uptime_target: null
+  detail: No public SLA or uptime commitment is published on noosh.com.
+
+status_page:
+  url: https://stats.pingdom.com/qcecd0tzzhpr/667653
+  provider: Pingdom
+  probed: '2026-08-13'
+  http_status: 200
+  detail: >-
+    A public Pingdom stats page linked from noosh.com. Note that status.noosh.com resolves and returns
+    HTTP 200 but serves the stock "Apache2 Ubuntu Default Page" — it is not a status page and is not
+    recorded as one.
+
+maintenance:
+  url: https://support.noosh.com/hc/en-us/sections/115000226323-Noosh-Maintenances
+  detail: Scheduled-maintenance notices are posted as help-centre articles rather than to the status page.
+
+release_notes:
+  url: https://support.noosh.com/hc/en-us/sections/203278906-Released-Enhancements
+  artifact: changelog/noosh-changelog.yml
+  detail: >-
+    38 dated product enhancement articles. They describe application features, not API changes; the API
+    surface itself has no changelog.

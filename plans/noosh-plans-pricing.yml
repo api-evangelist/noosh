@@ -1,0 +1,25 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.noosh.com/
+note: >-
+  Noosh publishes NO pricing. There is no /pricing page (https://www.noosh.com/pricing/ returns 404),
+  no plan or tier names anywhere on noosh.com, and no self-serve sign-up — the only account entry point
+  is a login at https://nooshauth.noosh.com/login. The API inherits this: it has no published price, no
+  free tier, no trial and no developer sign-up. Acquisition is enterprise sales through
+  https://www.noosh.com/contact/. plan_count is 0 because the provider publishes zero plans, not
+  because none were found.
+plan_count: 0
+model: enterprise-contact-sales
+self_serve: false
+free_tier: false
+trial: false
+api_pricing:
+  published: false
+  detail: >-
+    The API is a feature of the Noosh platform, not a separately priced product. No per-call, per-seat
+    or per-workgroup API price is published.
+plans: []
+evidence:
+  - {url: 'https://www.noosh.com/pricing/', status: 404}
+  - {url: 'https://www.noosh.com/', status: 200, finding: no pricing link in navigation}
+  - {url: 'https://nooshauth.noosh.com/login', status: 200, finding: login only, no sign-up}
