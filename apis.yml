@@ -75,34 +75,592 @@ tags_raw:
 - Shipments
 - Invoicing
 apis:
-- name: Noosh API
-  description: >-
-    The Noosh API is the integration surface behind Noosh's marketing-execution platform — the API
-    Noosh's own partners page credits for "over 60 integrations to enterprise software systems". It is
-    published as a Swagger 2.0 document with 86 paths and 107 operations across 25 tags: Project, Spec,
-    Spec Template, Estimate, RFE, Rfq, Quote, Order, Shipment, Invoice, File, Task, Time Card, Team
-    Member, Team Member Role, Contact, Country, Exchange Rate, Workgroup, Workgroup Members, Project
-    Category, Project Status, Deactivation Reason, User Fields and My Info. Everything is scoped to a
-    workgroup — workgroup_id is a path parameter on 105 of the 107 operations — and most resources sit
-    under a project. Authentication is HTTP Basic with no scope model. Four URI-path generations (/v1,
-    /1.1, /1.2 and /3) are served simultaneously with no operation marked deprecated. The API documents
-    no pagination, no idempotency key, no webhooks and no rate limits.
+- aid: noosh:noosh-contact-api
+  name: Noosh Contact API
+  description: The Contact API from Noosh — 3 operation(s) for contact.
   humanURL: https://api.noosh.com/api/developer/index.html
   baseURL: https://api.noosh.com
   tags:
-  - Print Procurement
-  - Marketing Execution
-  - Project Management
-  - Quotes
-  - Purchase Orders
-  - Shipments
+  - Contact
   properties:
   - type: OpenAPI
-    url: openapi/noosh-openapi.yml
+    url: openapi/noosh-contact-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-country-api
+  name: Noosh Country API
+  description: The Country API from Noosh — 1 operation(s) for country.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Country
+  properties:
   - type: OpenAPI
-    url: openapi/_original/noosh-openapi.json
-  - type: Overlay
-    url: overlays/noosh-openapi-overlay.yaml
+    url: openapi/noosh-country-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-deactivation-reason-api
+  name: Noosh Deactivation Reason API
+  description: The Deactivation Reason API from Noosh — 1 operation(s) for deactivation reason.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Deactivation Reason
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-deactivation-reason-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-estimate-api
+  name: Noosh Estimate API
+  description: The Estimate API from Noosh — 2 operation(s) for estimate.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Estimate
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-estimate-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-exchange-rate-api
+  name: Noosh Exchange Rate API
+  description: The Exchange Rate API from Noosh — 1 operation(s) for exchange rate.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Exchange Rate
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-exchange-rate-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-file-api
+  name: Noosh File API
+  description: The File API from Noosh — 7 operation(s) for file.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - File
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-file-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-invoice-api
+  name: Noosh Invoice API
+  description: The Invoice API from Noosh — 3 operation(s) for invoice.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Invoice
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-invoice-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-my-info-api
+  name: Noosh My Info API
+  description: The My Info API from Noosh — 4 operation(s) for my info.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - My Info
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-my-info-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-order-api
+  name: Noosh Order API
+  description: The Order API from Noosh — 9 operation(s) for order.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Order
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-order-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-project-api
+  name: Noosh Project API
+  description: The Project API from Noosh — 3 operation(s) for project.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Project
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-project-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-project-category-api
+  name: Noosh Project Category API
+  description: The Project Category API from Noosh — 2 operation(s) for project category.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Project Category
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-project-category-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-project-status-api
+  name: Noosh Project Status API
+  description: The Project Status API from Noosh — 2 operation(s) for project status.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Project Status
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-project-status-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-quote-api
+  name: Noosh Quote API
+  description: The Quote API from Noosh — 4 operation(s) for quote.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Quote
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-quote-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-rfe-api
+  name: Noosh RFE API
+  description: The RFE API from Noosh — 2 operation(s) for rfe.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - RFE
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-rfe-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-rfq-api
+  name: Noosh Rfq API
+  description: The Rfq API from Noosh — 2 operation(s) for rfq.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Rfq
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-rfq-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-shipment-api
+  name: Noosh Shipment API
+  description: The Shipment API from Noosh — 3 operation(s) for shipment.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Shipment
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-shipment-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-spec-api
+  name: Noosh Spec API
+  description: The Spec API from Noosh — 7 operation(s) for spec.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Spec
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-spec-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-spec-template-api
+  name: Noosh Spec Template API
+  description: The Spec Template API from Noosh — 2 operation(s) for spec template.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Spec Template
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-spec-template-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-task-api
+  name: Noosh Task API
+  description: The Task API from Noosh — 9 operation(s) for task.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Task
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-task-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-team-member-api
+  name: Noosh Team Member API
+  description: The Team Member API from Noosh — 4 operation(s) for team member.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Team Member
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-team-member-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-team-member-role-api
+  name: Noosh Team Member Role API
+  description: The Team Member Role API from Noosh — 1 operation(s) for team member role.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Team Member Role
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-team-member-role-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-time-card-api
+  name: Noosh Time Card API
+  description: The Time Card API from Noosh — 4 operation(s) for time card.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Time Card
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-time-card-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-user-fields-api
+  name: Noosh User Fields API
+  description: The User Fields API from Noosh — 2 operation(s) for user fields.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - User Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-user-fields-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-workgroup-api
+  name: Noosh Workgroup API
+  description: The Workgroup API from Noosh — 6 operation(s) for workgroup.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Workgroup
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-workgroup-api-openapi.yml
+  - type: APIReference
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Documentation
+    url: https://api.noosh.com/api/developer/index.html
+  - type: Authentication
+    url: authentication/noosh-authentication.yml
+  - type: ErrorCatalog
+    url: errors/noosh-problem-types.yml
+  - type: Conventions
+    url: conventions/noosh-conventions.yml
+  - type: DataModel
+    url: data-model/noosh-data-model.yml
+  - type: RateLimits
+    url: rate-limits/noosh-rate-limits.yml
+- aid: noosh:noosh-workgroup-members-api
+  name: Noosh Workgroup Members API
+  description: The Workgroup Members API from Noosh — 2 operation(s) for workgroup members.
+  humanURL: https://api.noosh.com/api/developer/index.html
+  baseURL: https://api.noosh.com
+  tags:
+  - Workgroup Members
+  properties:
+  - type: OpenAPI
+    url: openapi/noosh-workgroup-members-api-openapi.yml
   - type: APIReference
     url: https://api.noosh.com/api/developer/index.html
   - type: Documentation
