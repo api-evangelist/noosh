@@ -693,6 +693,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/noosh-capability-edges.yml
+  name: Noosh Business Capability Map
 - type: AgenticAccess
   url: agentic-access/noosh-agentic-access.yml
 - type: Authentication

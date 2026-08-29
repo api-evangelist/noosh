@@ -1,0 +1,44 @@
+slug: noosh
+provider: Noosh
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Project
+  spec_file: noosh-project-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.78
+  evidence: POST /v1/workgroups/{workgroup_id}/projects  postProject  Create a Project; POST .../children  attachProject  Attach
+    children projects
+  reason: Full CRUD plus archival and parent/child hierarchy for projects — project execution/tracking
+    objects in a marketing-execution platform, matching Project Management.
+- tag: Rfq
+  spec_file: noosh-rfq-api-openapi.yml
+  capability_id: BC-500.10
+  capability_id_l1: BC-500
+  capability_name: Sourcing Management
+  confidence: 0.75
+  evidence: 'GET .../projects/{project_id}/rfqs  getRfqList  List the rfqs; schemas: QuoteBaseVO, RfqItemBaseVO'
+  reason: Request-for-quotation objects with associated quote schemas — the RFx solicitation artefact
+    of strategic sourcing and supplier selection.
+- tag: Task
+  spec_file: noosh-task-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.7
+  evidence: POST /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks  postTaskForProject  Create
+    a new task; GET .../defaultTaskPriority  Get default task priority list
+  reason: Project-scoped task creation, listing, statuses, types and priorities is project execution tracking,
+    i.e. Project Management rather than any industry-specific capability.
