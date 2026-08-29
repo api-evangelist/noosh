@@ -11,6 +11,18 @@ description: Noosh is a marketing execution and print/procurement management pla
   only documentation surface. There is no developer portal, no SDK in any registry, no published
   pricing and no rate limits; authentication is HTTP Basic and every route is customer-credentialed.
   Noosh was surfaced as a portfolio company of Accel and profiled in the API Evangelist network.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: contact-sales
   onboarding: sales-gate
