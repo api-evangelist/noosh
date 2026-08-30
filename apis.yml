@@ -381,6 +381,8 @@ apis:
   humanURL: https://api.noosh.com/api/developer/index.html
   baseURL: https://api.noosh.com
   tags:
+  - Quotes
+  tags_raw:
   - Quote
   properties:
   - type: OpenAPI
@@ -429,6 +431,8 @@ apis:
   humanURL: https://api.noosh.com/api/developer/index.html
   baseURL: https://api.noosh.com
   tags:
+  - RFQ
+  tags_raw:
   - Rfq
   properties:
   - type: OpenAPI
