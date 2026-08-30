@@ -1,0 +1,1935 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Spec API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Spec
+paths:
+  /1.1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}:
+    get:
+      tags:
+      - Spec
+      summary: List a specific spec of project Level
+      description: List a specific spec of project Level
+      operationId: getSpec
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V1x1SpecExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/V1x1SpecExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/V1x1SpecExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/V1x1SpecExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/V1x1SpecExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/V1x1SpecExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/V1x1SpecExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/V1x1SpecExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    put:
+      tags:
+      - Spec
+      summary: Update a specific Spec
+      description: Update a specific Spec
+      operationId: putSpec
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/V1X1SpecUpdatingPO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/V1X1SpecUpdatingPO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/V1X1SpecUpdatingPO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/V1X1SpecUpdatingPO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/V1X1SpecUpdatingPO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/V1X1SpecUpdatingPO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/V1X1SpecUpdatingPO'
+  /1.1/workgroups/{workgroup_id}/specTypes/{spec_type_id}/specTypeFields:
+    get:
+      tags:
+      - Spec
+      summary: Get Spec Type Fields
+      description: Get Spec Type Fields
+      operationId: getSpecTypeFields
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: spec_type_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecTypeFieldsListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/SpecTypeFieldsListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpecTypeFieldsListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SpecTypeFieldsListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecTypeFieldsListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecTypeFieldsListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SpecTypeFieldsListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SpecTypeFieldsListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/productTypes:
+    get:
+      tags:
+      - Spec
+      summary: Get product type of workgroup level
+      description: Get product type of workgroup level
+      operationId: getProductTypeListOfWorkgroup
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/productTypesOfSpecTypes:
+    get:
+      tags:
+      - Spec
+      summary: Get product type of spec level by workgroupId
+      description: Get product type of spec level by workgroupId
+      operationId: getSpecProductTypeListOfWorkgroup
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkgroupAttributeListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    post:
+      tags:
+      - Spec
+      summary: Register product types for spec types
+      description: Register product types for spec types
+      operationId: postSpecProductTypeListOfWorkgroup
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+        '422':
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/WgSpecPrdTypeRegPersistVO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/specs:
+    get:
+      tags:
+      - Spec
+      summary: List specs of project Level
+      description: List specs of project Level
+      operationId: getSpecList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    post:
+      tags:
+      - Spec
+      summary: Create a Spec
+      description: Create a Spec
+      operationId: postSpec
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/SpecVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpecVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SpecVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SpecVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SpecVO'
+        '422':
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpecPersistVO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/SpecPersistVO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SpecPersistVO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SpecPersistVO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/SpecPersistVO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/SpecPersistVO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/SpecPersistVO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}:
+    get:
+      tags:
+      - Spec
+      summary: List a specific spec of project Level
+      description: List a specific spec of project Level
+      operationId: getSpec
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SpecListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    put:
+      tags:
+      - Spec
+      summary: Update a specific Spec
+      description: Update a specific Spec
+      operationId: putSpec
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SpecHTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpecUpdatePersistVO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/SpecUpdatePersistVO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SpecUpdatePersistVO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SpecUpdatePersistVO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/SpecUpdatePersistVO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/SpecUpdatePersistVO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/SpecUpdatePersistVO'
+  /v1/workgroups/{workgroup_id}/specTypes/{spec_type_id}/specTypeFields:
+    get:
+      tags:
+      - Spec
+      summary: Get Spec Type Fields
+      description: Get Spec Type Fields
+      operationId: getSpecTypeFields
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: spec_type_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyParamListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/PropertyParamListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PropertyParamListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PropertyParamListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/PropertyParamListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/PropertyParamListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/PropertyParamListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PropertyParamListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    PropertyPersistVO:
+      properties:
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/CustomFieldPersistVO'
+        paper_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPersistVO'
+    SpecSimpleVO:
+      properties:
+        client_status:
+          type: string
+          example: sample client_status
+          description: ''
+        create_date:
+          type: string
+          format: date
+          description: ''
+        created_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        last_updated:
+          type: string
+          format: date
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        spec_options_complete:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecSimpleVO'
+        supplier_status:
+          type: string
+          example: sample supplier_status
+          description: ''
+        uofms:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/UofmSimpleVO'
+        user_state:
+          type: string
+          example: sample user_state
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecSimpleVO'
+    SpecSimplestVO:
+      properties:
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecSimplestVO'
+    SpecVersionPersistVO:
+      properties:
+        description:
+          type: string
+          example: sample description
+          description: ''
+        qty:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecVersionPersistVO'
+    V1x1SpecExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/V1x1SpecDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecExpandVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+    WorkgroupAttributeVO:
+      properties:
+        is_checked:
+          type: boolean
+          example: 'false'
+          description: ''
+        label:
+          type: string
+          example: sample label
+          description: ''
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupAttributeVO'
+    SpecHTTPStatusVO:
+      properties:
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecHTTPStatusVO'
+    V1X1SpecUpdatingPO:
+      properties:
+        first_level_custom_fields:
+          description: ''
+          $ref: '#/components/schemas/V1x1ProperyPO'
+        header_custom_fields:
+          description: ''
+          $ref: '#/components/schemas/V1x1ProperyPO'
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        second_level_custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/V1x1ProperyPO'
+        sku:
+          type: string
+          example: sample sku
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        update_spec_reference_name:
+          type: boolean
+          example: 'false'
+          description: ''
+        versions:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecVersionPersistVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1X1SpecUpdatingPO'
+    PropertyParamSimpleVO:
+      properties:
+        data_type:
+          type: string
+          example: sample data_type
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyParamSimpleVO'
+    ProductTypeVO:
+      properties:
+        label:
+          type: string
+          example: sample label
+          description: ''
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
+    PropertyParamListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyParamSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyParamListVO'
+    V1x1ProperyPO:
+      properties:
+        property_attributes:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/V1x1SpecPamAndAttPO'
+        property_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        property_name:
+          type: string
+          example: sample property_name
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1x1ProperyPO'
+    SpecTypeFieldsListVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/SpecTypeFieldsVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.SpecTypeFieldsListVO'
+    CustomFieldPersistVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
+    V1x1SpecPamAndAttPO:
+      properties:
+        attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        attribute_value:
+          description: ''
+          $ref: '#/components/schemas/Object'
+        label:
+          type: string
+          example: sample label
+          description: ''
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1x1SpecPamAndAttPO'
+    Object:
+      description: 'Java type: java.lang.Object'
+    SpecUpdatePersistVO:
+      properties:
+        inks_and_paper:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPersistVO'
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        sku:
+          type: string
+          example: sample sku
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecUpdatePersistVO'
+    WorkgroupAttributeListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/WorkgroupAttributeVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupAttributeListVO'
+    SpecVO:
+      properties:
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecVO'
+    SpecTypeVO:
+      properties:
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_type_name:
+          type: string
+          example: sample spec_type_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTypeVO'
+    WgSpecPrdTypeRegPersistVO:
+      properties:
+        enableDifferentiatePrdTypePreference:
+          type: boolean
+          example: 'false'
+          description: ''
+        spec_prdType_list:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecTypePersistVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.WgSpecPrdTypeRegPersistVO'
+    SpecTypeFieldsVO:
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.SpecTypeFieldsVO'
+    V1x1ProperyVO:
+      properties:
+        property_attributes:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/V1x1SpecPamAndAttVO'
+        property_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        property_name:
+          type: string
+          example: sample property_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1ProperyVO'
+    V1x1SpecDetailVO:
+      properties:
+        client_status:
+          type: string
+          example: sample client_status
+          description: ''
+        create_date:
+          type: string
+          format: date
+          description: ''
+        created_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        first_level_custom_fields:
+          description: ''
+          $ref: '#/components/schemas/V1x1ProperyVO'
+        header_custom_fields:
+          description: ''
+          $ref: '#/components/schemas/V1x1ProperyVO'
+        job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        last_updated:
+          type: string
+          format: date
+          description: ''
+        product_type:
+          type: string
+          example: sample product_type
+          description: ''
+        product_type_info:
+          description: ''
+          $ref: '#/components/schemas/ProductTypeVO'
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        second_level_custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/V1x1ProperyVO'
+        sku:
+          type: string
+          example: sample sku
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        spec_options:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecSimplestVO'
+        spec_options_complete:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecSimpleVO'
+        spec_original:
+          description: ''
+          $ref: '#/components/schemas/SpecSimplestVO'
+        spec_type:
+          description: ''
+          $ref: '#/components/schemas/SpecTypeVO'
+        supplier_status:
+          type: string
+          example: sample supplier_status
+          description: ''
+        uofms:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/UofmSimpleVO'
+        user_state:
+          type: string
+          example: sample user_state
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecDetailVO'
+    SpecTypePersistVO:
+      properties:
+        prdType_labels:
+          type: array
+          description: ''
+          items:
+            type: string
+            example: sample prdType_labels
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecTypePersistVO'
+    SpecListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecListVO'
+    UofmSimpleVO:
+      properties:
+        is_default:
+          type: boolean
+          example: 'false'
+          description: ''
+        uofm_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        uofm_name:
+          type: string
+          example: sample uofm_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UofmSimpleVO'
+    SpecPersistVO:
+      properties:
+        jsonBody:
+          type: boolean
+          example: 'false'
+          description: ''
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        sku:
+          type: string
+          example: sample sku
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        spec_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        versions:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecVersionPersistVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecPersistVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    V1x1SpecPamAndAttVO:
+      properties:
+        attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        attribute_value:
+          description: ''
+          $ref: '#/components/schemas/Object'
+        label:
+          type: string
+          example: sample label
+          description: ''
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecPamAndAttVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

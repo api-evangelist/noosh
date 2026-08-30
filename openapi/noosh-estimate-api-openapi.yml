@@ -1,0 +1,884 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Estimate API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Estimate
+paths:
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/estimates:
+    get:
+      tags:
+      - Estimate
+      summary: List the Estimates
+      description: List the Estimates
+      operationId: getEstimateList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateListExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/EstimateListExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EstimateListExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/EstimateListExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/EstimateListExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/EstimateListExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/EstimateListExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EstimateListExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    post:
+      tags:
+      - Estimate
+      summary: Create a Estimate
+      description: Create a Estimate
+      operationId: postEstimate
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful create
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimatePO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/EstimatePO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EstimatePO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/EstimatePO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/EstimatePO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/EstimatePO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/EstimatePO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EstimatePO'
+        '422':
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimatePO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/EstimatePO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/EstimatePO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/EstimatePO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/EstimatePO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/EstimatePO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/EstimatePO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/estimates/{estimate_id}:
+    get:
+      tags:
+      - Estimate
+      summary: Get a specific estimate of project
+      description: Get a specific estimate of project
+      operationId: getEstimate
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: estimate_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/EstimateExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EstimateExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/EstimateExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/EstimateExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/EstimateExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/EstimateExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EstimateExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    EstimateBaseVO:
+      properties:
+        create_date:
+          type: string
+          format: date
+          description: ''
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        estimate_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        estimate_title:
+          type: string
+          example: sample estimate_title
+          description: ''
+        expiration_date:
+          type: string
+          format: date
+          description: ''
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectBaseVO'
+        rfe:
+          description: ''
+          $ref: '#/components/schemas/RfeBaseVO'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        supplier_workgroup:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupBaseVO'
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateBaseVO'
+    PropertyPaAndAttVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        property_attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
+    EstimateItemDetailsVO:
+      properties:
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        estimate_item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        option_prices:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/EstimateItemPriceVO'
+        pc_job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        spec_reference:
+          type: string
+          example: sample spec_reference
+          description: ''
+        spec_reference_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateItemDetailsVO'
+    EstimateItemPO:
+      properties:
+        paper_items:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PaperItemPO'
+        quantity_1_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_1_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_1_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_2_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_2_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_2_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_3_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_3_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_3_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_4_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_4_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_4_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_5_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_5_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_5_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        rfe_item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.EstimateItemPO'
+    WorkgroupBaseVO:
+      properties:
+        workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupBaseVO'
+    PaperItemPO:
+      properties:
+        min_uom_qty:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        paper_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        price_1:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_2:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_3:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_4:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_5:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_per_tonne:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        qty_uom:
+          type: string
+          example: sample qty_uom
+          description: ''
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        size:
+          type: string
+          example: sample size
+          description: ''
+        sku:
+          type: string
+          example: sample sku
+          description: ''
+        unit_price_1:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_price_2:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_price_3:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_price_4:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_price_5:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.PaperItemPO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    EstimatePO:
+      properties:
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        description:
+          type: string
+          example: sample description
+          description: ''
+        estimate_items:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/EstimateItemPO'
+        estimate_title:
+          type: string
+          example: sample estimate_title
+          description: ''
+        expiration_date:
+          type: string
+          format: date
+          description: ''
+        owner_reference:
+          type: string
+          example: sample owner_reference
+          description: ''
+        rfe_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.EstimatePO'
+    EstimateExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/EstimateDetailsVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateExpandVO'
+    EstimateItemPriceVO:
+      properties:
+        add_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        breakouts:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/BreakoutVO'
+        em_estimate_item_price_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        item_option:
+          description: ''
+          $ref: '#/components/schemas/ItemOptionVO'
+        price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        total_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_add_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_total_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateItemPriceVO'
+    EstimateDetailsVO:
+      properties:
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        create_date:
+          type: string
+          format: date
+          description: ''
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        description:
+          type: string
+          example: sample description
+          description: ''
+        estimate_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        estimate_title:
+          type: string
+          example: sample estimate_title
+          description: ''
+        expiration_date:
+          type: string
+          format: date
+          description: ''
+        items:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/EstimateItemDetailsVO'
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectBaseVO'
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        rfe:
+          description: ''
+          $ref: '#/components/schemas/RfeBaseVO'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        submitted_by:
+          type: string
+          example: sample submitted_by
+          description: ''
+        submitted_by_user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        supplier_workgroup:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupBaseVO'
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateDetailsVO'
+    ItemOptionVO:
+      properties:
+        item_option_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity:
+          type: string
+          example: sample quantity
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ItemOptionVO'
+    EstimateListExpandVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/EstimateBaseVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateListExpandVO'
+    RfeBaseVO:
+      properties:
+        rfe_due_date:
+          type: string
+          format: date
+          description: ''
+        rfe_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfe_title:
+          type: string
+          example: sample rfe_title
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeBaseVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    BreakoutVO:
+      properties:
+        breakout_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        breakout_name:
+          type: string
+          example: sample breakout_name
+          description: ''
+        breakout_pre_markup:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        breakout_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_breakout_pre_markup:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_breakout_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.BreakoutVO'
+    ProjectBaseVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+        project_number:
+          type: string
+          example: sample project_number
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

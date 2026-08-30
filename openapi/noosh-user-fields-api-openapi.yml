@@ -1,0 +1,271 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application User Fields API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: User Fields
+paths:
+  /v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectHomeUserFields:
+    get:
+      tags:
+      - User Fields
+      summary: List projec home user fields of client workgroup
+      description: List projec home user fields of client workgroup
+      operationId: getProjectHomeUserFieldListOfClient
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: client_workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/projectHomeUserFields:
+    get:
+      tags:
+      - User Fields
+      summary: List projec home user fields
+      description: List projec home user fields
+      operationId: getProjectHomeUserFieldsList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProjectHomeUserFieldsListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    UserFieldsSimpleVO:
+      properties:
+        is_required:
+          type: boolean
+          example: 'false'
+          description: ''
+        label:
+          type: string
+          example: sample label
+          description: ''
+        ordinal_number:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        type:
+          type: string
+          example: sample type
+          description: ''
+        user_field_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UserFieldsSimpleVO'
+    ProjectHomeUserFieldsListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/UserFieldsSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectHomeUserFieldsListVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

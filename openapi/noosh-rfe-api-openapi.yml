@@ -1,0 +1,651 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application RFE API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: RFE
+paths:
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/rfes:
+    get:
+      tags:
+      - RFE
+      summary: List the RFES
+      description: List the RFES
+      operationId: getRfeList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RfeListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/RfeListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RfeListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/RfeListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RfeListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RfeListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/RfeListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RfeListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    post:
+      tags:
+      - RFE
+      summary: Create a RFE
+      description: Create a RFE
+      operationId: postRfe
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful update
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RfqVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/RfqVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RfqVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/RfqVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RfqVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RfqVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/RfqVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RfqVO'
+        '422':
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RfePO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/RfePO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/RfePO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/RfePO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/RfePO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/RfePO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/RfePO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/rfes/{rfe_id}:
+    get:
+      tags:
+      - RFE
+      summary: Get a specific Rfe
+      description: Get a specific Rfe
+      operationId: getRfe
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: rfe_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RfeExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/RfeExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RfeExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/RfeExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RfeExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RfeExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/RfeExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RfeExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    RfeItemSimpleVO:
+      properties:
+        rfe_item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeItemSimpleVO'
+    RfeExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/RfeDetailsVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeExpandVO'
+    RfeSpecPO:
+      properties:
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.RfeSpecPO'
+    RfeSuEstimateSimpleVO:
+      properties:
+        supplier_estimates:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/EstimateSimpleVO'
+        workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeSuEstimateSimpleVO'
+    EstimateSimpleVO:
+      properties:
+        estimate_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        estimate_title:
+          type: string
+          example: sample estimate_title
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateSimpleVO'
+    RfeItemSimpleEXTVO:
+      properties:
+        job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfe_item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfe_item_options:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfeItemOptionVO'
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeItemSimpleEXTVO'
+    RfeDetailsVO:
+      properties:
+        description:
+          type: string
+          example: sample description
+          description: ''
+        details:
+          type: string
+          example: sample details
+          description: ''
+        estimate_due_date:
+          type: string
+          format: date
+          description: ''
+        estimators:
+          type: array
+          description: ''
+          items:
+            type: string
+            example: sample estimators
+        itemized_tax_and_shipping:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        proposed_order_completion_date:
+          type: string
+          format: date
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        requestor:
+          type: string
+          example: sample requestor
+          description: ''
+        rfe_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfe_items:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfeItemSimpleEXTVO'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        submitted_date:
+          type: string
+          format: date
+          description: ''
+        supplier_estimates:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfeSuEstimateSimpleVO'
+        title:
+          type: string
+          example: sample title
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeDetailsVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    RfeListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfeSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeListVO'
+    RfePO:
+      properties:
+        description:
+          type: string
+          example: sample description
+          description: ''
+        details:
+          type: string
+          example: sample details
+          description: ''
+        estimate_due_date:
+          type: string
+          format: date
+          description: ''
+        proposed_order_completion_date:
+          type: string
+          format: date
+          description: ''
+        rfe_number:
+          type: string
+          example: sample rfe_number
+          description: ''
+        rfe_title:
+          type: string
+          example: sample rfe_title
+          description: ''
+        specs:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfeSpecPO'
+        supplier_user_ids:
+          type: array
+          description: ''
+          items:
+            type: integer
+            format: int64
+            example: '1'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.RfePO'
+    RfqVO:
+      properties:
+        rfq_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfqVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    RfeItemOptionVO:
+      properties:
+        item_option_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_index:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeItemOptionVO'
+    RfeSimpleVO:
+      properties:
+        estimate_due_date:
+          type: string
+          format: date
+          description: ''
+        rfe_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfe_items:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfeItemSimpleVO'
+        rfe_title:
+          type: string
+          example: sample rfe_title
+          description: ''
+        supplier_estimates:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfeSuEstimateSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.RfeSimpleVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

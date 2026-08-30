@@ -1,0 +1,756 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Team Member API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Team Member
+paths:
+  /1.1/workgroups/{workgroup_id}/projects/{project_id}/teammembers:
+    post:
+      tags:
+      - Team Member
+      summary: Invite a team member or all the members of team template for the specific project.
+      description: Invite a team member or all the members of team template for the specific project.
+      operationId: postTeamMemberOfProject
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V1x1InvitedTeamMemberResultsVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/V1x1InvitedTeamMemberResultsVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/V1x1InvitedTeamMemberResultsVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/V1x1InvitedTeamMemberResultsVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/V1x1InvitedTeamMemberResultsVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/V1x1InvitedTeamMemberResultsVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/V1x1InvitedTeamMemberResultsVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/V1x1InvitedTeamMemberResultsVO'
+        '422':
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamMemberPO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/TeamMemberPO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/TeamMemberPO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/TeamMemberPO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/TeamMemberPO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/TeamMemberPO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/TeamMemberPO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/teamMembersOfClientProject:
+    get:
+      tags:
+      - Team Member
+      summary: List team member of client project side.
+      description: List team member of client project side.
+      operationId: getTeamMemberListOfClientProject
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers:
+    get:
+      tags:
+      - Team Member
+      summary: List team member of project.
+      description: List team member of project.
+      operationId: getTeamMemberListOfProject
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamMemberListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    post:
+      tags:
+      - Team Member
+      summary: Deprecated, please use 1.1 Version
+      description: Deprecated, please use 1.1 Version
+      operationId: postTeamMemberOfProject
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+        '422':
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactUserVO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/ContactUserVO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ContactUserVO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ContactUserVO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/ContactUserVO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/ContactUserVO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/ContactUserVO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers/{teammember_id}:
+    delete:
+      tags:
+      - Team Member
+      summary: Delete a team member for the specific project.
+      description: Delete a team member for the specific project.
+      operationId: deleteTeamMemberOfProject
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: teammember_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamMemberBaseInfVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    V1x1InvitedTeamMemberResultsVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/V1x1InvitedTeamMemberVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberResultsVO'
+    ContactUserVO:
+      required:
+      - role_id
+      - user_id
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ContactUserVO'
+    RoleSimpleVO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        role_name:
+          type: string
+          example: sample role_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
+    TeamMemberListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TeamMemberSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamMemberListVO'
+    V1x1InvitedTeamMemberVO:
+      properties:
+        role:
+          description: ''
+          $ref: '#/components/schemas/RoleSimpleVO'
+        team_member_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        user:
+          description: ''
+          $ref: '#/components/schemas/UserPersonVO'
+        was_invited_before:
+          type: boolean
+          example: 'false'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    TeamMemberSimpleVO:
+      properties:
+        company_name:
+          type: string
+          example: sample company_name
+          description: ''
+        email_address:
+          type: string
+          example: sample email_address
+          description: ''
+        name:
+          type: string
+          example: sample name
+          description: ''
+        phone:
+          type: string
+          example: sample phone
+          description: ''
+        role:
+          type: string
+          example: sample role
+          description: ''
+        teammember_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamMemberSimpleVO'
+    TeamMemberPO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        team_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.TeamMemberPO'
+    UserPersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UserPersonVO'
+    TeamMemberBaseInfVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+        teammember_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamMemberBaseInfVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

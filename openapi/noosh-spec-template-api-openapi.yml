@@ -1,0 +1,380 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Spec Template API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Spec Template
+paths:
+  /v1/workgroups/{workgroup_id}/specTemplates:
+    get:
+      tags:
+      - Spec Template
+      summary: 'List Spec Templates of Workgroup Level '
+      description: 'List Spec Templates of Workgroup Level '
+      operationId: getSpecTemplateList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SpecTemplateListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/specTemplates/{spec_template_id}:
+    get:
+      tags:
+      - Spec Template
+      summary: Get a specific Spec Template
+      description: Get a specific Spec Template
+      operationId: getSpecTemplate
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: spec_template_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SpecTemplateExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SpecTemplateExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    ProductTypeVO:
+      properties:
+        label:
+          type: string
+          example: sample label
+          description: ''
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
+    SpecTypeVO:
+      properties:
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_type_name:
+          type: string
+          example: sample spec_type_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTypeVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+    SpecTemplateDetailVO:
+      properties:
+        created_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        created_date:
+          type: string
+          format: date
+          description: ''
+        is_active:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_externally_published:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_locked:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_date:
+          type: string
+          format: date
+          description: ''
+        product_type:
+          type: string
+          example: sample product_type
+          description: ''
+        product_type_info:
+          description: ''
+          $ref: '#/components/schemas/ProductTypeVO'
+        spec_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_template_name:
+          type: string
+          example: sample spec_template_name
+          description: ''
+        spec_type:
+          description: ''
+          $ref: '#/components/schemas/SpecTypeVO'
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateDetailVO'
+    SpecTemplateListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecTemplateSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateListVO'
+    SpecTemplateSimpleVO:
+      properties:
+        created_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        created_date:
+          type: string
+          format: date
+          description: ''
+        is_active:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_externally_published:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_locked:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_date:
+          type: string
+          format: date
+          description: ''
+        spec_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_template_name:
+          type: string
+          example: sample spec_template_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateSimpleVO'
+    SpecTemplateExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/SpecTemplateDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateExpandVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

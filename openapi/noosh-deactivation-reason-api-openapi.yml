@@ -1,0 +1,154 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Deactivation Reason API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Deactivation Reason
+paths:
+  /v1/workgroups/{workgroup_id}/deactivationReasons:
+    get:
+      tags:
+      - Deactivation Reason
+      summary: List all deactivation reasons
+      description: List all deactivation reasons
+      operationId: getDeactivationReasonList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeactivationReasonListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/DeactivationReasonListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DeactivationReasonListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DeactivationReasonListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/DeactivationReasonListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/DeactivationReasonListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/DeactivationReasonListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DeactivationReasonListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    DeactivationReasonVO:
+      properties:
+        deactivation_reason_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        deactivation_reason_name:
+          type: string
+          example: sample deactivation_reason_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.DeactivationReasonVO'
+    DeactivationReasonListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/DeactivationReasonVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.DeactivationReasonListVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

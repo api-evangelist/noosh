@@ -1,0 +1,490 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application My Info API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: My Info
+paths:
+  /v1/workgroups/{workgroup_id}/automaticInvitations:
+    get:
+      tags:
+      - My Info
+      summary: 'List current user''s automatic invitations info '
+      description: 'List current user''s automatic invitations info '
+      operationId: getAutomaticInvitationList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomaticInvitationsListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/AutomaticInvitationsListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AutomaticInvitationsListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/AutomaticInvitationsListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/AutomaticInvitationsListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/AutomaticInvitationsListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/AutomaticInvitationsListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AutomaticInvitationsListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/profileImage:
+    post:
+      tags:
+      - My Info
+      summary: Upload Profile Image.  A multipart/form-data request with a name "file"
+      description: Upload Profile Image.  A multipart/form-data request with a name "file"
+      operationId: uploadProfileImage
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileImageVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/ProfileImageVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProfileImageVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProfileImageVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ProfileImageVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ProfileImageVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProfileImageVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProfileImageVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              format: binary
+          application/x-json-smile:
+            schema:
+              type: string
+              format: binary
+          application/xml:
+            schema:
+              type: string
+              format: binary
+          text/xml:
+            schema:
+              type: string
+              format: binary
+          application/x-yaml:
+            schema:
+              type: string
+              format: binary
+          text/x-yaml:
+            schema:
+              type: string
+              format: binary
+          text/csv:
+            schema:
+              type: string
+              format: binary
+          '*/*':
+            schema:
+              type: string
+              format: binary
+  /v1/workgroups/{workgroup_id}/teamTemplates:
+    get:
+      tags:
+      - My Info
+      summary: 'List current user''s team templates info '
+      description: 'List current user''s team templates info '
+      operationId: getTeamTemplateList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamTemplateListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/teamTemplates/{team_template_id}:
+    get:
+      tags:
+      - My Info
+      summary: 'Get current user''s team template detal info '
+      description: 'Get current user''s team template detal info '
+      operationId: getTeamTemplateDetail
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: team_template_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TeamTemplateExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamTemplateExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    AutomaticInvitationVO:
+      properties:
+        automatic_invitation_type_name:
+          type: string
+          example: sample automatic_invitation_type_name
+          description: ''
+        team_template:
+          description: ''
+          $ref: '#/components/schemas/TeamTemplateSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationVO'
+    ProfileImageVO:
+      properties:
+        profileImgUrl:
+          type: string
+          example: sample profileImgUrl
+          description: ''
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProfileImageVO'
+    RoleSimpleVO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        role_name:
+          type: string
+          example: sample role_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
+    TeamTemplateExpandVO:
+      properties:
+        results:
+          description: ''
+          $ref: '#/components/schemas/TeamTemplateDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateExpandVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    TeamTemplateDetailVO:
+      properties:
+        team_teample_item:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TeamTemplateItemVO'
+        team_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        team_template_name:
+          type: string
+          example: sample team_template_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateDetailVO'
+    AutomaticInvitationsListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/AutomaticInvitationVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationsListVO'
+    UserPersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UserPersonVO'
+    TeamTemplateSimpleVO:
+      properties:
+        team_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        team_template_name:
+          type: string
+          example: sample team_template_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateSimpleVO'
+    TeamTemplateItemVO:
+      properties:
+        role:
+          description: ''
+          $ref: '#/components/schemas/RoleSimpleVO'
+        user:
+          description: ''
+          $ref: '#/components/schemas/UserPersonVO'
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateItemVO'
+    TeamTemplateListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TeamTemplateSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateListVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

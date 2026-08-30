@@ -1,0 +1,1669 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Task API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Task
+paths:
+  /v1/workgroups/{workgroup_id}/customTaskStatus:
+    get:
+      tags:
+      - Task
+      summary: Get custom task status of workgroup level
+      description: Get custom task status of workgroup level
+      operationId: getWgTaskStatusListOfWorkgroup
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WgTaskStatusListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/WgTaskStatusListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/WgTaskStatusListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/WgTaskStatusListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/WgTaskStatusListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/WgTaskStatusListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/WgTaskStatusListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WgTaskStatusListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/customTaskTypes:
+    get:
+      tags:
+      - Task
+      summary: Get custom task types of workgroup level
+      description: Get custom task types of workgroup level
+      operationId: getCustomTaskTypesOfWg
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/defaultTaskPriority:
+    get:
+      tags:
+      - Task
+      summary: Get default task priority list
+      description: Get default task priority list
+      operationId: TaskPriorityList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskPriorityListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskPriorityListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskPriorityListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskPriorityListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskPriorityListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskPriorityListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskPriorityListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskPriorityListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/defaultTaskStatus:
+    get:
+      tags:
+      - Task
+      summary: Get default task status list
+      description: Get default task status list
+      operationId: getDefaultTaskStatusList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatusListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskStatusListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskStatusListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskStatusListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskStatusListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskStatusListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskStatusListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskStatusListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks:
+    get:
+      tags:
+      - Task
+      summary: Get task list of project level
+      description: Get task list of project level
+      operationId: getTaskListOfProject
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    post:
+      tags:
+      - Task
+      summary: Create a new task
+      description: Create a new task
+      operationId: postTaskForProject
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskCreatedVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskCreatedVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskCreatedVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskCreatedVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskCreatedVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskCreatedVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskCreatedVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskCreatedVO'
+        '422':
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskPersistVO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/TaskPersistVO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/TaskPersistVO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/TaskPersistVO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/TaskPersistVO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/TaskPersistVO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/TaskPersistVO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/tasks/{task_id}:
+    get:
+      tags:
+      - Task
+      summary: Get a sepcific task of project level
+      description: Get a sepcific task of project level
+      operationId: getTaskOfProject
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/taskTypes:
+    get:
+      tags:
+      - Task
+      summary: Get task types of workgroup level
+      description: Get task types of workgroup level
+      operationId: getTaskTypesOfWorkgroup
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskTypeListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/tasks:
+    get:
+      tags:
+      - Task
+      summary: Get task list of workgroup level
+      description: Get task list of workgroup level
+      operationId: getTaskListOfWorkgroup
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskWorkgroupLevelListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskWorkgroupLevelListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskWorkgroupLevelListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskWorkgroupLevelListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskWorkgroupLevelListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskWorkgroupLevelListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskWorkgroupLevelListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskWorkgroupLevelListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/tasks/{task_id}:
+    get:
+      tags:
+      - Task
+      summary: Get a sepcific task of workgroup level
+      description: Get a sepcific task of workgroup level
+      operationId: getTaskOfWorkgroup
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskExpandWorkgroupLevelVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TaskExpandWorkgroupLevelVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TaskExpandWorkgroupLevelVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TaskExpandWorkgroupLevelVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskExpandWorkgroupLevelVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TaskExpandWorkgroupLevelVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TaskExpandWorkgroupLevelVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TaskExpandWorkgroupLevelVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    TaskStatusVO:
+      properties:
+        task_status_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_status_name:
+          type: string
+          example: sample task_status_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskStatusVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+    TaskExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/TaskDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskExpandVO'
+    TaskSimpleVO:
+      properties:
+        actual_end:
+          type: string
+          format: date
+          description: ''
+        actual_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        actual_start:
+          type: string
+          format: date
+          description: ''
+        assign_to:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        baseline_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        baseline_end_date:
+          type: string
+          format: date
+          description: ''
+        baseline_start_date:
+          type: string
+          format: date
+          description: ''
+        current_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        is_milestone:
+          type: boolean
+          example: 'false'
+          description: ''
+        mod_date:
+          type: string
+          format: date
+          description: ''
+        plan_end:
+          type: string
+          format: date
+          description: ''
+        plan_start:
+          type: string
+          format: date
+          description: ''
+        priority:
+          type: string
+          example: sample priority
+          description: ''
+        schedule_code:
+          type: string
+          example: sample schedule_code
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_name:
+          type: string
+          example: sample task_name
+          description: ''
+        task_type:
+          type: string
+          example: sample task_type
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskSimpleVO'
+    TaskCreatedVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ne.TaskCreatedVO'
+    TaskTypeListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskTypeSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskTypeListVO'
+    TaskListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskListVO'
+    TaskExpandWorkgroupLevelVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/TaskDetailWorkgroupLevelVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskExpandWorkgroupLevelVO'
+    WgTaskStatusListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/WgTaskStatusVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WgTaskStatusListVO'
+    TaskPersistVO:
+      properties:
+        actual_duration:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        actual_duration_hour:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        actual_end_date:
+          type: string
+          format: date
+          description: ''
+        actual_start_date:
+          type: string
+          format: date
+          description: ''
+        assign_to_user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        contributors:
+          type: string
+          example: sample contributors
+          description: ''
+        custom_status_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        description:
+          type: string
+          example: sample description
+          description: ''
+        name:
+          type: string
+          example: sample name
+          description: ''
+        percentage_complete:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        priority:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        revised_duration:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        revised_duration_hour:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        revised_end_date:
+          type: string
+          format: date
+          description: ''
+        revised_start_date:
+          type: string
+          format: date
+          description: ''
+        status_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.TaskPersistVO'
+    TaskWorkgroupLevelListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskWorkgroupLevelSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskWorkgroupLevelListVO'
+    TaskDetailWorkgroupLevelVO:
+      properties:
+        actual_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        actual_end:
+          type: string
+          format: date
+          description: ''
+        actual_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        actual_start:
+          type: string
+          format: date
+          description: ''
+        assign_to:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        baseline_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        baseline_end_date:
+          type: string
+          format: date
+          description: ''
+        baseline_start_date:
+          type: string
+          format: date
+          description: ''
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        create_date:
+          type: string
+          format: date
+          description: ''
+        creator_workgroup_name:
+          type: string
+          example: sample creator_workgroup_name
+          description: ''
+        current_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        description:
+          type: string
+          example: sample description
+          description: ''
+        is_milestone:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        mod_date:
+          type: string
+          format: date
+          description: ''
+        percent_complete:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        plan_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        plan_end:
+          type: string
+          format: date
+          description: ''
+        plan_start:
+          type: string
+          format: date
+          description: ''
+        priority:
+          type: string
+          example: sample priority
+          description: ''
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectBaseVO'
+        requested_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        schedule_code:
+          type: string
+          example: sample schedule_code
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_name:
+          type: string
+          example: sample task_name
+          description: ''
+        task_type:
+          type: string
+          example: sample task_type
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskDetailWorkgroupLevelVO'
+    ProjectBaseVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+        project_number:
+          type: string
+          example: sample project_number
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
+    TaskWorkgroupLevelSimpleVO:
+      properties:
+        actual_end:
+          type: string
+          format: date
+          description: ''
+        actual_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        actual_start:
+          type: string
+          format: date
+          description: ''
+        assign_to:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        baseline_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        baseline_end_date:
+          type: string
+          format: date
+          description: ''
+        baseline_start_date:
+          type: string
+          format: date
+          description: ''
+        current_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        is_milestone:
+          type: boolean
+          example: 'false'
+          description: ''
+        mod_date:
+          type: string
+          format: date
+          description: ''
+        plan_end:
+          type: string
+          format: date
+          description: ''
+        plan_start:
+          type: string
+          format: date
+          description: ''
+        priority:
+          type: string
+          example: sample priority
+          description: ''
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectBaseVO'
+        schedule_code:
+          type: string
+          example: sample schedule_code
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_name:
+          type: string
+          example: sample task_name
+          description: ''
+        task_type:
+          type: string
+          example: sample task_type
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskWorkgroupLevelSimpleVO'
+    TaskStatusListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskStatusVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskStatusListVO'
+    WgTaskStatusVO:
+      properties:
+        description:
+          type: string
+          example: sample description
+          description: ''
+        is_active:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_default:
+          type: boolean
+          example: 'false'
+          description: ''
+        task_status_name:
+          type: string
+          example: sample task_status_name
+          description: ''
+        tasks_status_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WgTaskStatusVO'
+    TaskDetailVO:
+      properties:
+        actual_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        actual_end:
+          type: string
+          format: date
+          description: ''
+        actual_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        actual_start:
+          type: string
+          format: date
+          description: ''
+        assign_to:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        baseline_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        baseline_end_date:
+          type: string
+          format: date
+          description: ''
+        baseline_start_date:
+          type: string
+          format: date
+          description: ''
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        create_date:
+          type: string
+          format: date
+          description: ''
+        creator_workgroup_name:
+          type: string
+          example: sample creator_workgroup_name
+          description: ''
+        current_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        description:
+          type: string
+          example: sample description
+          description: ''
+        is_milestone:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        mod_date:
+          type: string
+          format: date
+          description: ''
+        percent_complete:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        plan_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        plan_end:
+          type: string
+          format: date
+          description: ''
+        plan_start:
+          type: string
+          format: date
+          description: ''
+        priority:
+          type: string
+          example: sample priority
+          description: ''
+        requested_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        schedule_code:
+          type: string
+          example: sample schedule_code
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_name:
+          type: string
+          example: sample task_name
+          description: ''
+        task_type:
+          type: string
+          example: sample task_type
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskDetailVO'
+    TaskPriorityVO:
+      properties:
+        task_priority_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_priority_name:
+          type: string
+          example: sample task_priority_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskPriorityVO'
+    TaskPriorityListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskPriorityVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskPriorityListVO'
+    TaskTypeSimpleVO:
+      properties:
+        task_type:
+          type: string
+          example: sample task_type
+          description: ''
+        task_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskTypeSimpleVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

@@ -1,0 +1,445 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Contact API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Contact
+paths:
+  /v1/workgroups/{workgroup_id}/billingRecipients:
+    get:
+      tags:
+      - Contact
+      summary: List Billing Recipients
+      description: List Billing Recipients
+      operationId: getBillingRecipients
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/contacts:
+    get:
+      tags:
+      - Contact
+      summary: List the contacts
+      description: List the contacts
+      operationId: getContactList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContactsListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/contacts/{user_id}:
+    get:
+      tags:
+      - Contact
+      summary: Contact Info
+      description: Contact Info
+      operationId: getContactUserInfo
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetailsExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/UserDetailsExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/UserDetailsExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UserDetailsExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/UserDetailsExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/UserDetailsExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/UserDetailsExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDetailsExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    UserDetailsExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/UserDetailsVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UserDetailsExpandVO'
+    Map:
+      description: 'Java type: java.util.Map'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    ContactsListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/ContactsSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ContactsListVO'
+    UserDetailsVO:
+      properties:
+        address:
+          description: ''
+          $ref: '#/components/schemas/Map'
+        company_name:
+          type: string
+          example: sample company_name
+          description: ''
+        email:
+          type: string
+          example: sample email
+          description: ''
+        fax_number:
+          type: string
+          example: sample fax_number
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        locale:
+          type: string
+          example: sample locale
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+        organization:
+          type: string
+          example: sample organization
+          description: ''
+        phone_number:
+          type: string
+          example: sample phone_number
+          description: ''
+        time_zone:
+          type: string
+          example: sample time_zone
+          description: ''
+        title:
+          type: string
+          example: sample title
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UserDetailsVO'
+    ContactsSimpleVO:
+      properties:
+        address:
+          type: string
+          example: sample address
+          description: ''
+        company_name:
+          type: string
+          example: sample company_name
+          description: ''
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        primary_phone:
+          type: string
+          example: sample primary_phone
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ContactsSimpleVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

@@ -1,0 +1,645 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Time Card API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Time Card
+paths:
+  /v1/workgroups/{workgroup_id}/myTimeCards:
+    get:
+      tags:
+      - Time Card
+      summary: List my time cards
+      description: List my time cards
+      operationId: getMyTimeCardList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/myTimeCards/{timeCard_id}:
+    get:
+      tags:
+      - Time Card
+      summary: Get a specific my time cards
+      description: Get a specific my time cards
+      operationId: getMyTimeCard
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: timeCard_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeCardDetailVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TimeCardDetailVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TimeCardDetailVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TimeCardDetailVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TimeCardDetailVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TimeCardDetailVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TimeCardDetailVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TimeCardDetailVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/receivedTimeCards:
+    get:
+      tags:
+      - Time Card
+      summary: List received time cards
+      description: List received time cards
+      operationId: getReceivedTimeCardList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TimeCardListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/receivedTimeCards/{timeCard_id}:
+    get:
+      tags:
+      - Time Card
+      summary: List a specific received time cards
+      description: List a specific received time cards
+      operationId: getReceivedTimeCard
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: timeCard_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeCardReceivedDetailVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/TimeCardReceivedDetailVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TimeCardReceivedDetailVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TimeCardReceivedDetailVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TimeCardReceivedDetailVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/TimeCardReceivedDetailVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/TimeCardReceivedDetailVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TimeCardReceivedDetailVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    ProjectTimeCardVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectTimeCardVO'
+    TimeCardDetailVO:
+      properties:
+        billable_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        is_submit:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_date:
+          type: string
+          format: date
+          description: ''
+        no_of_workdays:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        nonbillable_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        time_card_line:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TimeCardLineVO'
+        timecard_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        total_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        week_beginning:
+          type: string
+          format: date
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardDetailVO'
+    TimeCardLineVO:
+      properties:
+        activity_name:
+          type: string
+          example: sample activity_name
+          description: ''
+        day1_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day2_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day3_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day4_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day5_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day6_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day7_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectTimeCardVO'
+        task:
+          description: ''
+          $ref: '#/components/schemas/TaskTimeCardVO'
+        time_card_line_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        total_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardLineVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+    TaskTimeCardVO:
+      properties:
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_name:
+          type: string
+          example: sample task_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskTimeCardVO'
+    TimeCardReceivedDetailVO:
+      properties:
+        billable_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        is_submit:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_date:
+          type: string
+          format: date
+          description: ''
+        no_of_workdays:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        nonbillable_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        owner:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        time_card_line:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TimeCardLineVO'
+        timecard_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        total_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        week_beginning:
+          type: string
+          format: date
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardReceivedDetailVO'
+    TimeCardListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TimeCardSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardListVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    TimeCardSimpleVO:
+      properties:
+        is_submit:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_date:
+          type: string
+          format: date
+          description: ''
+        no_of_workdays:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        timecard_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        total_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        week_beginning:
+          type: string
+          format: date
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardSimpleVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic

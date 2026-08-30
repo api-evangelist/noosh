@@ -1,0 +1,1098 @@
+openapi: 3.2.0
+info:
+  description: Full description of Noosh API
+  version: '1.0'
+  title: Noosh API application Quote API
+  contact: {}
+  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
+servers:
+- url: https://api.noosh.com
+tags:
+- name: Quote
+paths:
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/quotes:
+    get:
+      tags:
+      - Quote
+      summary: List the quotes
+      description: List the quotes
+      operationId: getQuoteList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: quote_state_id, use filters={"quote_state_id":111111}
+        in: query
+        description: Quote Object State Id, use /workgroups/{workgroup_id}/quoteStates to get correct value
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/QuoteListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/QuoteListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/QuoteListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/QuoteListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/QuoteListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/QuoteListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/QuoteListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/projects/{project_id}/quotes/{quote_id}:
+    get:
+      tags:
+      - Quote
+      summary: Get a specific quote of project
+      description: Get a specific quote of project
+      operationId: getQuote
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: quote_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteExpandVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/QuoteExpandVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/QuoteExpandVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/QuoteExpandVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/QuoteExpandVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/QuoteExpandVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/QuoteExpandVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/QuoteExpandVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+    put:
+      tags:
+      - Quote
+      summary: Accept / Reject a Quote
+      description: Accept / Reject a Quote
+      operationId: putQuote
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: quote_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '422':
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuotePutPersistVO'
+          application/x-json-smile:
+            schema:
+              $ref: '#/components/schemas/QuotePutPersistVO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/QuotePutPersistVO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/QuotePutPersistVO'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/QuotePutPersistVO'
+          text/x-yaml:
+            schema:
+              $ref: '#/components/schemas/QuotePutPersistVO'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/QuotePutPersistVO'
+  /v1/workgroups/{workgroup_id}/quoteStates:
+    get:
+      tags:
+      - Quote
+      summary: List the quote states
+      description: List the quote states
+      operationId: getQuoteStateList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStateListVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/ObjectStateListVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ObjectStateListVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ObjectStateListVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ObjectStateListVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ObjectStateListVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ObjectStateListVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ObjectStateListVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+  /v1/workgroups/{workgroup_id}/quotes:
+    get:
+      tags:
+      - Quote
+      summary: List the quotes of workgroup level
+      description: List the quotes of workgroup level
+      operationId: getQuoteList
+      parameters:
+      - name: workgroup_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: quote_state_id, use filters={"quote_state_id":111111}
+        in: query
+        description: Quote Object State Id, use /workgroups/{workgroup_id}/quoteStates to get correct value
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteOfWgLevelSimpleVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/QuoteOfWgLevelSimpleVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/QuoteOfWgLevelSimpleVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/QuoteOfWgLevelSimpleVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/QuoteOfWgLevelSimpleVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/QuoteOfWgLevelSimpleVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/QuoteOfWgLevelSimpleVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/QuoteOfWgLevelSimpleVO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+        '404':
+          description: There are not any result matching your search condition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-json-smile:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/x-yaml:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HTTPStatusVO'
+components:
+  schemas:
+    QuotePutPersistVO:
+      properties:
+        action:
+          type: string
+          example: sample action
+          description: ''
+        po_number:
+          type: string
+          example: sample po_number
+          description: ''
+        quote_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        state_change_comments:
+          type: string
+          example: sample state_change_comments
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.QuotePutPersistVO'
+    QuotePriceSourceVO:
+      description: 'Java type: com.noosh.nooshapi.vo.QuotePriceSourceVO'
+    QuoteExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/QuoteDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteExpandVO'
+    PropertyPaAndAttVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        property_attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
+    QuoteOfWgLevelSimpleVO:
+      properties:
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectBaseVO'
+        quote_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quote_title:
+          type: string
+          example: sample quote_title
+          description: ''
+        rfq:
+          description: ''
+          $ref: '#/components/schemas/RfqBaseVO'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+        transactional_grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteOfWgLevelSimpleVO'
+    SpecBaseVO:
+      properties:
+        job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecBaseVO'
+    QuoteItemDetailVO:
+      properties:
+        chosen_quantity:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        completion_date:
+          type: string
+          format: date
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        item_prices:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/QuotePriceDetailVO'
+        item_shipping_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        item_tax_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        item_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        reason_for_quote_selection:
+          type: string
+          example: sample reason_for_quote_selection
+          description: ''
+        show_cost_prices_and_markup:
+          type: boolean
+          example: 'false'
+          description: ''
+        spec:
+          description: ''
+          $ref: '#/components/schemas/SpecBaseVO'
+        transactional_item_shipping_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_item_tax_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_item_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        vat_code:
+          type: string
+          example: sample vat_code
+          description: ''
+        vat_rate:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteItemDetailVO'
+    QuotePriceDetailVO:
+      properties:
+        breakouts:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/BreakoutVO'
+        cost:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        fixed:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        is_chosen:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_included:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_quoted:
+          type: boolean
+          example: 'false'
+          description: ''
+        parent_price_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        price_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        sell_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        source:
+          description: ''
+          $ref: '#/components/schemas/QuotePriceSourceVO'
+        supplier:
+          type: string
+          example: sample supplier
+          description: ''
+        tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_cost:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_fixed:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_sell_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_variable:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        variable:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        variable_percent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.QuotePriceDetailVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    QuoteListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/QuoteSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteListVO'
+    ObjectStateSimpleVO:
+      properties:
+        object_state_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        object_state_name:
+          type: string
+          example: sample object_state_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ObjectStateSimpleVO'
+    QuoteDetailVO:
+      properties:
+        client:
+          type: string
+          example: sample client
+          description: ''
+        client_user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        creator_user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        description:
+          type: string
+          example: sample description
+          description: ''
+        grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        is_show_supplier_information:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_update_by_user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        proposed_order_completion_date:
+          type: string
+          format: date
+          description: ''
+        quote_expiration_date:
+          type: string
+          format: date
+          description: ''
+        quote_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quote_items:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/QuoteItemDetailVO'
+        quote_items_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quote_title:
+          type: string
+          example: sample quote_title
+          description: ''
+        shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+        transactional_grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_quote_items_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        vat_code:
+          type: string
+          example: sample vat_code
+          description: ''
+        vat_rate:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteDetailVO'
+    ObjectStateListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/ObjectStateSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ObjectStateListVO'
+    RfqBaseVO:
+      properties:
+        received_date:
+          type: string
+          format: date
+          description: ''
+        rfq_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfq_title:
+          type: string
+          example: sample rfq_title
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfqBaseVO'
+    QuoteSimpleVO:
+      properties:
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quote_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quote_title:
+          type: string
+          example: sample quote_title
+          description: ''
+        rfq:
+          description: ''
+          $ref: '#/components/schemas/RfqBaseVO'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+        transactional_grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteSimpleVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    BreakoutVO:
+      properties:
+        breakout_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        breakout_name:
+          type: string
+          example: sample breakout_name
+          description: ''
+        breakout_pre_markup:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        breakout_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_breakout_pre_markup:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_breakout_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.BreakoutVO'
+    ProjectBaseVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+        project_number:
+          type: string
+          example: sample project_number
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
+  securitySchemes:
+    HTTP_BASIC:
+      type: http
+      scheme: basic
