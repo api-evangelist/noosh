@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application Team Member API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: Team Member
 paths:
@@ -14,7 +13,7 @@ paths:
     post:
       tags:
       - Team Member
-      summary: Invite a team member or all the members of team template for the specific project.
+      summary: Invite a team member or all the members of team template for the specific…
       description: Invite a team member or all the members of team template for the specific project.
       operationId: postTeamMemberOfProject
       parameters:
@@ -137,7 +136,7 @@ paths:
     get:
       tags:
       - Team Member
-      summary: List team member of client project side.
+      summary: List team member of client project side
       description: List team member of client project side.
       operationId: getTeamMemberListOfClientProject
       parameters:
@@ -237,7 +236,7 @@ paths:
     get:
       tags:
       - Team Member
-      summary: List team member of project.
+      summary: List team member of project
       description: List team member of project.
       operationId: getTeamMemberListOfProject
       parameters:
@@ -337,7 +336,6 @@ paths:
       tags:
       - Team Member
       summary: Deprecated, please use 1.1 Version
-      description: Deprecated, please use 1.1 Version
       operationId: postTeamMemberOfProject
       parameters:
       - name: workgroup_id
@@ -459,7 +457,7 @@ paths:
     delete:
       tags:
       - Team Member
-      summary: Delete a team member for the specific project.
+      summary: Delete a team member for the specific project
       description: Delete a team member for the specific project.
       operationId: deleteTeamMemberOfProject
       parameters:
@@ -562,98 +560,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    V1x1InvitedTeamMemberResultsVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/V1x1InvitedTeamMemberVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberResultsVO'
-    ContactUserVO:
-      required:
-      - role_id
-      - user_id
-      properties:
-        role_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        user_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ContactUserVO'
-    RoleSimpleVO:
-      properties:
-        role_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        role_name:
-          type: string
-          example: sample role_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
-    TeamMemberListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TeamMemberSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TeamMemberListVO'
-    V1x1InvitedTeamMemberVO:
-      properties:
-        role:
-          description: ''
-          $ref: '#/components/schemas/RoleSimpleVO'
-        team_member_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        user:
-          description: ''
-          $ref: '#/components/schemas/UserPersonVO'
-        was_invited_before:
-          type: boolean
-          example: 'false'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     TeamMemberSimpleVO:
       properties:
         company_name:
@@ -691,24 +597,6 @@ components:
           example: sample workgroup_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TeamMemberSimpleVO'
-    TeamMemberPO:
-      properties:
-        role_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        team_template_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        user_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.po.TeamMemberPO'
     UserPersonVO:
       properties:
         email:
@@ -733,6 +621,116 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.UserPersonVO'
+    V1x1InvitedTeamMemberResultsVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/V1x1InvitedTeamMemberVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberResultsVO'
+    TeamMemberPO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        team_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.TeamMemberPO'
+    TeamMemberListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TeamMemberSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamMemberListVO'
+    ContactUserVO:
+      required:
+      - role_id
+      - user_id
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ContactUserVO'
+    RoleSimpleVO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        role_name:
+          type: string
+          example: sample role_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    V1x1InvitedTeamMemberVO:
+      properties:
+        role:
+          description: ''
+          $ref: '#/components/schemas/RoleSimpleVO'
+        team_member_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        user:
+          description: ''
+          $ref: '#/components/schemas/UserPersonVO'
+        was_invited_before:
+          type: boolean
+          example: 'false'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberVO'
     TeamMemberBaseInfVO:
       properties:
         status_code:

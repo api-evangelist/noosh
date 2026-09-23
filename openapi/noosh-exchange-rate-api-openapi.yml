@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application Exchange Rate API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: Exchange Rate
 paths:
@@ -15,7 +14,6 @@ paths:
       tags:
       - Exchange Rate
       summary: Get Exchange Rate List
-      description: Get Exchange Rate List
       operationId: getExchangeRateList
       parameters:
       - name: workgroup_id
@@ -109,7 +107,6 @@ paths:
       tags:
       - Exchange Rate
       summary: Create Exchange Rates
-      description: Create Exchange Rates
       operationId: postExchangeRate
       parameters:
       - name: workgroup_id
@@ -224,6 +221,18 @@ paths:
               $ref: '#/components/schemas/MultiExchangeRatePersistListVO'
 components:
   schemas:
+    MultiExchangeRateListVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.MultiExchangeRateListVO'
     MultiExchangeRatePersisitVO:
       properties:
         activate_date:
@@ -249,18 +258,16 @@ components:
       description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersisitVO'
     HTTPStatus:
       description: 'Java type: com.noosh.domain.constant.HTTPStatus'
-    MultiExchangeRateListVO:
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    MultiExchangeRatePersistListVO:
       properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
+        exchange_rates:
+          type: array
           description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.MultiExchangeRateListVO'
+          items:
+            $ref: '#/components/schemas/MultiExchangeRatePersisitVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersistListVO'
     HTTPStatusVO:
       properties:
         status_code:
@@ -273,16 +280,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    MultiExchangeRatePersistListVO:
-      properties:
-        exchange_rates:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/MultiExchangeRatePersisitVO'
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersistListVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
   securitySchemes:
     HTTP_BASIC:
       type: http

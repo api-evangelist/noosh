@@ -37,7 +37,7 @@ actions:
     update:
       x-apievangelist-harvested: '2026-08-13'
       x-apievangelist-source: https://api.noosh.com/api/swagger.json
-gaps_observed:
+x-gaps_observed:
   - id: swagger-2.0
     detail: The contract is Swagger 2.0, not OpenAPI 3.x. Not repaired here — conversion is a separate step and would change the artifact the provider actually publishes.
   - id: duplicate-operation-ids

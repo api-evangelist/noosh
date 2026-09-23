@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application Spec Template API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: Spec Template
 paths:
@@ -14,8 +13,7 @@ paths:
     get:
       tags:
       - Spec Template
-      summary: 'List Spec Templates of Workgroup Level '
-      description: 'List Spec Templates of Workgroup Level '
+      summary: List Spec Templates of Workgroup Level
       operationId: getSpecTemplateList
       parameters:
       - name: workgroup_id
@@ -110,7 +108,6 @@ paths:
       tags:
       - Spec Template
       summary: Get a specific Spec Template
-      description: Get a specific Spec Template
       operationId: getSpecTemplate
       parameters:
       - name: workgroup_id
@@ -207,61 +204,41 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    ProductTypeVO:
+    SpecTemplateSimpleVO:
       properties:
-        label:
-          type: string
-          example: sample label
+        created_by:
           description: ''
-        product_type_id:
+          $ref: '#/components/schemas/PersonVO'
+        created_date:
+          type: string
+          format: date
+          description: ''
+        is_active:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_externally_published:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_locked:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_date:
+          type: string
+          format: date
+          description: ''
+        spec_template_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
-    SpecTypeVO:
-      properties:
-        spec_type_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_type_name:
+        spec_template_name:
           type: string
-          example: sample spec_type_name
+          example: sample spec_template_name
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecTypeVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    PersonVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateSimpleVO'
     SpecTemplateDetailVO:
       properties:
         created_by:
@@ -307,6 +284,37 @@ components:
           description: ''
           $ref: '#/components/schemas/SpecTypeVO'
       description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateDetailVO'
+    ProductTypeVO:
+      properties:
+        label:
+          type: string
+          example: sample label
+          description: ''
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
     SpecTemplateListVO:
       properties:
         results:
@@ -324,41 +332,18 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateListVO'
-    SpecTemplateSimpleVO:
+    HTTPStatusVO:
       properties:
-        created_by:
-          description: ''
-          $ref: '#/components/schemas/PersonVO'
-        created_date:
-          type: string
-          format: date
-          description: ''
-        is_active:
-          type: boolean
-          example: 'false'
-          description: ''
-        is_externally_published:
-          type: boolean
-          example: 'false'
-          description: ''
-        is_locked:
-          type: boolean
-          example: 'false'
-          description: ''
-        last_updated_date:
-          type: string
-          format: date
-          description: ''
-        spec_template_id:
+        status_code:
           type: integer
-          format: int64
+          format: int32
           example: '1'
           description: ''
-        spec_template_name:
+        status_reason:
           type: string
-          example: sample spec_template_name
+          example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateSimpleVO'
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     SpecTemplateExpandVO:
       properties:
         result:
@@ -374,6 +359,18 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateExpandVO'
+    SpecTypeVO:
+      properties:
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_type_name:
+          type: string
+          example: sample spec_type_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTypeVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

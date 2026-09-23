@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application Time Card API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: Time Card
 paths:
@@ -15,7 +14,6 @@ paths:
       tags:
       - Time Card
       summary: List my time cards
-      description: List my time cards
       operationId: getMyTimeCardList
       parameters:
       - name: workgroup_id
@@ -110,7 +108,6 @@ paths:
       tags:
       - Time Card
       summary: Get a specific my time cards
-      description: Get a specific my time cards
       operationId: getMyTimeCard
       parameters:
       - name: workgroup_id
@@ -210,7 +207,6 @@ paths:
       tags:
       - Time Card
       summary: List received time cards
-      description: List received time cards
       operationId: getReceivedTimeCardList
       parameters:
       - name: workgroup_id
@@ -305,7 +301,6 @@ paths:
       tags:
       - Time Card
       summary: List a specific received time cards
-      description: List a specific received time cards
       operationId: getReceivedTimeCard
       parameters:
       - name: workgroup_id
@@ -402,19 +397,7 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    ProjectTimeCardVO:
-      properties:
-        project_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        project_name:
-          type: string
-          example: sample project_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectTimeCardVO'
-    TimeCardDetailVO:
+    TimeCardReceivedDetailVO:
       properties:
         billable_hours:
           description: ''
@@ -435,6 +418,9 @@ components:
         nonbillable_hours:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
+        owner:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
         submit_date:
           type: string
           format: date
@@ -456,7 +442,77 @@ components:
           type: string
           format: date
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TimeCardDetailVO'
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardReceivedDetailVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    TimeCardListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TimeCardSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardListVO'
+    TimeCardSimpleVO:
+      properties:
+        is_submit:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_updated_date:
+          type: string
+          format: date
+          description: ''
+        no_of_workdays:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        timecard_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        total_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        week_beginning:
+          type: string
+          format: date
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardSimpleVO'
     TimeCardLineVO:
       properties:
         activity_name:
@@ -511,25 +567,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    PersonVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
     TaskTimeCardVO:
       properties:
         task_id:
@@ -542,7 +579,7 @@ components:
           example: sample task_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TaskTimeCardVO'
-    TimeCardReceivedDetailVO:
+    TimeCardDetailVO:
       properties:
         billable_hours:
           description: ''
@@ -563,9 +600,6 @@ components:
         nonbillable_hours:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
-        owner:
-          description: ''
-          $ref: '#/components/schemas/PersonVO'
         submit_date:
           type: string
           format: date
@@ -587,58 +621,19 @@ components:
           type: string
           format: date
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TimeCardReceivedDetailVO'
-    TimeCardListVO:
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardDetailVO'
+    ProjectTimeCardVO:
       properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TimeCardSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TimeCardListVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    TimeCardSimpleVO:
-      properties:
-        is_submit:
-          type: boolean
-          example: 'false'
-          description: ''
-        last_updated_date:
-          type: string
-          format: date
-          description: ''
-        no_of_workdays:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        submit_date:
-          type: string
-          format: date
-          description: ''
-        timecard_id:
+        project_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        total_hours:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        week_beginning:
+        project_name:
           type: string
-          format: date
+          example: sample project_name
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TimeCardSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectTimeCardVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

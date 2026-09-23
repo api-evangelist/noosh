@@ -4,18 +4,16 @@ info:
   version: '1.0'
   title: Noosh API application Rfq API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
-- name: Rfq
+- name: RFQ
 paths:
   /v1/workgroups/{workgroup_id}/projects/{project_id}/rfqs:
     get:
       tags:
-      - Rfq
+      - RFQ
       summary: List the rfqs
-      description: List the rfqs
       operationId: getRfqList
       parameters:
       - name: workgroup_id
@@ -113,9 +111,8 @@ paths:
   /v1/workgroups/{workgroup_id}/projects/{project_id}/rfqs/{rfq_id}:
     get:
       tags:
-      - Rfq
+      - RFQ
       summary: Get a specific Rfq
-      description: Get a specific Rfq
       operationId: getRfq
       parameters:
       - name: workgroup_id
@@ -217,6 +214,21 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    RfqExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/RfqDetailsVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfqExpandVO'
     QuoteBaseVO:
       properties:
         currency:
@@ -251,6 +263,8 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.QuoteBaseVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
     RfqItemBaseVO:
       properties:
         job_id:
@@ -318,33 +332,6 @@ components:
           example: sample spec_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ergo.ErgoSpecSimpleVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    RfqExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/RfqDetailsVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfqExpandVO'
     RfqDetailsVO:
       properties:
         comments:
@@ -399,8 +386,18 @@ components:
           example: sample status
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfqDetailsVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     RfqSimpleVO:
       properties:
         quotes:

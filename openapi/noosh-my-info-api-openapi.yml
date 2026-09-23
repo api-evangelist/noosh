@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application My Info API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: My Info
 paths:
@@ -14,8 +13,7 @@ paths:
     get:
       tags:
       - My Info
-      summary: 'List current user''s automatic invitations info '
-      description: 'List current user''s automatic invitations info '
+      summary: List current user's automatic invitations info
       operationId: getAutomaticInvitationList
       parameters:
       - name: workgroup_id
@@ -82,8 +80,7 @@ paths:
     post:
       tags:
       - My Info
-      summary: Upload Profile Image.  A multipart/form-data request with a name "file"
-      description: Upload Profile Image.  A multipart/form-data request with a name "file"
+      summary: Upload Profile Image. A multipart/form-data request with a name "file"
       operationId: uploadProfileImage
       parameters:
       - name: workgroup_id
@@ -184,8 +181,7 @@ paths:
     get:
       tags:
       - My Info
-      summary: 'List current user''s team templates info '
-      description: 'List current user''s team templates info '
+      summary: List current user's team templates info
       operationId: getTeamTemplateList
       parameters:
       - name: workgroup_id
@@ -252,8 +248,7 @@ paths:
     get:
       tags:
       - My Info
-      summary: 'Get current user''s team template detal info '
-      description: 'Get current user''s team template detal info '
+      summary: Get current user's team template detal info
       operationId: getTeamTemplateDetail
       parameters:
       - name: workgroup_id
@@ -323,16 +318,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    AutomaticInvitationVO:
-      properties:
-        automatic_invitation_type_name:
-          type: string
-          example: sample automatic_invitation_type_name
-          description: ''
-        team_template:
-          description: ''
-          $ref: '#/components/schemas/TeamTemplateSimpleVO'
-      description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationVO'
     ProfileImageVO:
       properties:
         profileImgUrl:
@@ -349,18 +334,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ProfileImageVO'
-    RoleSimpleVO:
-      properties:
-        role_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        role_name:
-          type: string
-          example: sample role_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
     TeamTemplateExpandVO:
       properties:
         results:
@@ -376,52 +349,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateExpandVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    TeamTemplateDetailVO:
-      properties:
-        team_teample_item:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TeamTemplateItemVO'
-        team_template_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        team_template_name:
-          type: string
-          example: sample team_template_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateDetailVO'
-    AutomaticInvitationsListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/AutomaticInvitationVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationsListVO'
     UserPersonVO:
       properties:
         email:
@@ -458,15 +385,16 @@ components:
           example: sample team_template_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateSimpleVO'
-    TeamTemplateItemVO:
+    AutomaticInvitationVO:
       properties:
-        role:
+        automatic_invitation_type_name:
+          type: string
+          example: sample automatic_invitation_type_name
           description: ''
-          $ref: '#/components/schemas/RoleSimpleVO'
-        user:
+        team_template:
           description: ''
-          $ref: '#/components/schemas/UserPersonVO'
-      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateItemVO'
+          $ref: '#/components/schemas/TeamTemplateSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationVO'
     TeamTemplateListVO:
       properties:
         results:
@@ -484,6 +412,73 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateListVO'
+    AutomaticInvitationsListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/AutomaticInvitationVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationsListVO'
+    TeamTemplateItemVO:
+      properties:
+        role:
+          description: ''
+          $ref: '#/components/schemas/RoleSimpleVO'
+        user:
+          description: ''
+          $ref: '#/components/schemas/UserPersonVO'
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateItemVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    RoleSimpleVO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        role_name:
+          type: string
+          example: sample role_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
+    TeamTemplateDetailVO:
+      properties:
+        team_teample_item:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TeamTemplateItemVO'
+        team_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        team_template_name:
+          type: string
+          example: sample team_template_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateDetailVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application File API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: File
 paths:
@@ -14,7 +13,7 @@ paths:
     get:
       tags:
       - File
-      summary: List Tags from Workgroup and Project.
+      summary: List Tags from Workgroup and Project
       description: List Tags from Workgroup and Project.
       operationId: getFileTags
       parameters:
@@ -87,8 +86,7 @@ paths:
     get:
       tags:
       - File
-      summary: List Files from Project.  Works for Regular and Remote Files
-      description: List Files from Project.  Works for Regular and Remote Files
+      summary: List Files from Project. Works for Regular and Remote Files
       operationId: getFiles
       parameters:
       - name: workgroup_id
@@ -159,8 +157,20 @@ paths:
     post:
       tags:
       - File
-      summary: Upload File to Project. <br /> A multipart/form-data request that accepts 2 values. "file" and "tags" <br /> file = {the
-      description: 'Upload File to Project. <br /> A multipart/form-data request that accepts 2 values. "file" and "tags" <br /> file = {the file} <br /> tags = {json string}, examples: <br /> [{"tagName":"aa","isSpec":false}], Create or Use existing tag, lookup done by name <br /> [{"tagId":9458887,"isSpec":true}], Existing Spec Tag <br /> [{"tagId":5003785,"isSpec":false}], Existing Tag'
+      summary: Upload File to Project.
+      description: 'Upload File to Project.
+
+        A multipart/form-data request that accepts 2 values. "file" and "tags"
+
+        file = {the file}
+
+        tags = {json string}, examples:
+
+        [{"tagName":"aa","isSpec":false}], Create or Use existing tag, lookup done by name
+
+        [{"tagId":9458887,"isSpec":true}], Existing Spec Tag
+
+        [{"tagId":5003785,"isSpec":false}], Existing Tag'
       operationId: uploadFile
       parameters:
       - name: workgroup_id
@@ -238,8 +248,7 @@ paths:
     get:
       tags:
       - File
-      summary: Get File from Project.  Works for Regular and Remote Files
-      description: Get File from Project.  Works for Regular and Remote Files
+      summary: Get File from Project. Works for Regular and Remote Files
       operationId: getFile
       parameters:
       - name: workgroup_id
@@ -316,8 +325,20 @@ paths:
     post:
       tags:
       - File
-      summary: Upload File to Project. <br /> A multipart/form-data request that accepts 2 values. "file" and "tags" <br /> file = {the
-      description: 'Upload File to Project. <br /> A multipart/form-data request that accepts 2 values. "file" and "tags" <br /> file = {the file} <br /> tags = {json string}, examples: <br /> [{"tagName":"aa","isSpec":false}], Create or Use existing tag, lookup done by name <br /> [{"tagId":9458887,"isSpec":true}], Existing Spec Tag <br /> [{"tagId":5003785,"isSpec":false}], Existing Tag'
+      summary: Upload File to Project.
+      description: 'Upload File to Project.
+
+        A multipart/form-data request that accepts 2 values. "file" and "tags"
+
+        file = {the file}
+
+        tags = {json string}, examples:
+
+        [{"tagName":"aa","isSpec":false}], Create or Use existing tag, lookup done by name
+
+        [{"tagId":9458887,"isSpec":true}], Existing Spec Tag
+
+        [{"tagId":5003785,"isSpec":false}], Existing Tag'
       operationId: uploadFile
       parameters:
       - name: workgroup_id
@@ -395,8 +416,20 @@ paths:
     post:
       tags:
       - File
-      summary: 'Upload File to Project With Notification. <br /> A multipart/form-data request that accepts 2 values. "file" and "tags" '
-      description: 'Upload File to Project With Notification. <br /> A multipart/form-data request that accepts 2 values. "file" and "tags" <br /> file = {the file} <br /> tags = {json string}, examples: <br /> [{"tagName":"aa","isSpec":false}], Create or Use existing tag, lookup done by name <br /> [{"tagId":9458887,"isSpec":true}], Existing Spec Tag <br /> [{"tagId":5003785,"isSpec":false}], Existing Tag'
+      summary: Upload File to Project With Notification.
+      description: 'Upload File to Project With Notification.
+
+        A multipart/form-data request that accepts 2 values. "file" and "tags"
+
+        file = {the file}
+
+        tags = {json string}, examples:
+
+        [{"tagName":"aa","isSpec":false}], Create or Use existing tag, lookup done by name
+
+        [{"tagId":9458887,"isSpec":true}], Existing Spec Tag
+
+        [{"tagId":5003785,"isSpec":false}], Existing Tag'
       operationId: uploadFile
       parameters:
       - name: workgroup_id
@@ -475,7 +508,6 @@ paths:
       tags:
       - File
       summary: Upload File V3 to Project With Notification
-      description: Upload File V3 to Project With Notification
       operationId: uploadFile
       parameters:
       - name: workgroup_id
@@ -554,7 +586,6 @@ paths:
       tags:
       - File
       summary: List all folders under a project
-      description: List all folders under a project
       operationId: getFolders
       parameters:
       - name: workgroup_id
@@ -626,7 +657,6 @@ paths:
       tags:
       - File
       summary: Create a new folder under a project
-      description: Create a new folder under a project
       operationId: createFolder
       parameters:
       - name: workgroup_id
@@ -701,11 +731,46 @@ paths:
               $ref: '#/components/schemas/FolderPersisitVO'
 components:
   schemas:
-    FileResponseVO:
+    TagRepoVO:
+      properties:
+        isSpec:
+          type: boolean
+          example: 'false'
+          description: ''
+        tagId:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        tagName:
+          type: string
+          example: sample tagName
+          description: ''
+      description: 'Java type: com.noosh.domain.collaboration.vo.TagRepoVO'
+    FolderBaseVO:
+      properties:
+        child_folders:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/FolderVO'
+        folder_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        folder_name:
+          type: string
+          example: sample folder_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FolderBaseVO'
+    FolderListVO:
       properties:
         result:
+          type: array
           description: ''
-          $ref: '#/components/schemas/FileVO'
+          items:
+            $ref: '#/components/schemas/FolderBaseVO'
         status_code:
           type: integer
           format: int32
@@ -715,7 +780,40 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FileResponseVO'
+      description: 'Java type: com.noosh.nooshapi.vo.file.FolderListVO'
+    FolderPersisitVO:
+      properties:
+        folder_name:
+          type: string
+          example: sample folder_name
+          description: ''
+        parent_folder_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.FolderPersisitVO'
+    TagVO:
+      properties:
+        isSpec:
+          type: boolean
+          example: 'false'
+          description: ''
+        tagId:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        tagName:
+          type: string
+          example: sample tagName
+          description: ''
+      description: 'Java type: com.noosh.domain.collaboration.vo.TagVO'
     FileListResponseVO:
       properties:
         result:
@@ -733,44 +831,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.file.FileListResponseVO'
-    TagVO:
-      properties:
-        isSpec:
-          type: boolean
-          example: 'false'
-          description: ''
-        tagId:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        tagName:
-          type: string
-          example: sample tagName
-          description: ''
-      description: 'Java type: com.noosh.domain.collaboration.vo.TagVO'
-    FolderVO:
-      properties:
-        child_folders:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/FolderVO'
-        folder_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        folder_name:
-          type: string
-          example: sample folder_name
-          description: ''
-        parent_folder_Id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FolderVO'
     FileVO:
       properties:
         comments:
@@ -823,23 +883,8 @@ components:
           example: sample uploaded_by
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.file.FileVO'
-    FolderPersisitVO:
-      properties:
-        folder_name:
-          type: string
-          example: sample folder_name
-          description: ''
-        parent_folder_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        project_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.FolderPersisitVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
     FileV3ResponseVO:
       properties:
         result:
@@ -884,6 +929,43 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.file.FileTagResponseVO'
+    FolderVO:
+      properties:
+        child_folders:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/FolderVO'
+        folder_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        folder_name:
+          type: string
+          example: sample folder_name
+          description: ''
+        parent_folder_Id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FolderVO'
+    FileResponseVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/FileVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FileResponseVO'
     FileV3VO:
       properties:
         comments:
@@ -936,58 +1018,6 @@ components:
           example: sample uploaded_by
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.file.FileV3VO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    TagRepoVO:
-      properties:
-        isSpec:
-          type: boolean
-          example: 'false'
-          description: ''
-        tagId:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        tagName:
-          type: string
-          example: sample tagName
-          description: ''
-      description: 'Java type: com.noosh.domain.collaboration.vo.TagRepoVO'
-    FolderListVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/FolderBaseVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FolderListVO'
-    FolderBaseVO:
-      properties:
-        child_folders:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/FolderVO'
-        folder_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        folder_name:
-          type: string
-          example: sample folder_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FolderBaseVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

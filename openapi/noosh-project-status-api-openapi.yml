@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application Project Status API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: Project Status
 paths:
@@ -15,7 +14,6 @@ paths:
       tags:
       - Project Status
       summary: List the project status of client
-      description: List the project status of client
       operationId: getProjectStatusOfClient
       parameters:
       - name: workgroup_id
@@ -115,7 +113,6 @@ paths:
       tags:
       - Project Status
       summary: List the project status
-      description: List the project status
       operationId: getProjectStatus
       parameters:
       - name: workgroup_id
@@ -207,6 +204,23 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    ProjectStatusListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/ProjectStatusSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectStatusListVO'
     HTTPStatusVO:
       properties:
         status_code:
@@ -231,23 +245,6 @@ components:
           example: sample project_status_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ProjectStatusSimpleVO'
-    ProjectStatusListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/ProjectStatusSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectStatusListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

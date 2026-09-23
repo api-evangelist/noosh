@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application Project Category API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: Project Category
 paths:
@@ -15,7 +14,6 @@ paths:
       tags:
       - Project Category
       summary: List the project categories of client side
-      description: List the project categories of client side
       operationId: getProjectCategoryListOfClient
       parameters:
       - name: workgroup_id
@@ -142,7 +140,6 @@ paths:
       tags:
       - Project Category
       summary: List the project categories
-      description: List the project categories
       operationId: getProjectCategoryList
       parameters:
       - name: workgroup_id
@@ -234,30 +231,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    ProjectCategorySimpleVO:
-      properties:
-        project_category_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        project_category_name:
-          type: string
-          example: sample project_category_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectCategorySimpleVO'
     ProjectCategoryListVO:
       properties:
         results:
@@ -275,6 +248,30 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ProjectCategoryListVO'
+    ProjectCategorySimpleVO:
+      properties:
+        project_category_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_category_name:
+          type: string
+          example: sample project_category_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectCategorySimpleVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

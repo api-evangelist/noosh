@@ -4,9 +4,8 @@ info:
   version: '1.0'
   title: Noosh API application Task API
   contact: {}
-  x-api-evangelist-note: Harvested verbatim from https://api.noosh.com/api/swagger.json on 2026-08-13. The published document declares host example.com:80 and basePath /v1, which are build-time placeholders (the same document is mirrored by APIs.guru with host noosh.local:80). host has been set to api.noosh.com — the host that actually serves this document and the Swagger UI at /api/developer/index.html — and basePath removed because every path already carries its own version prefix (/v1, /1.1, /1.2, /3). The unmodified document is preserved at openapi/_original/noosh-openapi.json. Every route returns HTTP 403 to unauthenticated callers (AWS API Gateway + CloudFront), so the deployment path prefix could not be confirmed live.
 servers:
-- url: https://api.noosh.com
+- url: http://example.com:80/v1
 tags:
 - name: Task
 paths:
@@ -15,7 +14,6 @@ paths:
       tags:
       - Task
       summary: Get custom task status of workgroup level
-      description: Get custom task status of workgroup level
       operationId: getWgTaskStatusListOfWorkgroup
       parameters:
       - name: workgroup_id
@@ -110,7 +108,6 @@ paths:
       tags:
       - Task
       summary: Get custom task types of workgroup level
-      description: Get custom task types of workgroup level
       operationId: getCustomTaskTypesOfWg
       parameters:
       - name: workgroup_id
@@ -205,7 +202,6 @@ paths:
       tags:
       - Task
       summary: Get default task priority list
-      description: Get default task priority list
       operationId: TaskPriorityList
       parameters:
       - name: workgroup_id
@@ -273,7 +269,6 @@ paths:
       tags:
       - Task
       summary: Get default task status list
-      description: Get default task status list
       operationId: getDefaultTaskStatusList
       parameters:
       - name: workgroup_id
@@ -341,7 +336,6 @@ paths:
       tags:
       - Task
       summary: Get task list of project level
-      description: Get task list of project level
       operationId: getTaskListOfProject
       parameters:
       - name: workgroup_id
@@ -440,7 +434,6 @@ paths:
       tags:
       - Task
       summary: Create a new task
-      description: Create a new task
       operationId: postTaskForProject
       parameters:
       - name: workgroup_id
@@ -563,7 +556,6 @@ paths:
       tags:
       - Task
       summary: Get a sepcific task of project level
-      description: Get a sepcific task of project level
       operationId: getTaskOfProject
       parameters:
       - name: workgroup_id
@@ -668,7 +660,6 @@ paths:
       tags:
       - Task
       summary: Get task types of workgroup level
-      description: Get task types of workgroup level
       operationId: getTaskTypesOfWorkgroup
       parameters:
       - name: workgroup_id
@@ -763,7 +754,6 @@ paths:
       tags:
       - Task
       summary: Get task list of workgroup level
-      description: Get task list of workgroup level
       operationId: getTaskListOfWorkgroup
       parameters:
       - name: workgroup_id
@@ -858,7 +848,6 @@ paths:
       tags:
       - Task
       summary: Get a sepcific task of workgroup level
-      description: Get a sepcific task of workgroup level
       operationId: getTaskOfWorkgroup
       parameters:
       - name: workgroup_id
@@ -955,30 +944,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    TaskStatusVO:
-      properties:
-        task_status_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        task_status_name:
-          type: string
-          example: sample task_status_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskStatusVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     PersonVO:
       properties:
         email:
@@ -998,11 +963,15 @@ components:
           example: sample middle_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
-    TaskExpandVO:
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    WgTaskStatusListVO:
       properties:
         result:
+          type: array
           description: ''
-          $ref: '#/components/schemas/TaskDetailVO'
+          items:
+            $ref: '#/components/schemas/WgTaskStatusVO'
         status_code:
           type: integer
           format: int32
@@ -1012,7 +981,86 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskExpandVO'
+      description: 'Java type: com.noosh.nooshapi.vo.WgTaskStatusListVO'
+    TaskPriorityListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskPriorityVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskPriorityListVO'
+    TaskWorkgroupLevelListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskWorkgroupLevelSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskWorkgroupLevelListVO'
+    TaskTypeSimpleVO:
+      properties:
+        task_type:
+          type: string
+          example: sample task_type
+          description: ''
+        task_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskTypeSimpleVO'
+    ProjectBaseVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+        project_number:
+          type: string
+          example: sample project_number
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
+    TaskListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskListVO'
     TaskSimpleVO:
       properties:
         actual_end:
@@ -1085,57 +1133,30 @@ components:
           example: sample task_type
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TaskSimpleVO'
-    TaskCreatedVO:
+    WgTaskStatusVO:
       properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
+        description:
           type: string
-          example: sample status_reason
+          example: sample description
           description: ''
-        task_id:
+        is_active:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_default:
+          type: boolean
+          example: 'false'
+          description: ''
+        task_status_name:
+          type: string
+          example: sample task_status_name
+          description: ''
+        tasks_status_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ne.TaskCreatedVO'
-    TaskTypeListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TaskTypeSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskTypeListVO'
-    TaskListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TaskSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskListVO'
+      description: 'Java type: com.noosh.nooshapi.vo.WgTaskStatusVO'
     TaskExpandWorkgroupLevelVO:
       properties:
         result:
@@ -1151,120 +1172,118 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TaskExpandWorkgroupLevelVO'
-    WgTaskStatusListVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/WgTaskStatusVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WgTaskStatusListVO'
-    TaskPersistVO:
+    TaskDetailVO:
       properties:
         actual_duration:
-          type: number
-          format: double
-          example: '1.1'
           description: ''
-        actual_duration_hour:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        actual_end_date:
+          $ref: '#/components/schemas/BigDecimal'
+        actual_end:
           type: string
           format: date
           description: ''
-        actual_start_date:
+        actual_hours:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        actual_start:
           type: string
           format: date
           description: ''
-        assign_to_user_id:
-          type: integer
-          format: int64
-          example: '1'
+        assign_to:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        baseline_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        baseline_end_date:
+          type: string
+          format: date
+          description: ''
+        baseline_start_date:
+          type: string
+          format: date
           description: ''
         comments:
           type: string
           example: sample comments
           description: ''
-        contributors:
+        create_date:
           type: string
-          example: sample contributors
+          format: date
           description: ''
-        custom_status_id:
-          type: integer
-          format: int64
-          example: '1'
+        creator_workgroup_name:
+          type: string
+          example: sample creator_workgroup_name
           description: ''
+        current_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
         description:
           type: string
           example: sample description
           description: ''
-        name:
-          type: string
-          example: sample name
+        is_milestone:
+          type: boolean
+          example: 'false'
           description: ''
-        percentage_complete:
+        last_updated_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        mod_date:
+          type: string
+          format: date
+          description: ''
+        percent_complete:
           type: integer
-          format: int64
+          format: int32
           example: '1'
+          description: ''
+        plan_duration:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        plan_end:
+          type: string
+          format: date
+          description: ''
+        plan_start:
+          type: string
+          format: date
           description: ''
         priority:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        revised_duration:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        revised_duration_hour:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        revised_end_date:
           type: string
-          format: date
+          example: sample priority
           description: ''
-        revised_start_date:
+        requested_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        schedule_code:
           type: string
-          format: date
+          example: sample schedule_code
           description: ''
-        status_id:
-          type: integer
-          format: int64
-          example: '1'
+        status:
+          type: string
+          example: sample status
           description: ''
         task_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        task_type_id:
-          type: integer
-          format: int64
-          example: '1'
+        task_name:
+          type: string
+          example: sample task_name
           description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.TaskPersistVO'
-    TaskWorkgroupLevelListVO:
+        task_type:
+          type: string
+          example: sample task_type
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskDetailVO'
+    TaskStatusListVO:
       properties:
         results:
           type: array
           description: ''
           items:
-            $ref: '#/components/schemas/TaskWorkgroupLevelSimpleVO'
+            $ref: '#/components/schemas/TaskStatusVO'
         status_code:
           type: integer
           format: int32
@@ -1274,7 +1293,34 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskWorkgroupLevelListVO'
+      description: 'Java type: com.noosh.nooshapi.vo.TaskStatusListVO'
+    TaskExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/TaskDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskExpandVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     TaskDetailWorkgroupLevelVO:
       properties:
         actual_duration:
@@ -1383,22 +1429,154 @@ components:
           example: sample task_type
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TaskDetailWorkgroupLevelVO'
-    ProjectBaseVO:
+    TaskPersistVO:
       properties:
-        project_id:
+        actual_duration:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        actual_duration_hour:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        actual_end_date:
+          type: string
+          format: date
+          description: ''
+        actual_start_date:
+          type: string
+          format: date
+          description: ''
+        assign_to_user_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        project_name:
+        comments:
           type: string
-          example: sample project_name
+          example: sample comments
           description: ''
-        project_number:
+        contributors:
           type: string
-          example: sample project_number
+          example: sample contributors
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
+        custom_status_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        description:
+          type: string
+          example: sample description
+          description: ''
+        name:
+          type: string
+          example: sample name
+          description: ''
+        percentage_complete:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        priority:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        revised_duration:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        revised_duration_hour:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        revised_end_date:
+          type: string
+          format: date
+          description: ''
+        revised_start_date:
+          type: string
+          format: date
+          description: ''
+        status_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.TaskPersistVO'
+    TaskPriorityVO:
+      properties:
+        task_priority_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_priority_name:
+          type: string
+          example: sample task_priority_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskPriorityVO'
+    TaskStatusVO:
+      properties:
+        task_status_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        task_status_name:
+          type: string
+          example: sample task_status_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskStatusVO'
+    TaskCreatedVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+        task_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ne.TaskCreatedVO'
+    TaskTypeListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TaskTypeSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TaskTypeListVO'
     TaskWorkgroupLevelSimpleVO:
       properties:
         actual_end:
@@ -1474,195 +1652,6 @@ components:
           example: sample task_type
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TaskWorkgroupLevelSimpleVO'
-    TaskStatusListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TaskStatusVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskStatusListVO'
-    WgTaskStatusVO:
-      properties:
-        description:
-          type: string
-          example: sample description
-          description: ''
-        is_active:
-          type: boolean
-          example: 'false'
-          description: ''
-        is_default:
-          type: boolean
-          example: 'false'
-          description: ''
-        task_status_name:
-          type: string
-          example: sample task_status_name
-          description: ''
-        tasks_status_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WgTaskStatusVO'
-    TaskDetailVO:
-      properties:
-        actual_duration:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        actual_end:
-          type: string
-          format: date
-          description: ''
-        actual_hours:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        actual_start:
-          type: string
-          format: date
-          description: ''
-        assign_to:
-          description: ''
-          $ref: '#/components/schemas/PersonVO'
-        baseline_duration:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        baseline_end_date:
-          type: string
-          format: date
-          description: ''
-        baseline_start_date:
-          type: string
-          format: date
-          description: ''
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        create_date:
-          type: string
-          format: date
-          description: ''
-        creator_workgroup_name:
-          type: string
-          example: sample creator_workgroup_name
-          description: ''
-        current_duration:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        description:
-          type: string
-          example: sample description
-          description: ''
-        is_milestone:
-          type: boolean
-          example: 'false'
-          description: ''
-        last_updated_by:
-          description: ''
-          $ref: '#/components/schemas/PersonVO'
-        mod_date:
-          type: string
-          format: date
-          description: ''
-        percent_complete:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        plan_duration:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        plan_end:
-          type: string
-          format: date
-          description: ''
-        plan_start:
-          type: string
-          format: date
-          description: ''
-        priority:
-          type: string
-          example: sample priority
-          description: ''
-        requested_by:
-          description: ''
-          $ref: '#/components/schemas/PersonVO'
-        schedule_code:
-          type: string
-          example: sample schedule_code
-          description: ''
-        status:
-          type: string
-          example: sample status
-          description: ''
-        task_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        task_name:
-          type: string
-          example: sample task_name
-          description: ''
-        task_type:
-          type: string
-          example: sample task_type
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskDetailVO'
-    TaskPriorityVO:
-      properties:
-        task_priority_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        task_priority_name:
-          type: string
-          example: sample task_priority_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskPriorityVO'
-    TaskPriorityListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TaskPriorityVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskPriorityListVO'
-    TaskTypeSimpleVO:
-      properties:
-        task_type:
-          type: string
-          example: sample task_type
-          description: ''
-        task_type_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskTypeSimpleVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
   securitySchemes:
     HTTP_BASIC:
       type: http
