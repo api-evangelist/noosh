@@ -710,18 +710,205 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    SupplierWorkgroupBasicVO:
+    WorkgroupUpdPersistVO:
       properties:
-        bu_supplier_workgroup_id:
+        address_line1:
+          type: string
+          example: sample address_line1
+          description: ''
+        address_line2:
+          type: string
+          example: sample address_line2
+          description: ''
+        address_line3:
+          type: string
+          example: sample address_line3
+          description: ''
+        city:
+          type: string
+          example: sample city
+          description: ''
+        country:
+          type: string
+          example: sample country
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/CustomFieldPersistVO'
+        decimal_places:
           type: integer
           format: int64
           example: '1'
           description: ''
-        bu_supplier_workgroup_name:
+        postal:
           type: string
-          example: sample bu_supplier_workgroup_name
+          example: sample postal
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupBasicVO'
+        state:
+          type: string
+          example: sample state
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupUpdPersistVO'
+    WorkgroupExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupExpandVO'
+    PropertyPaAndAttVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        property_attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
+    WorkgroupSimpleVO:
+      properties:
+        is_default:
+          type: boolean
+          example: 'false'
+          description: ''
+        parent_workgroup:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupBaseVO'
+        workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupSimpleVO'
+    ClientWorkgroupSimpleVO:
+      properties:
+        client_ac_workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        client_workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        client_workgroup_name:
+          type: string
+          example: sample client_workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupSimpleVO'
+    SupplierWorkgroupListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SupplierWorkgroupSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupListVO'
+    ClientWorkgroupExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/ClientWorkgroupDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupExpandVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    ClientWorkgroupDetailVO:
+      properties:
+        client_ac_workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        client_workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        client_workgroup_name:
+          type: string
+          example: sample client_workgroup_name
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        margin_percent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        markup:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        markup_percent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupDetailVO'
     SupplierWorkgroupSimpleVO:
       properties:
         bu_supplier_workgroup_id:
@@ -760,8 +947,6 @@ components:
           example: sample supplier_workgroup_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupSimpleVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
     SupplierWorkgroupExpandVO:
       properties:
         result:
@@ -777,86 +962,18 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupExpandVO'
-    WorkgroupListVO:
+    WorkgroupBaseVO:
       properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/WorkgroupSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupListVO'
-    SupplierWorkgroupListVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/SupplierWorkgroupSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupListVO'
-    ClientWorkgroupDetailVO:
-      properties:
-        client_ac_workgroup_id:
+        workgroup_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        client_workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        client_workgroup_name:
+        workgroup_name:
           type: string
-          example: sample client_workgroup_name
+          example: sample workgroup_name
           description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/PropertyPaAndAttVO'
-        margin_percent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        markup:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        markup_percent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupDetailVO'
-    WorkgroupExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/WorkgroupDetailVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupExpandVO'
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupBaseVO'
     WorkgroupHTTPStatusVO:
       properties:
         status_code:
@@ -878,6 +995,69 @@ components:
           example: sample workgroup_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.WorkgroupHTTPStatusVO'
+    CustomFieldPersistVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    SupplierWorkgroupDetailVO:
+      properties:
+        additional_workgroups_contain_same_supplier:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SupplierWorkgroupBasicVO'
+        bu_supplier_workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        bu_supplier_workgroup_name:
+          type: string
+          example: sample bu_supplier_workgroup_name
+          description: ''
+        client_workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        client_workgroup_name:
+          type: string
+          example: sample client_workgroup_name
+          description: ''
+        is_approved:
+          type: boolean
+          example: 'false'
+          description: ''
+        supplier_code:
+          type: string
+          example: sample supplier_code
+          description: ''
+        supplier_workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        supplier_workgroup_name:
+          type: string
+          example: sample supplier_workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupDetailVO'
     WorkgroupDetailVO:
       properties:
         address_line1:
@@ -935,82 +1115,6 @@ components:
           example: sample workgroup_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.WorkgroupDetailVO'
-    WorkgroupBaseVO:
-      properties:
-        workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        workgroup_name:
-          type: string
-          example: sample workgroup_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupBaseVO'
-    WorkgroupSimpleVO:
-      properties:
-        is_default:
-          type: boolean
-          example: 'false'
-          description: ''
-        parent_workgroup:
-          description: ''
-          $ref: '#/components/schemas/WorkgroupBaseVO'
-        workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        workgroup_name:
-          type: string
-          example: sample workgroup_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupSimpleVO'
-    WorkgroupUpdPersistVO:
-      properties:
-        address_line1:
-          type: string
-          example: sample address_line1
-          description: ''
-        address_line2:
-          type: string
-          example: sample address_line2
-          description: ''
-        address_line3:
-          type: string
-          example: sample address_line3
-          description: ''
-        city:
-          type: string
-          example: sample city
-          description: ''
-        country:
-          type: string
-          example: sample country
-          description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/CustomFieldPersistVO'
-        decimal_places:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        postal:
-          type: string
-          example: sample postal
-          description: ''
-        state:
-          type: string
-          example: sample state
-          description: ''
-        workgroup_name:
-          type: string
-          example: sample workgroup_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupUpdPersistVO'
     ClientWorkgroupListVO:
       properties:
         results:
@@ -1028,103 +1132,25 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupListVO'
-    ClientWorkgroupSimpleVO:
+    WorkgroupListVO:
       properties:
-        client_ac_workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        client_workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        client_workgroup_name:
-          type: string
-          example: sample client_workgroup_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupSimpleVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    CustomFieldPersistVO:
-      properties:
-        date_value:
-          type: string
-          format: date
-          description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        string_value:
-          type: string
-          example: sample string_value
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
-    PropertyPaAndAttVO:
-      properties:
-        date_value:
-          type: string
-          format: date
-          description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        property_attribute_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        string_value:
-          type: string
-          example: sample string_value
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
-    ClientWorkgroupExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/ClientWorkgroupDetailVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ClientWorkgroupExpandVO'
-    SupplierWorkgroupDetailVO:
-      properties:
-        additional_workgroups_contain_same_supplier:
+        results:
           type: array
           description: ''
           items:
-            $ref: '#/components/schemas/SupplierWorkgroupBasicVO'
+            $ref: '#/components/schemas/WorkgroupSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupListVO'
+    SupplierWorkgroupBasicVO:
+      properties:
         bu_supplier_workgroup_id:
           type: integer
           format: int64
@@ -1134,33 +1160,7 @@ components:
           type: string
           example: sample bu_supplier_workgroup_name
           description: ''
-        client_workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        client_workgroup_name:
-          type: string
-          example: sample client_workgroup_name
-          description: ''
-        is_approved:
-          type: boolean
-          example: 'false'
-          description: ''
-        supplier_code:
-          type: string
-          example: sample supplier_code
-          description: ''
-        supplier_workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        supplier_workgroup_name:
-          type: string
-          example: sample supplier_workgroup_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupDetailVO'
+      description: 'Java type: com.noosh.nooshapi.vo.SupplierWorkgroupBasicVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

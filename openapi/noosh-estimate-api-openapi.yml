@@ -335,80 +335,45 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    ProjectBaseVO:
+    EstimateExpandVO:
       properties:
-        project_id:
+        result:
+          description: ''
+          $ref: '#/components/schemas/EstimateDetailsVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateExpandVO'
+    BreakoutVO:
+      properties:
+        breakout_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        project_name:
+        breakout_name:
           type: string
-          example: sample project_name
+          example: sample breakout_name
           description: ''
-        project_number:
-          type: string
-          example: sample project_number
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
-    WorkgroupBaseVO:
-      properties:
-        workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        workgroup_name:
-          type: string
-          example: sample workgroup_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupBaseVO'
-    EstimateItemPriceVO:
-      properties:
-        add_price:
+        breakout_pre_markup:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
-        breakouts:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/BreakoutVO'
-        em_estimate_item_price_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        item_option:
-          description: ''
-          $ref: '#/components/schemas/ItemOptionVO'
-        price:
+        breakout_price:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
-        shipping:
+        transactional_breakout_pre_markup:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
-        tax:
+        transactional_breakout_price:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
-        total_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_add_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_shipping:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_tax:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_total_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.EstimateItemPriceVO'
+      description: 'Java type: com.noosh.nooshapi.vo.BreakoutVO'
     EstimateItemPO:
       properties:
         paper_items:
@@ -467,183 +432,6 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.po.EstimateItemPO'
-    EstimateListExpandVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/EstimateBaseVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.EstimateListExpandVO'
-    RfeBaseVO:
-      properties:
-        rfe_due_date:
-          type: string
-          format: date
-          description: ''
-        rfe_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        rfe_title:
-          type: string
-          example: sample rfe_title
-          description: ''
-        status:
-          type: string
-          example: sample status
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfeBaseVO'
-    PaperItemPO:
-      properties:
-        min_uom_qty:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        paper_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        price_1:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        price_2:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        price_3:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        price_4:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        price_5:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        price_per_tonne:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        qty_uom:
-          type: string
-          example: sample qty_uom
-          description: ''
-        quantity_1:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_2:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_3:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_4:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_5:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        size:
-          type: string
-          example: sample size
-          description: ''
-        sku:
-          type: string
-          example: sample sku
-          description: ''
-        unit_price_1:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        unit_price_2:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        unit_price_3:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        unit_price_4:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        unit_price_5:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.domain.nooshapi.persist.po.PaperItemPO'
-    EstimateExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/EstimateDetailsVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.EstimateExpandVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    EstimateItemDetailsVO:
-      properties:
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/PropertyPaAndAttVO'
-        estimate_item_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        option_prices:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/EstimateItemPriceVO'
-        pc_job_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_name:
-          type: string
-          example: sample spec_name
-          description: ''
-        spec_reference:
-          type: string
-          example: sample spec_reference
-          description: ''
-        spec_reference_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.EstimateItemDetailsVO'
     ItemOptionVO:
       properties:
         item_option_id:
@@ -656,120 +444,6 @@ components:
           example: sample quantity
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ItemOptionVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    BreakoutVO:
-      properties:
-        breakout_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        breakout_name:
-          type: string
-          example: sample breakout_name
-          description: ''
-        breakout_pre_markup:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        breakout_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_breakout_pre_markup:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_breakout_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.BreakoutVO'
-    EstimateBaseVO:
-      properties:
-        create_date:
-          type: string
-          format: date
-          description: ''
-        currency:
-          type: string
-          example: sample currency
-          description: ''
-        estimate_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        estimate_title:
-          type: string
-          example: sample estimate_title
-          description: ''
-        expiration_date:
-          type: string
-          format: date
-          description: ''
-        project:
-          description: ''
-          $ref: '#/components/schemas/ProjectBaseVO'
-        rfe:
-          description: ''
-          $ref: '#/components/schemas/RfeBaseVO'
-        status:
-          type: string
-          example: sample status
-          description: ''
-        submit_date:
-          type: string
-          format: date
-          description: ''
-        supplier_workgroup:
-          description: ''
-          $ref: '#/components/schemas/WorkgroupBaseVO'
-        transactional_currency:
-          type: string
-          example: sample transactional_currency
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.EstimateBaseVO'
-    EstimatePO:
-      properties:
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        description:
-          type: string
-          example: sample description
-          description: ''
-        estimate_items:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/EstimateItemPO'
-        estimate_title:
-          type: string
-          example: sample estimate_title
-          description: ''
-        expiration_date:
-          type: string
-          format: date
-          description: ''
-        owner_reference:
-          type: string
-          example: sample owner_reference
-          description: ''
-        rfe_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.po.EstimatePO'
     EstimateDetailsVO:
       properties:
         comments:
@@ -874,6 +548,332 @@ components:
           example: sample string_value
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
+    EstimateItemPriceVO:
+      properties:
+        add_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        breakouts:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/BreakoutVO'
+        em_estimate_item_price_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        item_option:
+          description: ''
+          $ref: '#/components/schemas/ItemOptionVO'
+        price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        total_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_add_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_total_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateItemPriceVO'
+    RfeBaseVO:
+      properties:
+        rfe_due_date:
+          type: string
+          format: date
+          description: ''
+        rfe_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfe_title:
+          type: string
+          example: sample rfe_title
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeBaseVO'
+    EstimateListExpandVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/EstimateBaseVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateListExpandVO'
+    EstimateBaseVO:
+      properties:
+        create_date:
+          type: string
+          format: date
+          description: ''
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        estimate_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        estimate_title:
+          type: string
+          example: sample estimate_title
+          description: ''
+        expiration_date:
+          type: string
+          format: date
+          description: ''
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectBaseVO'
+        rfe:
+          description: ''
+          $ref: '#/components/schemas/RfeBaseVO'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        supplier_workgroup:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupBaseVO'
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateBaseVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    EstimatePO:
+      properties:
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        description:
+          type: string
+          example: sample description
+          description: ''
+        estimate_items:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/EstimateItemPO'
+        estimate_title:
+          type: string
+          example: sample estimate_title
+          description: ''
+        expiration_date:
+          type: string
+          format: date
+          description: ''
+        owner_reference:
+          type: string
+          example: sample owner_reference
+          description: ''
+        rfe_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.EstimatePO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    PaperItemPO:
+      properties:
+        min_uom_qty:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        paper_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        price_1:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_2:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_3:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_4:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_5:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        price_per_tonne:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        qty_uom:
+          type: string
+          example: sample qty_uom
+          description: ''
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        size:
+          type: string
+          example: sample size
+          description: ''
+        sku:
+          type: string
+          example: sample sku
+          description: ''
+        unit_price_1:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_price_2:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_price_3:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_price_4:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_price_5:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.PaperItemPO'
+    EstimateItemDetailsVO:
+      properties:
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        estimate_item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        option_prices:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/EstimateItemPriceVO'
+        pc_job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        spec_reference:
+          type: string
+          example: sample spec_reference
+          description: ''
+        spec_reference_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateItemDetailsVO'
+    WorkgroupBaseVO:
+      properties:
+        workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupBaseVO'
+    ProjectBaseVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+        project_number:
+          type: string
+          example: sample project_number
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

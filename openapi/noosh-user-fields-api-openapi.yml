@@ -204,23 +204,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    ProjectHomeUserFieldsListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/UserFieldsSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectHomeUserFieldsListVO'
     HTTPStatusVO:
       properties:
         status_code:
@@ -262,6 +245,23 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.UserFieldsSimpleVO'
+    ProjectHomeUserFieldsListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/UserFieldsSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectHomeUserFieldsListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

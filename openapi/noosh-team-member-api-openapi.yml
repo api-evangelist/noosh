@@ -336,7 +336,7 @@ paths:
       tags:
       - Team Member
       summary: Deprecated, please use 1.1 Version
-      operationId: postTeamMemberOfProject
+      operationId: postV1WorkgroupsByWorkgroupIdProjectsByProjectIdTeammembers
       parameters:
       - name: workgroup_id
         in: path
@@ -453,6 +453,8 @@ paths:
           text/csv:
             schema:
               $ref: '#/components/schemas/ContactUserVO'
+      x-operation-id-source: normalized
+      x-operation-id-original: postTeamMemberOfProject
   /v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers/{teammember_id}:
     delete:
       tags:
@@ -560,6 +562,47 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    TeamMemberBaseInfVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+        teammember_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamMemberBaseInfVO'
+    RoleSimpleVO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        role_name:
+          type: string
+          example: sample role_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     TeamMemberSimpleVO:
       properties:
         company_name:
@@ -597,30 +640,6 @@ components:
           example: sample workgroup_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TeamMemberSimpleVO'
-    UserPersonVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-        user_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.UserPersonVO'
     V1x1InvitedTeamMemberResultsVO:
       properties:
         results:
@@ -656,6 +675,46 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.po.TeamMemberPO'
+    UserPersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UserPersonVO'
+    ContactUserVO:
+      required:
+      - role_id
+      - user_id
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ContactUserVO'
     TeamMemberListVO:
       properties:
         results:
@@ -673,46 +732,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TeamMemberListVO'
-    ContactUserVO:
-      required:
-      - role_id
-      - user_id
-      properties:
-        role_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        user_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ContactUserVO'
-    RoleSimpleVO:
-      properties:
-        role_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        role_name:
-          type: string
-          example: sample role_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     V1x1InvitedTeamMemberVO:
       properties:
         role:
@@ -731,23 +750,6 @@ components:
           example: 'false'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberVO'
-    TeamMemberBaseInfVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-        teammember_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TeamMemberBaseInfVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

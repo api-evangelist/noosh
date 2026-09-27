@@ -204,6 +204,61 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    ProductTypeVO:
+      properties:
+        label:
+          type: string
+          example: sample label
+          description: ''
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
+    SpecTypeVO:
+      properties:
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_type_name:
+          type: string
+          example: sample spec_type_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecTypeVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
     SpecTemplateSimpleVO:
       properties:
         created_by:
@@ -284,37 +339,6 @@ components:
           description: ''
           $ref: '#/components/schemas/SpecTypeVO'
       description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateDetailVO'
-    ProductTypeVO:
-      properties:
-        label:
-          type: string
-          example: sample label
-          description: ''
-        product_type_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
-    PersonVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
     SpecTemplateListVO:
       properties:
         results:
@@ -332,18 +356,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateListVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     SpecTemplateExpandVO:
       properties:
         result:
@@ -359,18 +371,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SpecTemplateExpandVO'
-    SpecTypeVO:
-      properties:
-        spec_type_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_type_name:
-          type: string
-          example: sample spec_type_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecTypeVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

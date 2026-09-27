@@ -214,21 +214,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    RfqExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/RfqDetailsVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfqExpandVO'
     QuoteBaseVO:
       properties:
         currency:
@@ -263,24 +248,33 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.QuoteBaseVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    RfqItemBaseVO:
+    HTTPStatusVO:
       properties:
-        job_id:
+        status_code:
           type: integer
-          format: int64
+          format: int32
           example: '1'
           description: ''
-        rfq_item_id:
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    RfqExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/RfqDetailsVO'
+        status_code:
           type: integer
-          format: int64
+          format: int32
           example: '1'
           description: ''
-        spec:
+        status_reason:
+          type: string
+          example: sample status_reason
           description: ''
-          $ref: '#/components/schemas/ErgoSpecSimpleVO'
-      description: 'Java type: com.noosh.nooshapi.vo.RfqItemBaseVO'
+      description: 'Java type: com.noosh.nooshapi.vo.RfqExpandVO'
     ErgoSpecSimpleVO:
       properties:
         is_active:
@@ -386,18 +380,6 @@ components:
           example: sample status
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfqDetailsVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     RfqSimpleVO:
       properties:
         quotes:
@@ -423,6 +405,24 @@ components:
           example: sample status
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfqSimpleVO'
+    RfqItemBaseVO:
+      properties:
+        job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfq_item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec:
+          description: ''
+          $ref: '#/components/schemas/ErgoSpecSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.RfqItemBaseVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
     RfqListVO:
       properties:
         result:

@@ -468,317 +468,6 @@ paths:
               $ref: '#/components/schemas/ShipmentLocationPersistVO'
 components:
   schemas:
-    ShipmentLocationPostPersistVO:
-      properties:
-        address_line1:
-          type: string
-          example: sample address_line1
-          description: ''
-        address_line2:
-          type: string
-          example: sample address_line2
-          description: ''
-        address_line3:
-          type: string
-          example: sample address_line3
-          description: ''
-        batch_label:
-          type: string
-          example: sample batch_label
-          description: ''
-        city:
-          type: string
-          example: sample city
-          description: ''
-        company_name:
-          type: string
-          example: sample company_name
-          description: ''
-        country_iso_code:
-          type: string
-          example: sample country_iso_code
-          description: ''
-        delivery_date:
-          type: string
-          format: date
-          description: ''
-        description_or_title:
-          type: string
-          example: sample description_or_title
-          description: ''
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        inner_carton_label:
-          type: string
-          example: sample inner_carton_label
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-        outer_carton_label:
-          type: string
-          example: sample outer_carton_label
-          description: ''
-        pallet_lablel:
-          type: string
-          example: sample pallet_lablel
-          description: ''
-        poof_type:
-          type: string
-          example: sample poof_type
-          description: ''
-        postal_code:
-          type: string
-          example: sample postal_code
-          description: ''
-        request_type:
-          type: string
-          example: sample request_type
-          description: ''
-        requested_quantity:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        shipment_custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/CustomFieldPersistVO'
-        shipment_request_custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/CustomFieldPersistVO'
-        shipping_carrier:
-          type: string
-          example: sample shipping_carrier
-          description: ''
-        shipping_instruction:
-          type: string
-          example: sample shipping_instruction
-          description: ''
-        shpping_method:
-          type: string
-          example: sample shpping_method
-          description: ''
-        spec_ids:
-          type: string
-          example: sample spec_ids
-          description: ''
-        state:
-          type: string
-          example: sample state
-          description: ''
-        work_phone_number:
-          type: string
-          example: sample work_phone_number
-          description: ''
-        workgroup_name:
-          type: string
-          example: sample workgroup_name
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ShipmentLocationPostPersistVO'
-    ShipmentLocationsPOSTResultVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/ShipmentLocationsPOSTVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ShipmentLocationsPOSTResultVO'
-    ShipmentDetailVO:
-      properties:
-        locations:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/ShipmentRequestBaseVO'
-        locations_count:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        qty_received:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        qty_requested:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        qty_shipped:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        received_date:
-          type: string
-          format: date
-          description: ''
-        shipment_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        shipment_status:
-          type: string
-          example: sample shipment_status
-          description: ''
-        shipped_date:
-          type: string
-          format: date
-          description: ''
-        spec:
-          description: ''
-          $ref: '#/components/schemas/SpecBaseVO'
-      description: 'Java type: com.noosh.nooshapi.vo.ShipmentDetailVO'
-    ShipmentLocationsPOSTVO:
-      properties:
-        location_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        shipment_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ShipmentLocationsPOSTVO'
-    SpecBaseVO:
-      properties:
-        job_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        reference_number:
-          type: string
-          example: sample reference_number
-          description: ''
-        spec_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_name:
-          type: string
-          example: sample spec_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecBaseVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    PropertyPaAndAttVO:
-      properties:
-        date_value:
-          type: string
-          format: date
-          description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        property_attribute_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        string_value:
-          type: string
-          example: sample string_value
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    ShipmentSimpleVO:
-      properties:
-        locations_count:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        qty_received:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        qty_requested:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        qty_shipped:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        received_date:
-          type: string
-          format: date
-          description: ''
-        shipment_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        shipment_status:
-          type: string
-          example: sample shipment_status
-          description: ''
-        shipped_date:
-          type: string
-          format: date
-          description: ''
-        spec:
-          description: ''
-          $ref: '#/components/schemas/SpecBaseVO'
-      description: 'Java type: com.noosh.nooshapi.vo.ShipmentSimpleVO'
     ShipmentRequestBaseVO:
       properties:
         city:
@@ -949,42 +638,24 @@ components:
           example: sample workgroup_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ShipmentRequestBaseVO'
-    CustomFieldPersistVO:
+    ShipmentLocationsPOSTVO:
       properties:
-        date_value:
-          type: string
-          format: date
-          description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        string_value:
-          type: string
-          example: sample string_value
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
-    ShipmentExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/ShipmentDetailVO'
-        resut:
-          description: ''
-          $ref: '#/components/schemas/ShipmentDetailVO'
-        status_code:
+        location_id:
           type: integer
-          format: int32
+          format: int64
           example: '1'
           description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
+        shipment_id:
+          type: integer
+          format: int64
+          example: '1'
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ShipmentExpandVO'
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ShipmentLocationsPOSTVO'
     ShipmentLocationPersistVO:
       properties:
         due_date:
@@ -1022,6 +693,137 @@ components:
           example: sample type
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ShipmentLocationPersistVO'
+    ShipmentSimpleVO:
+      properties:
+        locations_count:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        qty_received:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        qty_requested:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        qty_shipped:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        received_date:
+          type: string
+          format: date
+          description: ''
+        shipment_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        shipment_status:
+          type: string
+          example: sample shipment_status
+          description: ''
+        shipped_date:
+          type: string
+          format: date
+          description: ''
+        spec:
+          description: ''
+          $ref: '#/components/schemas/SpecBaseVO'
+      description: 'Java type: com.noosh.nooshapi.vo.ShipmentSimpleVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    PropertyPaAndAttVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        property_attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
+    ShipmentDetailVO:
+      properties:
+        locations:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/ShipmentRequestBaseVO'
+        locations_count:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        qty_received:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        qty_requested:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        qty_shipped:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        received_date:
+          type: string
+          format: date
+          description: ''
+        shipment_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        shipment_status:
+          type: string
+          example: sample shipment_status
+          description: ''
+        shipped_date:
+          type: string
+          format: date
+          description: ''
+        spec:
+          description: ''
+          $ref: '#/components/schemas/SpecBaseVO'
+      description: 'Java type: com.noosh.nooshapi.vo.ShipmentDetailVO'
     ShipmentListVO:
       properties:
         result:
@@ -1039,6 +841,204 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ShipmentListVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    ShipmentLocationPostPersistVO:
+      properties:
+        address_line1:
+          type: string
+          example: sample address_line1
+          description: ''
+        address_line2:
+          type: string
+          example: sample address_line2
+          description: ''
+        address_line3:
+          type: string
+          example: sample address_line3
+          description: ''
+        batch_label:
+          type: string
+          example: sample batch_label
+          description: ''
+        city:
+          type: string
+          example: sample city
+          description: ''
+        company_name:
+          type: string
+          example: sample company_name
+          description: ''
+        country_iso_code:
+          type: string
+          example: sample country_iso_code
+          description: ''
+        delivery_date:
+          type: string
+          format: date
+          description: ''
+        description_or_title:
+          type: string
+          example: sample description_or_title
+          description: ''
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        inner_carton_label:
+          type: string
+          example: sample inner_carton_label
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+        outer_carton_label:
+          type: string
+          example: sample outer_carton_label
+          description: ''
+        pallet_lablel:
+          type: string
+          example: sample pallet_lablel
+          description: ''
+        poof_type:
+          type: string
+          example: sample poof_type
+          description: ''
+        postal_code:
+          type: string
+          example: sample postal_code
+          description: ''
+        request_type:
+          type: string
+          example: sample request_type
+          description: ''
+        requested_quantity:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        shipment_custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/CustomFieldPersistVO'
+        shipment_request_custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/CustomFieldPersistVO'
+        shipping_carrier:
+          type: string
+          example: sample shipping_carrier
+          description: ''
+        shipping_instruction:
+          type: string
+          example: sample shipping_instruction
+          description: ''
+        shpping_method:
+          type: string
+          example: sample shpping_method
+          description: ''
+        spec_ids:
+          type: string
+          example: sample spec_ids
+          description: ''
+        state:
+          type: string
+          example: sample state
+          description: ''
+        work_phone_number:
+          type: string
+          example: sample work_phone_number
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ShipmentLocationPostPersistVO'
+    ShipmentLocationsPOSTResultVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/ShipmentLocationsPOSTVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ShipmentLocationsPOSTResultVO'
+    SpecBaseVO:
+      properties:
+        job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecBaseVO'
+    ShipmentExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/ShipmentDetailVO'
+        resut:
+          description: ''
+          $ref: '#/components/schemas/ShipmentDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ShipmentExpandVO'
+    CustomFieldPersistVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

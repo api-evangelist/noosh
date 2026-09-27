@@ -335,6 +335,54 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    EstimateSimpleVO:
+      properties:
+        estimate_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        estimate_title:
+          type: string
+          example: sample estimate_title
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.EstimateSimpleVO'
+    RfeItemSimpleVO:
+      properties:
+        rfe_item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeItemSimpleVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    RfeItemOptionVO:
+      properties:
+        item_option_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity_index:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeItemOptionVO'
     RfeDetailsVO:
       properties:
         description:
@@ -400,6 +448,39 @@ components:
           example: sample title
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfeDetailsVO'
+    RfeSpecPO:
+      properties:
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.RfeSpecPO'
     RfePO:
       properties:
         description:
@@ -439,6 +520,40 @@ components:
             format: int64
             example: '1'
       description: 'Java type: com.noosh.domain.nooshapi.persist.po.RfePO'
+    RfeExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/RfeDetailsVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeExpandVO'
+    RfeListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfeSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfeListVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
     RfeItemSimpleEXTVO:
       properties:
         job_id:
@@ -466,13 +581,13 @@ components:
           example: sample spec_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfeItemSimpleEXTVO'
-    RfeListVO:
+    RfqVO:
       properties:
-        results:
-          type: array
+        rfq_id:
+          type: integer
+          format: int64
+          example: '1'
           description: ''
-          items:
-            $ref: '#/components/schemas/RfeSimpleVO'
         status_code:
           type: integer
           format: int32
@@ -482,7 +597,7 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfeListVO'
+      description: 'Java type: com.noosh.nooshapi.vo.RfqVO'
     RfeSuEstimateSimpleVO:
       properties:
         supplier_estimates:
@@ -500,8 +615,6 @@ components:
           example: sample workgroup_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfeSuEstimateSimpleVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
     RfeSimpleVO:
       properties:
         estimate_due_date:
@@ -528,119 +641,6 @@ components:
           items:
             $ref: '#/components/schemas/RfeSuEstimateSimpleVO'
       description: 'Java type: com.noosh.nooshapi.vo.RfeSimpleVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    RfeItemOptionVO:
-      properties:
-        item_option_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        quantity_index:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfeItemOptionVO'
-    RfqVO:
-      properties:
-        rfq_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfqVO'
-    RfeExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/RfeDetailsVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfeExpandVO'
-    RfeItemSimpleVO:
-      properties:
-        rfe_item_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfeItemSimpleVO'
-    RfeSpecPO:
-      properties:
-        quantity_1:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_2:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_3:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_4:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_5:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.po.RfeSpecPO'
-    EstimateSimpleVO:
-      properties:
-        estimate_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        estimate_title:
-          type: string
-          example: sample estimate_title
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.EstimateSimpleVO'
   securitySchemes:
     HTTP_BASIC:
       type: http
