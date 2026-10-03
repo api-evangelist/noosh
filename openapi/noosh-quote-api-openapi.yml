@@ -542,186 +542,6 @@ paths:
       x-operation-id-original: getQuoteList
 components:
   schemas:
-    ObjectStateSimpleVO:
-      properties:
-        object_state_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        object_state_name:
-          type: string
-          example: sample object_state_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ObjectStateSimpleVO'
-    QuoteItemDetailVO:
-      properties:
-        chosen_quantity:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        completion_date:
-          type: string
-          format: date
-          description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/PropertyPaAndAttVO'
-        item_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        item_prices:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/QuotePriceDetailVO'
-        item_shipping_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        item_tax_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        item_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        reason_for_quote_selection:
-          type: string
-          example: sample reason_for_quote_selection
-          description: ''
-        show_cost_prices_and_markup:
-          type: boolean
-          example: 'false'
-          description: ''
-        spec:
-          description: ''
-          $ref: '#/components/schemas/SpecBaseVO'
-        transactional_item_shipping_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_item_tax_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_item_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        vat_code:
-          type: string
-          example: sample vat_code
-          description: ''
-        vat_rate:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.QuoteItemDetailVO'
-    RfqBaseVO:
-      properties:
-        received_date:
-          type: string
-          format: date
-          description: ''
-        rfq_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        rfq_title:
-          type: string
-          example: sample rfq_title
-          description: ''
-        status:
-          type: string
-          example: sample status
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfqBaseVO'
-    BreakoutVO:
-      properties:
-        breakout_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        breakout_name:
-          type: string
-          example: sample breakout_name
-          description: ''
-        breakout_pre_markup:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        breakout_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_breakout_pre_markup:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_breakout_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.BreakoutVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    PropertyPaAndAttVO:
-      properties:
-        date_value:
-          type: string
-          format: date
-          description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        property_attribute_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        string_value:
-          type: string
-          example: sample string_value
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
-    QuotePriceSourceVO:
-      description: 'Java type: com.noosh.nooshapi.vo.QuotePriceSourceVO'
-    ObjectStateListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/ObjectStateSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ObjectStateListVO'
     QuotePutPersistVO:
       properties:
         action:
@@ -742,77 +562,6 @@ components:
           example: sample state_change_comments
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.vo.QuotePutPersistVO'
-    QuoteSimpleVO:
-      properties:
-        currency:
-          type: string
-          example: sample currency
-          description: ''
-        grand_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        quote_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quote_title:
-          type: string
-          example: sample quote_title
-          description: ''
-        rfq:
-          description: ''
-          $ref: '#/components/schemas/RfqBaseVO'
-        status:
-          type: string
-          example: sample status
-          description: ''
-        submit_date:
-          type: string
-          format: date
-          description: ''
-        transactional_currency:
-          type: string
-          example: sample transactional_currency
-          description: ''
-        transactional_grand_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.QuoteSimpleVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    QuoteListVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/QuoteSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.QuoteListVO'
-    QuoteExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/QuoteDetailVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.QuoteExpandVO'
     QuoteDetailVO:
       properties:
         client:
@@ -921,6 +670,34 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.QuoteDetailVO'
+    PropertyPaAndAttVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        property_attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
     QuotePriceDetailVO:
       properties:
         breakouts:
@@ -1011,43 +788,8 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.QuotePriceDetailVO'
-    ProjectBaseVO:
-      properties:
-        project_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        project_name:
-          type: string
-          example: sample project_name
-          description: ''
-        project_number:
-          type: string
-          example: sample project_number
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
-    SpecBaseVO:
-      properties:
-        job_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        reference_number:
-          type: string
-          example: sample reference_number
-          description: ''
-        spec_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_name:
-          type: string
-          example: sample spec_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecBaseVO'
+    QuotePriceSourceVO:
+      description: 'Java type: com.noosh.nooshapi.vo.QuotePriceSourceVO'
     QuoteOfWgLevelSimpleVO:
       properties:
         currency:
@@ -1088,6 +830,264 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.QuoteOfWgLevelSimpleVO'
+    QuoteExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/QuoteDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteExpandVO'
+    RfqBaseVO:
+      properties:
+        received_date:
+          type: string
+          format: date
+          description: ''
+        rfq_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        rfq_title:
+          type: string
+          example: sample rfq_title
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfqBaseVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    QuoteListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/QuoteSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteListVO'
+    ObjectStateListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/ObjectStateSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ObjectStateListVO'
+    SpecBaseVO:
+      properties:
+        job_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecBaseVO'
+    ProjectBaseVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+        project_number:
+          type: string
+          example: sample project_number
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
+    BreakoutVO:
+      properties:
+        breakout_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        breakout_name:
+          type: string
+          example: sample breakout_name
+          description: ''
+        breakout_pre_markup:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        breakout_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_breakout_pre_markup:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_breakout_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.BreakoutVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    QuoteSimpleVO:
+      properties:
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quote_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quote_title:
+          type: string
+          example: sample quote_title
+          description: ''
+        rfq:
+          description: ''
+          $ref: '#/components/schemas/RfqBaseVO'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        submit_date:
+          type: string
+          format: date
+          description: ''
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+        transactional_grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteSimpleVO'
+    QuoteItemDetailVO:
+      properties:
+        chosen_quantity:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        completion_date:
+          type: string
+          format: date
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        item_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        item_prices:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/QuotePriceDetailVO'
+        item_shipping_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        item_tax_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        item_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        reason_for_quote_selection:
+          type: string
+          example: sample reason_for_quote_selection
+          description: ''
+        show_cost_prices_and_markup:
+          type: boolean
+          example: 'false'
+          description: ''
+        spec:
+          description: ''
+          $ref: '#/components/schemas/SpecBaseVO'
+        transactional_item_shipping_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_item_tax_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_item_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        vat_code:
+          type: string
+          example: sample vat_code
+          description: ''
+        vat_rate:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.QuoteItemDetailVO'
+    ObjectStateSimpleVO:
+      properties:
+        object_state_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        object_state_name:
+          type: string
+          example: sample object_state_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ObjectStateSimpleVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

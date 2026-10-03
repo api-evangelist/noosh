@@ -105,30 +105,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    DeactivationReasonVO:
-      properties:
-        deactivation_reason_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        deactivation_reason_name:
-          type: string
-          example: sample deactivation_reason_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.DeactivationReasonVO'
     DeactivationReasonListVO:
       properties:
         results:
@@ -146,6 +122,30 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.DeactivationReasonListVO'
+    DeactivationReasonVO:
+      properties:
+        deactivation_reason_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        deactivation_reason_name:
+          type: string
+          example: sample deactivation_reason_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.DeactivationReasonVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

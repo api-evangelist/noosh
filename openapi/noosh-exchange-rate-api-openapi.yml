@@ -244,14 +244,6 @@ components:
           example: sample target
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersisitVO'
-    MultiExchangeRatePersistListVO:
-      properties:
-        exchange_rates:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/MultiExchangeRatePersisitVO'
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersistListVO'
     HTTPStatusVO:
       properties:
         status_code:
@@ -264,8 +256,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
     MultiExchangeRateListVO:
       properties:
         status_code:
@@ -278,6 +268,16 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.MultiExchangeRateListVO'
+    MultiExchangeRatePersistListVO:
+      properties:
+        exchange_rates:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/MultiExchangeRatePersisitVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersistListVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
     HTTPStatus:
       description: 'Java type: com.noosh.domain.constant.HTTPStatus'
   securitySchemes:

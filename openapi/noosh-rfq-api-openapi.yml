@@ -248,18 +248,6 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.QuoteBaseVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     RfqExpandVO:
       properties:
         result:
@@ -275,57 +263,22 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfqExpandVO'
-    ErgoSpecSimpleVO:
+    RfqItemBaseVO:
       properties:
-        is_active:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        is_template:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        quantity_1:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity_2:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity_3:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity_4:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity_5:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        reference_number:
-          type: string
-          example: sample reference_number
-          description: ''
-        spec_id:
+        job_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        spec_name:
-          type: string
-          example: sample spec_name
+        rfq_item_id:
+          type: integer
+          format: int64
+          example: '1'
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ergo.ErgoSpecSimpleVO'
+        spec:
+          description: ''
+          $ref: '#/components/schemas/ErgoSpecSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.RfqItemBaseVO'
     RfqDetailsVO:
       properties:
         comments:
@@ -380,6 +333,88 @@ components:
           example: sample status
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfqDetailsVO'
+    RfqListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/RfqSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfqListVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    ErgoSpecSimpleVO:
+      properties:
+        is_active:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        is_template:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        quantity_1:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        quantity_2:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        quantity_3:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        quantity_4:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        quantity_5:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ergo.ErgoSpecSimpleVO'
     RfqSimpleVO:
       properties:
         quotes:
@@ -405,41 +440,6 @@ components:
           example: sample status
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfqSimpleVO'
-    RfqItemBaseVO:
-      properties:
-        job_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        rfq_item_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec:
-          description: ''
-          $ref: '#/components/schemas/ErgoSpecSimpleVO'
-      description: 'Java type: com.noosh.nooshapi.vo.RfqItemBaseVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    RfqListVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/RfqSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfqListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

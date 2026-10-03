@@ -1280,113 +1280,7 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    UserVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-        user_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.UserVO'
-    OrderPO:
-      properties:
-        buyer_user_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/CustomFieldPersistVO'
-        invoice_or_billing_recipient:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        order_completion_date:
-          type: string
-          format: date
-          description: ''
-        order_items:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/OrderItemPersistVO'
-        other_selection_reason:
-          type: string
-          example: sample other_selection_reason
-          description: ''
-        payment_method_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        payment_reference_no:
-          type: string
-          example: sample payment_reference_no
-          description: ''
-        quickOrder:
-          type: boolean
-          example: 'false'
-          description: ''
-        rfeId:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        sellOrder:
-          type: boolean
-          example: 'false'
-          description: ''
-        shipping:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        supplier_reference:
-          type: string
-          example: sample supplier_reference
-          description: ''
-        supplier_selection_reason_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        supplier_user_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        tax:
-          type: string
-          example: sample tax
-          description: ''
-        title:
-          type: string
-          example: sample title
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.po.OrderPO'
-    OrderSimpleVO:
+    OrderWorkgroupLevelSimpleVO:
       properties:
         buyer_workgroup:
           description: ''
@@ -1451,6 +1345,9 @@ components:
             type: integer
             format: int64
             example: '1'
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectBaseVO'
         purchase_method:
           type: string
           example: sample purchase_method
@@ -1480,156 +1377,14 @@ components:
         transactional_grand_total_with_changes:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.OrderSimpleVO'
-    PropertyPaAndAttVO:
+      description: 'Java type: com.noosh.nooshapi.vo.OrderWorkgroupLevelSimpleVO'
+    OrderVO:
       properties:
-        date_value:
-          type: string
-          format: date
-          description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        property_attribute_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        string_value:
-          type: string
-          example: sample string_value
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
-    OrderItemSimpleVO:
-      properties:
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        completion_date:
-          type: string
-          format: date
-          description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/PropertyPaAndAttVO'
-        item_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        item_price:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        shipping:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        spec:
-          description: ''
-          $ref: '#/components/schemas/SpecBaseVO'
-        tax:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_item_price:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        transactional_shipping:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_tax:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_unit_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        unit_description:
-          type: string
-          example: sample unit_description
-          description: ''
-        unit_price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.OrderItemSimpleVO'
-    OrderUpdPersistVO:
-      properties:
-        action:
-          type: string
-          example: sample action
-          description: accept or reject
-        budget_type_field_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/CustomFieldPersistVO'
-        order_completion_date:
-          type: string
-          format: date
-          description: ''
         order_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        other_selection_reason:
-          type: string
-          example: sample other_selection_reason
-          description: ''
-        overs_percent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        payment_method_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        payment_reference_no:
-          type: string
-          example: sample payment_reference_no
-          description: ''
-        reject_reason:
-          type: string
-          example: sample reject_reason
-          description: ''
-        supplier_selection_reason_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        unders_percent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.OrderUpdPersistVO'
-    HTTPStatusVO:
-      properties:
         status_code:
           type: integer
           format: int32
@@ -1639,178 +1394,7 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    OrderWorkgroupLevelListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/OrderWorkgroupLevelSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.OrderWorkgroupLevelListVO'
-    WorkgroupBaseVO:
-      properties:
-        workgroup_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        workgroup_name:
-          type: string
-          example: sample workgroup_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupBaseVO'
-    OrderItemPersistVO:
-      properties:
-        completion_date:
-          type: string
-          format: date
-          description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/CustomFieldPersistVO'
-        ex_tax_value_calculated:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        notes:
-          type: string
-          example: sample notes
-          description: ''
-        per:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        price:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        quantity:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        shipping:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        spec_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_reference_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        tax:
-          type: string
-          example: sample tax
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.OrderItemPersistVO'
-    ProjectBaseVO:
-      properties:
-        project_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        project_name:
-          type: string
-          example: sample project_name
-          description: ''
-        project_number:
-          type: string
-          example: sample project_number
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
-    OrderSimpleBaseVO:
-      properties:
-        buyer_workgroup:
-          description: ''
-          $ref: '#/components/schemas/WorkgroupBaseVO'
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        completion_date:
-          type: string
-          format: date
-          description: ''
-        currency:
-          type: string
-          example: sample currency
-          description: ''
-        grand_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        last_changed:
-          type: string
-          format: date
-          description: ''
-        last_status_change:
-          type: string
-          format: date
-          description: ''
-        order_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        order_number:
-          type: string
-          example: sample order_number
-          description: ''
-        order_title:
-          type: string
-          example: sample order_title
-          description: ''
-        payment_reference:
-          type: string
-          example: sample payment_reference
-          description: ''
-        print_order_ids:
-          type: array
-          description: ''
-          items:
-            type: integer
-            format: int64
-            example: '1'
-        purchase_method:
-          type: string
-          example: sample purchase_method
-          description: ''
-        status:
-          type: string
-          example: sample status
-          description: ''
-        status_comments:
-          type: string
-          example: sample status_comments
-          description: ''
-        supplier_reference:
-          type: string
-          example: sample supplier_reference
-          description: ''
-        supplier_workgroup:
-          description: ''
-          $ref: '#/components/schemas/WorkgroupBaseVO'
-        transactional_currency:
-          type: string
-          example: sample transactional_currency
-          description: ''
-        transactional_grand_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.OrderSimpleBaseVO'
+      description: 'Java type: com.noosh.nooshapi.vo.OrderVO'
     CustomFieldPersistVO:
       properties:
         date_value:
@@ -1829,42 +1413,6 @@ components:
           example: sample string_value
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
-    OrderVO:
-      properties:
-        order_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.OrderVO'
-    OrderListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/OrderSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.OrderListVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
     OrderDetailWorkgroupLevelVO:
       properties:
         accepted_date:
@@ -2068,21 +1616,29 @@ components:
           example: '1.1'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.OrderDetailWorkgroupLevelVO'
-    OrderWorkgroupLevelSimpleVO:
+    SpecBaseVO:
       properties:
-        buyer_workgroup:
+        job_id:
+          type: integer
+          format: int64
+          example: '1'
           description: ''
-          $ref: '#/components/schemas/WorkgroupBaseVO'
-        change_orders:
-          type: array
+        reference_number:
+          type: string
+          example: sample reference_number
           description: ''
-          items:
-            $ref: '#/components/schemas/OrderSimpleBaseVO'
-        closing_change_orders:
-          type: array
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
           description: ''
-          items:
-            $ref: '#/components/schemas/OrderSimpleBaseVO'
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecBaseVO'
+    OrderItemSimpleVO:
+      properties:
         comments:
           type: string
           example: sample comments
@@ -2091,81 +1647,57 @@ components:
           type: string
           format: date
           description: ''
-        currency:
-          type: string
-          example: sample currency
+        custom_fields:
+          type: array
           description: ''
-        grand_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        grand_total_with_changes:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        last_changed:
-          type: string
-          format: date
-          description: ''
-        last_status_change:
-          type: string
-          format: date
-          description: ''
-        order_id:
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        item_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        order_number:
-          type: string
-          example: sample order_number
+        item_price:
+          type: number
+          format: double
+          example: '1.1'
           description: ''
-        order_title:
-          type: string
-          example: sample order_title
+        quantity:
+          type: number
+          format: double
+          example: '1.1'
           description: ''
-        payment_reference:
-          type: string
-          example: sample payment_reference
-          description: ''
-        print_order_ids:
-          type: array
-          description: ''
-          items:
-            type: integer
-            format: int64
-            example: '1'
-        project:
-          description: ''
-          $ref: '#/components/schemas/ProjectBaseVO'
-        purchase_method:
-          type: string
-          example: sample purchase_method
-          description: ''
-        status:
-          type: string
-          example: sample status
-          description: ''
-        status_comments:
-          type: string
-          example: sample status_comments
-          description: ''
-        supplier_reference:
-          type: string
-          example: sample supplier_reference
-          description: ''
-        supplier_workgroup:
-          description: ''
-          $ref: '#/components/schemas/WorkgroupBaseVO'
-        transactional_currency:
-          type: string
-          example: sample transactional_currency
-          description: ''
-        transactional_grand_total:
+        shipping:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
-        transactional_grand_total_with_changes:
+        spec:
+          description: ''
+          $ref: '#/components/schemas/SpecBaseVO'
+        tax:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.OrderWorkgroupLevelSimpleVO'
+        transactional_item_price:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        transactional_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_unit_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        unit_description:
+          type: string
+          example: sample unit_description
+          description: ''
+        unit_price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.OrderItemSimpleVO'
     OrderDetailWithIndicatorVO:
       properties:
         accepted_date:
@@ -2370,6 +1902,152 @@ components:
           example: '1.1'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.OrderDetailWithIndicatorVO'
+    OrderWorkgroupLevelListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/OrderWorkgroupLevelSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.OrderWorkgroupLevelListVO'
+    OrderPO:
+      properties:
+        buyer_user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/CustomFieldPersistVO'
+        invoice_or_billing_recipient:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        order_completion_date:
+          type: string
+          format: date
+          description: ''
+        order_items:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/OrderItemPersistVO'
+        other_selection_reason:
+          type: string
+          example: sample other_selection_reason
+          description: ''
+        payment_method_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        payment_reference_no:
+          type: string
+          example: sample payment_reference_no
+          description: ''
+        quickOrder:
+          type: boolean
+          example: 'false'
+          description: ''
+        rfeId:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        sellOrder:
+          type: boolean
+          example: 'false'
+          description: ''
+        shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        supplier_reference:
+          type: string
+          example: sample supplier_reference
+          description: ''
+        supplier_selection_reason_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        supplier_user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        tax:
+          type: string
+          example: sample tax
+          description: ''
+        title:
+          type: string
+          example: sample title
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.OrderPO'
+    OrderItemPersistVO:
+      properties:
+        completion_date:
+          type: string
+          format: date
+          description: ''
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/CustomFieldPersistVO'
+        ex_tax_value_calculated:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        notes:
+          type: string
+          example: sample notes
+          description: ''
+        per:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        price:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        quantity:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_reference_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        tax:
+          type: string
+          example: sample tax
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.OrderItemPersistVO'
     OrderDetailVO:
       properties:
         accepted_date:
@@ -2585,6 +2263,289 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.OrderExpandWorkgroupLevelVO'
+    PropertyPaAndAttVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        property_attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
+    OrderSimpleVO:
+      properties:
+        buyer_workgroup:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupBaseVO'
+        change_orders:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/OrderSimpleBaseVO'
+        closing_change_orders:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/OrderSimpleBaseVO'
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        completion_date:
+          type: string
+          format: date
+          description: ''
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        grand_total_with_changes:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        last_changed:
+          type: string
+          format: date
+          description: ''
+        last_status_change:
+          type: string
+          format: date
+          description: ''
+        order_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        order_number:
+          type: string
+          example: sample order_number
+          description: ''
+        order_title:
+          type: string
+          example: sample order_title
+          description: ''
+        payment_reference:
+          type: string
+          example: sample payment_reference
+          description: ''
+        print_order_ids:
+          type: array
+          description: ''
+          items:
+            type: integer
+            format: int64
+            example: '1'
+        purchase_method:
+          type: string
+          example: sample purchase_method
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+        status_comments:
+          type: string
+          example: sample status_comments
+          description: ''
+        supplier_reference:
+          type: string
+          example: sample supplier_reference
+          description: ''
+        supplier_workgroup:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupBaseVO'
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+        transactional_grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_grand_total_with_changes:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.OrderSimpleVO'
+    ProjectBaseVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+        project_number:
+          type: string
+          example: sample project_number
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectBaseVO'
+    OrderListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/OrderSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.OrderListVO'
+    OrderSimpleBaseVO:
+      properties:
+        buyer_workgroup:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupBaseVO'
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        completion_date:
+          type: string
+          format: date
+          description: ''
+        currency:
+          type: string
+          example: sample currency
+          description: ''
+        grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        last_changed:
+          type: string
+          format: date
+          description: ''
+        last_status_change:
+          type: string
+          format: date
+          description: ''
+        order_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        order_number:
+          type: string
+          example: sample order_number
+          description: ''
+        order_title:
+          type: string
+          example: sample order_title
+          description: ''
+        payment_reference:
+          type: string
+          example: sample payment_reference
+          description: ''
+        print_order_ids:
+          type: array
+          description: ''
+          items:
+            type: integer
+            format: int64
+            example: '1'
+        purchase_method:
+          type: string
+          example: sample purchase_method
+          description: ''
+        status:
+          type: string
+          example: sample status
+          description: ''
+        status_comments:
+          type: string
+          example: sample status_comments
+          description: ''
+        supplier_reference:
+          type: string
+          example: sample supplier_reference
+          description: ''
+        supplier_workgroup:
+          description: ''
+          $ref: '#/components/schemas/WorkgroupBaseVO'
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+        transactional_grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.OrderSimpleBaseVO'
+    UserVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UserVO'
+    WorkgroupBaseVO:
+      properties:
+        workgroup_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        workgroup_name:
+          type: string
+          example: sample workgroup_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupBaseVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     OrderDetailBaseVO:
       properties:
         accepted_date:
@@ -2764,27 +2725,66 @@ components:
           example: '1.1'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.OrderDetailBaseVO'
-    SpecBaseVO:
+    OrderUpdPersistVO:
       properties:
-        job_id:
+        action:
+          type: string
+          example: sample action
+          description: accept or reject
+        budget_type_field_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        reference_number:
+        comments:
           type: string
-          example: sample reference_number
+          example: sample comments
           description: ''
-        spec_id:
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/CustomFieldPersistVO'
+        order_completion_date:
+          type: string
+          format: date
+          description: ''
+        order_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        spec_name:
+        other_selection_reason:
           type: string
-          example: sample spec_name
+          example: sample other_selection_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecBaseVO'
+        overs_percent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        payment_method_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        payment_reference_no:
+          type: string
+          example: sample payment_reference_no
+          description: ''
+        reject_reason:
+          type: string
+          example: sample reject_reason
+          description: ''
+        supplier_selection_reason_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        unders_percent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.OrderUpdPersistVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
   securitySchemes:
     HTTP_BASIC:
       type: http

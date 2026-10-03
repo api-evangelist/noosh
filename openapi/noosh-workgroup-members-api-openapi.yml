@@ -204,26 +204,8 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    WorkgroupMembersSimpleVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        user_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupMembersSimpleVO'
+    Map:
+      description: 'Java type: java.util.Map'
     HTTPStatusVO:
       properties:
         status_code:
@@ -236,13 +218,11 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    WorkgroupMembersListVO:
+    UserDetailsExpandVO:
       properties:
-        results:
-          type: array
+        result:
           description: ''
-          items:
-            $ref: '#/components/schemas/WorkgroupMembersSimpleVO'
+          $ref: '#/components/schemas/UserDetailsVO'
         status_code:
           type: integer
           format: int32
@@ -252,9 +232,7 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupMembersListVO'
-    Map:
-      description: 'Java type: java.util.Map'
+      description: 'Java type: com.noosh.nooshapi.vo.UserDetailsExpandVO'
     UserDetailsVO:
       properties:
         address:
@@ -310,11 +288,33 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.UserDetailsVO'
-    UserDetailsExpandVO:
+    WorkgroupMembersSimpleVO:
       properties:
-        result:
+        email:
+          type: string
+          example: sample email
           description: ''
-          $ref: '#/components/schemas/UserDetailsVO'
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        user_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupMembersSimpleVO'
+    WorkgroupMembersListVO:
+      properties:
+        results:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/WorkgroupMembersSimpleVO'
         status_code:
           type: integer
           format: int32
@@ -324,7 +324,7 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.UserDetailsExpandVO'
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupMembersListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http
