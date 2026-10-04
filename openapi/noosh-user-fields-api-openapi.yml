@@ -204,35 +204,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    UserFieldsSimpleVO:
-      properties:
-        is_required:
-          type: boolean
-          example: 'false'
-          description: ''
-        label:
-          type: string
-          example: sample label
-          description: ''
-        ordinal_number:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        type:
-          type: string
-          example: sample type
-          description: ''
-        user_field_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.UserFieldsSimpleVO'
     ProjectHomeUserFieldsListVO:
       properties:
         results:
@@ -262,6 +233,35 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    UserFieldsSimpleVO:
+      properties:
+        is_required:
+          type: boolean
+          example: 'false'
+          description: ''
+        label:
+          type: string
+          example: sample label
+          description: ''
+        ordinal_number:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        type:
+          type: string
+          example: sample type
+          description: ''
+        user_field_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UserFieldsSimpleVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

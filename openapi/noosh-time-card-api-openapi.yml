@@ -397,6 +397,18 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     TimeCardReceivedDetailVO:
       properties:
         billable_hours:
@@ -443,91 +455,8 @@ components:
           format: date
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TimeCardReceivedDetailVO'
-    PersonVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    TimeCardLineVO:
-      properties:
-        activity_name:
-          type: string
-          example: sample activity_name
-          description: ''
-        day1_hours_spent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        day2_hours_spent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        day3_hours_spent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        day4_hours_spent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        day5_hours_spent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        day6_hours_spent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        day7_hours_spent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        project:
-          description: ''
-          $ref: '#/components/schemas/ProjectTimeCardVO'
-        task:
-          description: ''
-          $ref: '#/components/schemas/TaskTimeCardVO'
-        time_card_line_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        total_hours_spent:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.TimeCardLineVO'
-    TaskTimeCardVO:
-      properties:
-        task_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        task_name:
-          type: string
-          example: sample task_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TaskTimeCardVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
     TimeCardDetailVO:
       properties:
         billable_hours:
@@ -571,8 +500,18 @@ components:
           format: date
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TimeCardDetailVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
+    ProjectTimeCardVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_name:
+          type: string
+          example: sample project_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectTimeCardVO'
     TimeCardSimpleVO:
       properties:
         is_submit:
@@ -605,18 +544,79 @@ components:
           format: date
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TimeCardSimpleVO'
-    ProjectTimeCardVO:
+    PersonVO:
       properties:
-        project_id:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+    TaskTimeCardVO:
+      properties:
+        task_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        project_name:
+        task_name:
           type: string
-          example: sample project_name
+          example: sample task_name
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectTimeCardVO'
+      description: 'Java type: com.noosh.nooshapi.vo.TaskTimeCardVO'
+    TimeCardLineVO:
+      properties:
+        activity_name:
+          type: string
+          example: sample activity_name
+          description: ''
+        day1_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day2_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day3_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day4_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day5_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day6_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        day7_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        project:
+          description: ''
+          $ref: '#/components/schemas/ProjectTimeCardVO'
+        task:
+          description: ''
+          $ref: '#/components/schemas/TaskTimeCardVO'
+        time_card_line_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        total_hours_spent:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.TimeCardLineVO'
     TimeCardListVO:
       properties:
         results:

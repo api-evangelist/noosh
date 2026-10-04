@@ -323,39 +323,6 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
-    InvoiceDetailListExpandVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/InvoiceSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.InvoiceDetailListExpandVO'
-    TagVO:
-      properties:
-        isSpec:
-          type: boolean
-          example: 'false'
-          description: ''
-        tagId:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        tagName:
-          type: string
-          example: sample tagName
-          description: ''
-      description: 'Java type: com.noosh.domain.collaboration.vo.TagVO'
     PropertyPaAndAttVO:
       properties:
         date_value:
@@ -384,127 +351,6 @@ components:
           example: sample string_value
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    InvoiceSimpleVO:
-      properties:
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        currency:
-          type: string
-          example: sample currency
-          description: ''
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/PropertyPaAndAttVO'
-        grand_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        invoice_date:
-          type: string
-          format: date
-          description: ''
-        invoice_due_date:
-          type: string
-          format: date
-          description: ''
-        invoice_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        invoice_number:
-          type: string
-          example: sample invoice_number
-          description: ''
-        invoice_to:
-          type: string
-          example: sample invoice_to
-          description: ''
-        is_final:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        is_nonBillable:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        items:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/InvoiceItemSimpleVO'
-        order_reference:
-          type: string
-          example: sample order_reference
-          description: ''
-        order_title:
-          type: string
-          example: sample order_title
-          description: ''
-        payment_method:
-          type: string
-          example: sample payment_method
-          description: ''
-        prepared_by:
-          type: string
-          example: sample prepared_by
-          description: ''
-        project_number:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        reference_number:
-          type: string
-          example: sample reference_number
-          description: ''
-        shipping:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        status:
-          type: string
-          example: sample status
-          description: ''
-        sub_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        tax:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_currency:
-          type: string
-          example: sample transactional_currency
-          description: ''
-        transactional_grand_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_shipping:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_sub_total:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        transactional_tax:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-      description: 'Java type: com.noosh.nooshapi.vo.InvoiceSimpleVO'
     InvoiceItemSimpleVO:
       properties:
         invoice_item_id:
@@ -549,13 +395,8 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.InvoiceItemSimpleVO'
-    FileListResponseVO:
+    HTTPStatusVO:
       properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/FileVO'
         status_code:
           type: integer
           format: int32
@@ -565,9 +406,7 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FileListResponseVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     InvoiceExpandVO:
       properties:
         result:
@@ -583,6 +422,22 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.InvoiceExpandVO'
+    TagVO:
+      properties:
+        isSpec:
+          type: boolean
+          example: 'false'
+          description: ''
+        tagId:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        tagName:
+          type: string
+          example: sample tagName
+          description: ''
+      description: 'Java type: com.noosh.domain.collaboration.vo.TagVO'
     InvoiceItemDetailVO:
       properties:
         custom_fields:
@@ -637,6 +492,58 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.InvoiceItemDetailVO'
+    FileVO:
+      properties:
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        description:
+          type: string
+          example: sample description
+          description: ''
+        download_link:
+          type: string
+          example: sample download_link
+          description: ''
+        file_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        file_name:
+          type: string
+          example: sample file_name
+          description: ''
+        file_size:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        file_type:
+          type: string
+          example: sample file_type
+          description: ''
+        is_remote:
+          type: boolean
+          example: 'false'
+          description: ''
+        modified_date:
+          type: string
+          example: sample modified_date
+          description: ''
+        tagList:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TagVO'
+        upload_date:
+          type: string
+          example: sample upload_date
+          description: ''
+        uploaded_by:
+          type: string
+          example: sample uploaded_by
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FileVO'
     InvoiceDetailVO:
       properties:
         comments:
@@ -746,58 +653,151 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.InvoiceDetailVO'
-    FileVO:
+    FileListResponseVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/FileVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FileListResponseVO'
+    InvoiceSimpleVO:
       properties:
         comments:
           type: string
           example: sample comments
           description: ''
-        description:
+        currency:
           type: string
-          example: sample description
+          example: sample currency
           description: ''
-        download_link:
+        custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/PropertyPaAndAttVO'
+        grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        invoice_date:
           type: string
-          example: sample download_link
+          format: date
           description: ''
-        file_id:
+        invoice_due_date:
+          type: string
+          format: date
+          description: ''
+        invoice_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        file_name:
+        invoice_number:
           type: string
-          example: sample file_name
+          example: sample invoice_number
           description: ''
-        file_size:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        file_type:
+        invoice_to:
           type: string
-          example: sample file_type
+          example: sample invoice_to
           description: ''
-        is_remote:
-          type: boolean
-          example: 'false'
+        is_final:
+          type: integer
+          format: int32
+          example: '1'
           description: ''
-        modified_date:
-          type: string
-          example: sample modified_date
+        is_nonBillable:
+          type: integer
+          format: int32
+          example: '1'
           description: ''
-        tagList:
+        items:
           type: array
           description: ''
           items:
-            $ref: '#/components/schemas/TagVO'
-        upload_date:
+            $ref: '#/components/schemas/InvoiceItemSimpleVO'
+        order_reference:
           type: string
-          example: sample upload_date
+          example: sample order_reference
           description: ''
-        uploaded_by:
+        order_title:
           type: string
-          example: sample uploaded_by
+          example: sample order_title
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FileVO'
+        payment_method:
+          type: string
+          example: sample payment_method
+          description: ''
+        prepared_by:
+          type: string
+          example: sample prepared_by
+          description: ''
+        project_number:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        status:
+          type: string
+          example: sample status
+          description: ''
+        sub_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_currency:
+          type: string
+          example: sample transactional_currency
+          description: ''
+        transactional_grand_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_shipping:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_sub_total:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        transactional_tax:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+      description: 'Java type: com.noosh.nooshapi.vo.InvoiceSimpleVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    InvoiceDetailListExpandVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/InvoiceSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.InvoiceDetailListExpandVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

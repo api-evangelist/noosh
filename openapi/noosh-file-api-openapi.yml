@@ -737,72 +737,7 @@ paths:
               $ref: '#/components/schemas/FolderPersisitVO'
 components:
   schemas:
-    FileTagResponseVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TagRepoVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FileTagResponseVO'
-    TagVO:
-      properties:
-        isSpec:
-          type: boolean
-          example: 'false'
-          description: ''
-        tagId:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        tagName:
-          type: string
-          example: sample tagName
-          description: ''
-      description: 'Java type: com.noosh.domain.collaboration.vo.TagVO'
-    FolderListVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/FolderBaseVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FolderListVO'
-    FileResponseVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/FileVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FileResponseVO'
-    FolderBaseVO:
+    FolderVO:
       properties:
         child_folders:
           type: array
@@ -818,36 +753,12 @@ components:
           type: string
           example: sample folder_name
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FolderBaseVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
+        parent_folder_Id:
           type: integer
-          format: int32
+          format: int64
           example: '1'
           description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    FileListResponseVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/FileVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FileListResponseVO'
+      description: 'Java type: com.noosh.nooshapi.vo.file.FolderVO'
     FolderPersisitVO:
       properties:
         folder_name:
@@ -865,63 +776,8 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.vo.FolderPersisitVO'
-    FileV3VO:
+    HTTPStatusVO:
       properties:
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        description:
-          type: string
-          example: sample description
-          description: ''
-        download_link:
-          type: string
-          example: sample download_link
-          description: ''
-        file_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        file_name:
-          type: string
-          example: sample file_name
-          description: ''
-        file_size:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        file_type:
-          type: string
-          example: sample file_type
-          description: ''
-        folder_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        is_remote:
-          type: boolean
-          example: 'false'
-          description: ''
-        modified_date:
-          type: string
-          example: sample modified_date
-          description: ''
-        upload_date:
-          type: string
-          example: sample upload_date
-          description: ''
-        uploaded_by:
-          type: string
-          example: sample uploaded_by
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FileV3VO'
-    FileV3ResponseVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/FileV3VO'
         status_code:
           type: integer
           format: int32
@@ -931,9 +787,38 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FileV3ResponseVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    TagVO:
+      properties:
+        isSpec:
+          type: boolean
+          example: 'false'
+          description: ''
+        tagId:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        tagName:
+          type: string
+          example: sample tagName
+          description: ''
+      description: 'Java type: com.noosh.domain.collaboration.vo.TagVO'
+    FileResponseVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/FileVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FileResponseVO'
     FileVO:
       properties:
         comments:
@@ -986,28 +871,6 @@ components:
           example: sample uploaded_by
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.file.FileVO'
-    FolderVO:
-      properties:
-        child_folders:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/FolderVO'
-        folder_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        folder_name:
-          type: string
-          example: sample folder_name
-          description: ''
-        parent_folder_Id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.file.FolderVO'
     TagRepoVO:
       properties:
         isSpec:
@@ -1024,6 +887,143 @@ components:
           example: sample tagName
           description: ''
       description: 'Java type: com.noosh.domain.collaboration.vo.TagRepoVO'
+    FileV3ResponseVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/FileV3VO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FileV3ResponseVO'
+    FileV3VO:
+      properties:
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        description:
+          type: string
+          example: sample description
+          description: ''
+        download_link:
+          type: string
+          example: sample download_link
+          description: ''
+        file_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        file_name:
+          type: string
+          example: sample file_name
+          description: ''
+        file_size:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        file_type:
+          type: string
+          example: sample file_type
+          description: ''
+        folder_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        is_remote:
+          type: boolean
+          example: 'false'
+          description: ''
+        modified_date:
+          type: string
+          example: sample modified_date
+          description: ''
+        upload_date:
+          type: string
+          example: sample upload_date
+          description: ''
+        uploaded_by:
+          type: string
+          example: sample uploaded_by
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FileV3VO'
+    FileListResponseVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/FileVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FileListResponseVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    FileTagResponseVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TagRepoVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FileTagResponseVO'
+    FolderBaseVO:
+      properties:
+        child_folders:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/FolderVO'
+        folder_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        folder_name:
+          type: string
+          example: sample folder_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FolderBaseVO'
+    FolderListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/FolderBaseVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.file.FolderListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

@@ -231,6 +231,30 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    ProjectCategorySimpleVO:
+      properties:
+        project_category_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_category_name:
+          type: string
+          example: sample project_category_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectCategorySimpleVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
     ProjectCategoryListVO:
       properties:
         results:
@@ -248,30 +272,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ProjectCategoryListVO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    ProjectCategorySimpleVO:
-      properties:
-        project_category_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        project_category_name:
-          type: string
-          example: sample project_category_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectCategorySimpleVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

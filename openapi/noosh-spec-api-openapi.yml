@@ -1199,31 +1199,73 @@ paths:
       x-operation-id-original: getSpecTypeFields
 components:
   schemas:
-    CustomFieldPersistVO:
+    SpecPersistVO:
       properties:
-        date_value:
+        jsonBody:
+          type: boolean
+          example: 'false'
+          description: ''
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        sku:
           type: string
-          format: date
+          example: sample sku
           description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_name:
+        spec_name:
           type: string
-          example: sample param_name
+          example: sample spec_name
           description: ''
-        string_value:
-          type: string
-          example: sample string_value
+        spec_template_id:
+          type: integer
+          format: int64
+          example: '1'
           description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
-    SpecListVO:
-      properties:
-        results:
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        versions:
           type: array
           description: ''
           items:
-            $ref: '#/components/schemas/SpecSimpleVO'
+            $ref: '#/components/schemas/SpecVersionPersistVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecPersistVO'
+    WorkgroupAttributeListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/WorkgroupAttributeVO'
         status_code:
           type: integer
           format: int32
@@ -1233,23 +1275,50 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecListVO'
-    UofmSimpleVO:
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupAttributeListVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    WgSpecPrdTypeRegPersistVO:
       properties:
-        is_default:
+        enableDifferentiatePrdTypePreference:
           type: boolean
           example: 'false'
           description: ''
-        uofm_id:
+        spec_prdType_list:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecTypePersistVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.WgSpecPrdTypeRegPersistVO'
+    WorkgroupAttributeVO:
+      properties:
+        is_checked:
+          type: boolean
+          example: 'false'
+          description: ''
+        label:
+          type: string
+          example: sample label
+          description: ''
+        product_type_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        uofm_name:
-          type: string
-          example: sample uofm_name
+      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupAttributeVO'
+    PropertyPersistVO:
+      properties:
+        custom_fields:
+          type: array
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.UofmSimpleVO'
+          items:
+            $ref: '#/components/schemas/CustomFieldPersistVO'
+        paper_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPersistVO'
     V1x1SpecPamAndAttVO:
       properties:
         attribute_id:
@@ -1274,22 +1343,18 @@ components:
           example: sample param_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecPamAndAttVO'
-    WorkgroupAttributeVO:
+    SpecSimplestVO:
       properties:
-        is_checked:
-          type: boolean
-          example: 'false'
-          description: ''
-        label:
-          type: string
-          example: sample label
-          description: ''
-        product_type_id:
+        spec_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupAttributeVO'
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecSimplestVO'
     SpecTypeVO:
       properties:
         spec_type_id:
@@ -1302,19 +1367,6 @@ components:
           example: sample spec_type_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SpecTypeVO'
-    PropertyPersistVO:
-      properties:
-        custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/CustomFieldPersistVO'
-        paper_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PropertyPersistVO'
     SpecVO:
       properties:
         spec_id:
@@ -1332,126 +1384,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SpecVO'
-    V1x1ProperyVO:
-      properties:
-        property_attributes:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/V1x1SpecPamAndAttVO'
-        property_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        property_name:
-          type: string
-          example: sample property_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1ProperyVO'
-    V1x1SpecPamAndAttPO:
-      properties:
-        attribute_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        attribute_value:
-          description: ''
-          $ref: '#/components/schemas/Object'
-        label:
-          type: string
-          example: sample label
-          description: ''
-        param_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1x1SpecPamAndAttPO'
-    WgSpecPrdTypeRegPersistVO:
-      properties:
-        enableDifferentiatePrdTypePreference:
-          type: boolean
-          example: 'false'
-          description: ''
-        spec_prdType_list:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/SpecTypePersistVO'
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.WgSpecPrdTypeRegPersistVO'
-    Object:
-      description: 'Java type: java.lang.Object'
-    SpecTypeFieldsListVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/SpecTypeFieldsVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.v1x1.SpecTypeFieldsListVO'
-    SpecTypePersistVO:
-      properties:
-        prdType_labels:
-          type: array
-          description: ''
-          items:
-            type: string
-            example: sample prdType_labels
-        spec_type_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecTypePersistVO'
-    PersonVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
-    V1x1SpecExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/V1x1SpecDetailVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecExpandVO'
-    SpecTypeFieldsVO:
-      description: 'Java type: com.noosh.nooshapi.vo.v1x1.SpecTypeFieldsVO'
     SpecUpdatePersistVO:
       properties:
         inks_and_paper:
@@ -1498,6 +1430,151 @@ components:
           example: sample spec_name
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SpecUpdatePersistVO'
+    Object:
+      description: 'Java type: java.lang.Object'
+    V1x1SpecExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/V1x1SpecDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecExpandVO'
+    SpecHTTPStatusVO:
+      properties:
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.SpecHTTPStatusVO'
+    V1x1ProperyPO:
+      properties:
+        property_attributes:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/V1x1SpecPamAndAttPO'
+        property_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        property_name:
+          type: string
+          example: sample property_name
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1x1ProperyPO'
+    SpecVersionPersistVO:
+      properties:
+        description:
+          type: string
+          example: sample description
+          description: ''
+        qty:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecVersionPersistVO'
+    V1X1SpecUpdatingPO:
+      properties:
+        first_level_custom_fields:
+          description: ''
+          $ref: '#/components/schemas/V1x1ProperyPO'
+        header_custom_fields:
+          description: ''
+          $ref: '#/components/schemas/V1x1ProperyPO'
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_1:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_2:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_3:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_4:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        quantity_5:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        second_level_custom_fields:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/V1x1ProperyPO'
+        sku:
+          type: string
+          example: sample sku
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+        spec_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        update_spec_reference_name:
+          type: boolean
+          example: 'false'
+          description: ''
+        versions:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/SpecVersionPersistVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1X1SpecUpdatingPO'
+    ProductTypeVO:
+      properties:
+        label:
+          type: string
+          example: sample label
+          description: ''
+        product_type_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
     V1x1SpecDetailVO:
       properties:
         client_status:
@@ -1610,25 +1687,13 @@ components:
           example: sample user_state
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecDetailVO'
-    SpecSimplestVO:
+    SpecListVO:
       properties:
-        spec_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_name:
-          type: string
-          example: sample spec_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecSimplestVO'
-    WorkgroupAttributeListVO:
-      properties:
-        result:
+        results:
           type: array
           description: ''
           items:
-            $ref: '#/components/schemas/WorkgroupAttributeVO'
+            $ref: '#/components/schemas/SpecSimpleVO'
         status_code:
           type: integer
           format: int32
@@ -1638,14 +1703,36 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.WorkgroupAttributeListVO'
-    PropertyParamListVO:
+      description: 'Java type: com.noosh.nooshapi.vo.SpecListVO'
+    V1x1SpecPamAndAttPO:
+      properties:
+        attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        attribute_value:
+          description: ''
+          $ref: '#/components/schemas/Object'
+        label:
+          type: string
+          example: sample label
+          description: ''
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1x1SpecPamAndAttPO'
+    SpecTypeFieldsListVO:
       properties:
         result:
-          type: array
           description: ''
-          items:
-            $ref: '#/components/schemas/PropertyParamSimpleVO'
+          $ref: '#/components/schemas/SpecTypeFieldsVO'
         status_code:
           type: integer
           format: int32
@@ -1655,73 +1742,7 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PropertyParamListVO'
-    V1X1SpecUpdatingPO:
-      properties:
-        first_level_custom_fields:
-          description: ''
-          $ref: '#/components/schemas/V1x1ProperyPO'
-        header_custom_fields:
-          description: ''
-          $ref: '#/components/schemas/V1x1ProperyPO'
-        product_type_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_1:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_2:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_3:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_4:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_5:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        second_level_custom_fields:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/V1x1ProperyPO'
-        sku:
-          type: string
-          example: sample sku
-          description: ''
-        spec_name:
-          type: string
-          example: sample spec_name
-          description: ''
-        spec_type_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        update_spec_reference_name:
-          type: boolean
-          example: 'false'
-          description: ''
-        versions:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/SpecVersionPersistVO'
-      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1X1SpecUpdatingPO'
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.SpecTypeFieldsListVO'
     SpecSimpleVO:
       properties:
         client_status:
@@ -1776,77 +1797,22 @@ components:
           example: sample user_state
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.SpecSimpleVO'
-    PropertyParamSimpleVO:
+    SpecTypePersistVO:
       properties:
-        data_type:
-          type: string
-          example: sample data_type
+        prdType_labels:
+          type: array
           description: ''
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PropertyParamSimpleVO'
-    SpecPersistVO:
-      properties:
-        jsonBody:
-          type: boolean
-          example: 'false'
-          description: ''
-        product_type_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_1:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_2:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_3:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_4:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        quantity_5:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        sku:
-          type: string
-          example: sample sku
-          description: ''
-        spec_name:
-          type: string
-          example: sample spec_name
-          description: ''
-        spec_template_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
+          items:
+            type: string
+            example: sample prdType_labels
         spec_type_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        versions:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/SpecVersionPersistVO'
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecPersistVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecTypePersistVO'
+    SpecTypeFieldsVO:
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.SpecTypeFieldsVO'
     HTTPStatusVO:
       properties:
         status_code:
@@ -1859,34 +1825,13 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    V1x1ProperyPO:
+    PropertyParamListVO:
       properties:
-        property_attributes:
+        result:
           type: array
           description: ''
           items:
-            $ref: '#/components/schemas/V1x1SpecPamAndAttPO'
-        property_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        property_name:
-          type: string
-          example: sample property_name
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.po.v1x1.V1x1ProperyPO'
-    SpecHTTPStatusVO:
-      properties:
-        spec_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        spec_name:
-          type: string
-          example: sample spec_name
-          description: ''
+            $ref: '#/components/schemas/PropertyParamSimpleVO'
         status_code:
           type: integer
           format: int32
@@ -1896,33 +1841,88 @@ components:
           type: string
           example: sample status_reason
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.SpecHTTPStatusVO'
-    ProductTypeVO:
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyParamListVO'
+    V1x1ProperyVO:
       properties:
-        label:
-          type: string
-          example: sample label
+        property_attributes:
+          type: array
           description: ''
-        product_type_id:
+          items:
+            $ref: '#/components/schemas/V1x1SpecPamAndAttVO'
+        property_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProductTypeVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    SpecVersionPersistVO:
-      properties:
-        description:
+        property_name:
           type: string
-          example: sample description
+          example: sample property_name
           description: ''
-        qty:
+      description: 'Java type: com.noosh.nooshapi.vo.v1x1.V1x1ProperyVO'
+    PropertyParamSimpleVO:
+      properties:
+        data_type:
+          type: string
+          example: sample data_type
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyParamSimpleVO'
+    CustomFieldPersistVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+    UofmSimpleVO:
+      properties:
+        is_default:
+          type: boolean
+          example: 'false'
+          description: ''
+        uofm_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.SpecVersionPersistVO'
+        uofm_name:
+          type: string
+          example: sample uofm_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.UofmSimpleVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

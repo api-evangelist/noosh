@@ -99,6 +99,23 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    CountryListVO:
+      properties:
+        result:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/CountryVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.CountryListVO'
     HTTPStatusVO:
       properties:
         status_code:
@@ -127,23 +144,6 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.CountryVO'
-    CountryListVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/CountryVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.CountryListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

@@ -204,6 +204,18 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    ProjectStatusSimpleVO:
+      properties:
+        project_status_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        project_status_name:
+          type: string
+          example: sample project_status_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectStatusSimpleVO'
     ProjectStatusListVO:
       properties:
         results:
@@ -221,18 +233,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ProjectStatusListVO'
-    ProjectStatusSimpleVO:
-      properties:
-        project_status_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        project_status_name:
-          type: string
-          example: sample project_status_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectStatusSimpleVO'
     HTTPStatusVO:
       properties:
         status_code:
