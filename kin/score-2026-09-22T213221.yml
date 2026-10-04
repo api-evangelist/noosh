@@ -1,24 +1,22 @@
-# Kin Score artifact — noosh — 2026-08-25T154045
+# Kin Score artifact — noosh — 2026-09-22T213221
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: noosh
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T154045
-  composite: 38.1
+  schema_version: 0.22.0
+  scored_at: '2026-09-22'
+  run_ts: 2026-09-22T213221
+  composite: 36.3
   band: thin
   facets:
     discoverability: 68.5
-    contract_quality: 48.3
-    governance: 16.7
+    contract_quality: 49.9
+    contract_governance: 4.5
     operational_transparency: 31.6
     developer_ergonomics: 37.5
-    commercial_clarity: 27.6
-    contract_governance: 16.7
     access_clarity: 27.6
   agent_readiness:
-    score: 23.6
+    score: 26.4
     band: agent-aware
     dimensions:
       spec_presence: true
@@ -27,7 +25,7 @@ kin_score:
       mcp_server: false
       auth_clarity: bearer
       idempotency: false
-      error_semantics: documented
+      error_semantics: verified
       openapi_examples: false
       rate_limit_signal: documented
       event_surface_described: false
@@ -46,7 +44,7 @@ kin_score:
     agentic_access: derived
     conformance: derived
     contracts:
-      total: 1
+      total: 26
       derived: 0
       coverage: 0.0
       callable: 100.0
