@@ -1,0 +1,12 @@
+{
+ "url": "https://api.noosh.com/api/swagger.json",
+ "requested_url": "https://api.noosh.com/api/swagger.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 241317,
+ "sha256": "d5e8e2764188fe13f7b4191fceed1946300d2656ab091d7f874a35cb11ceeef3",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
