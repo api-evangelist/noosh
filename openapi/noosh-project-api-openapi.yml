@@ -782,40 +782,47 @@ paths:
               $ref: '#/components/schemas/ProjectIdListVO'
 components:
   schemas:
-    ProjectParentVO:
+    ProjectExpandVO:
+      properties:
+        result:
+          description: ''
+          $ref: '#/components/schemas/ProjectDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectExpandVO'
+    ProjectSimpleVO:
       properties:
         client_account:
           type: string
           example: sample client_account
-          description: ''
-        client_user:
-          type: string
-          example: sample client_user
-          description: ''
-        client_user_id:
-          type: integer
-          format: int64
-          example: '1'
           description: ''
         client_workgroup_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        comments:
-          type: string
-          example: sample comments
-          description: ''
-        created_by:
-          description: ''
-          $ref: '#/components/schemas/PersonVO'
-        project_create_date:
+        completion_date:
           type: string
           format: date
           description: ''
-        project_description:
+        is_active:
+          type: boolean
+          example: 'false'
+          description: ''
+        is_hot:
+          type: boolean
+          example: 'false'
+          description: ''
+        last_spec_update:
           type: string
-          example: sample project_description
+          format: date
           description: ''
         project_id:
           type: integer
@@ -830,7 +837,44 @@ components:
           type: string
           example: sample project_number
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectParentVO'
+        project_status:
+          type: string
+          example: sample project_status
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectSimpleVO'
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    PersonVO:
+      properties:
+        email:
+          type: string
+          example: sample email
+          description: ''
+        first_name:
+          type: string
+          example: sample first_name
+          description: ''
+        last_name:
+          type: string
+          example: sample last_name
+          description: ''
+        middle_name:
+          type: string
+          example: sample middle_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
     ProjectDetailVO:
       properties:
         category:
@@ -925,16 +969,86 @@ components:
           example: sample team_owners
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ProjectDetailVO'
-    ProjectIdListVO:
+    ProjectListVO:
       properties:
-        childProjectIds:
+        results:
           type: array
           description: ''
           items:
-            type: integer
-            format: int64
-            example: '1'
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ProjectIdListVO'
+            $ref: '#/components/schemas/ProjectSimpleVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectListVO'
+    PropertyPaAndAttVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        property_attribute_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
+    CustomFieldPersistVO:
+      properties:
+        date_value:
+          type: string
+          format: date
+          description: ''
+        number_value:
+          description: ''
+          $ref: '#/components/schemas/BigDecimal'
+        param_name:
+          type: string
+          example: sample param_name
+          description: ''
+        string_value:
+          type: string
+          example: sample string_value
+          description: ''
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
+    ProjectVO:
+      properties:
+        project_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectVO'
     ProjectPatchPO:
       properties:
         client_user_id:
@@ -996,59 +1110,40 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.po.ProjectPatchPO'
-    HTTPStatusVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    ProjectExpandVO:
-      properties:
-        result:
-          description: ''
-          $ref: '#/components/schemas/ProjectDetailVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectExpandVO'
-    ProjectSimpleVO:
+    ProjectParentVO:
       properties:
         client_account:
           type: string
           example: sample client_account
+          description: ''
+        client_user:
+          type: string
+          example: sample client_user
+          description: ''
+        client_user_id:
+          type: integer
+          format: int64
+          example: '1'
           description: ''
         client_workgroup_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        completion_date:
+        comments:
+          type: string
+          example: sample comments
+          description: ''
+        created_by:
+          description: ''
+          $ref: '#/components/schemas/PersonVO'
+        project_create_date:
           type: string
           format: date
           description: ''
-        is_active:
-          type: boolean
-          example: 'false'
-          description: ''
-        is_hot:
-          type: boolean
-          example: 'false'
-          description: ''
-        last_spec_update:
+        project_description:
           type: string
-          format: date
+          example: sample project_description
           description: ''
         project_id:
           type: integer
@@ -1063,112 +1158,7 @@ components:
           type: string
           example: sample project_number
           description: ''
-        project_status:
-          type: string
-          example: sample project_status
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectSimpleVO'
-    PropertyPaAndAttVO:
-      properties:
-        date_value:
-          type: string
-          format: date
-          description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        property_attribute_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        string_value:
-          type: string
-          example: sample string_value
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PropertyPaAndAttVO'
-    ProjectVO:
-      properties:
-        project_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    CustomFieldPersistVO:
-      properties:
-        date_value:
-          type: string
-          format: date
-          description: ''
-        number_value:
-          description: ''
-          $ref: '#/components/schemas/BigDecimal'
-        param_name:
-          type: string
-          example: sample param_name
-          description: ''
-        string_value:
-          type: string
-          example: sample string_value
-          description: ''
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.CustomFieldPersistVO'
-    PersonVO:
-      properties:
-        email:
-          type: string
-          example: sample email
-          description: ''
-        first_name:
-          type: string
-          example: sample first_name
-          description: ''
-        last_name:
-          type: string
-          example: sample last_name
-          description: ''
-        middle_name:
-          type: string
-          example: sample middle_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.PersonVO'
-    ProjectListVO:
-      properties:
-        results:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/ProjectSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ProjectListVO'
+      description: 'Java type: com.noosh.nooshapi.vo.ProjectParentVO'
     ProjectPersistVO:
       required:
       - project_status_id
@@ -1245,6 +1235,16 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ProjectPersistVO'
+    ProjectIdListVO:
+      properties:
+        childProjectIds:
+          type: array
+          description: ''
+          items:
+            type: integer
+            format: int64
+            example: '1'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.ProjectIdListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

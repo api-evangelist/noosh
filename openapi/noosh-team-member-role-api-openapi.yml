@@ -115,6 +115,18 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    RoleSimpleVO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        role_name:
+          type: string
+          example: sample role_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
     RoleListVO:
       properties:
         result:
@@ -144,18 +156,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    RoleSimpleVO:
-      properties:
-        role_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        role_name:
-          type: string
-          example: sample role_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

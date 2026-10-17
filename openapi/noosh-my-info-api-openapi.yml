@@ -318,6 +318,21 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    TeamTemplateExpandVO:
+      properties:
+        results:
+          description: ''
+          $ref: '#/components/schemas/TeamTemplateDetailVO'
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateExpandVO'
     ProfileImageVO:
       properties:
         profileImgUrl:
@@ -334,18 +349,23 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.ProfileImageVO'
-    RoleSimpleVO:
+    TeamTemplateDetailVO:
       properties:
-        role_id:
+        team_teample_item:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/TeamTemplateItemVO'
+        team_template_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        role_name:
+        team_template_name:
           type: string
-          example: sample role_name
+          example: sample team_template_name
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateDetailVO'
     HTTPStatusVO:
       properties:
         status_code:
@@ -358,25 +378,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    AutomaticInvitationVO:
-      properties:
-        automatic_invitation_type_name:
-          type: string
-          example: sample automatic_invitation_type_name
-          description: ''
-        team_template:
-          description: ''
-          $ref: '#/components/schemas/TeamTemplateSimpleVO'
-      description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationVO'
-    TeamTemplateItemVO:
-      properties:
-        role:
-          description: ''
-          $ref: '#/components/schemas/RoleSimpleVO'
-        user:
-          description: ''
-          $ref: '#/components/schemas/UserPersonVO'
-      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateItemVO'
     TeamTemplateListVO:
       properties:
         results:
@@ -394,21 +395,25 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateListVO'
-    TeamTemplateExpandVO:
+    TeamTemplateItemVO:
       properties:
-        results:
+        role:
           description: ''
-          $ref: '#/components/schemas/TeamTemplateDetailVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
+          $ref: '#/components/schemas/RoleSimpleVO'
+        user:
           description: ''
-        status_reason:
+          $ref: '#/components/schemas/UserPersonVO'
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateItemVO'
+    AutomaticInvitationVO:
+      properties:
+        automatic_invitation_type_name:
           type: string
-          example: sample status_reason
+          example: sample automatic_invitation_type_name
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateExpandVO'
+        team_template:
+          description: ''
+          $ref: '#/components/schemas/TeamTemplateSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationVO'
     UserPersonVO:
       properties:
         email:
@@ -433,6 +438,30 @@ components:
           example: '1'
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.UserPersonVO'
+    RoleSimpleVO:
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        role_name:
+          type: string
+          example: sample role_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RoleSimpleVO'
+    TeamTemplateSimpleVO:
+      properties:
+        team_template_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        team_template_name:
+          type: string
+          example: sample team_template_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateSimpleVO'
     AutomaticInvitationsListVO:
       properties:
         results:
@@ -450,35 +479,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.AutomaticInvitationsListVO'
-    TeamTemplateSimpleVO:
-      properties:
-        team_template_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        team_template_name:
-          type: string
-          example: sample team_template_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateSimpleVO'
-    TeamTemplateDetailVO:
-      properties:
-        team_teample_item:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/TeamTemplateItemVO'
-        team_template_id:
-          type: integer
-          format: int64
-          example: '1'
-          description: ''
-        team_template_name:
-          type: string
-          example: sample team_template_name
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.TeamTemplateDetailVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

@@ -214,6 +214,69 @@ paths:
                 $ref: '#/components/schemas/HTTPStatusVO'
 components:
   schemas:
+    HTTPStatusVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
+    ErgoSpecSimpleVO:
+      properties:
+        is_active:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        is_template:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        quantity_1:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        quantity_2:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        quantity_3:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        quantity_4:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        quantity_5:
+          type: number
+          format: double
+          example: '1.1'
+          description: ''
+        reference_number:
+          type: string
+          example: sample reference_number
+          description: ''
+        spec_id:
+          type: integer
+          format: int64
+          example: '1'
+          description: ''
+        spec_name:
+          type: string
+          example: sample spec_name
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.ergo.ErgoSpecSimpleVO'
     RfqDetailsVO:
       properties:
         comments:
@@ -268,31 +331,25 @@ components:
           example: sample status
           description: ''
       description: 'Java type: com.noosh.nooshapi.vo.RfqDetailsVO'
-    RfqSimpleVO:
+    BigDecimal:
+      description: 'Java type: java.math.BigDecimal'
+    RfqListVO:
       properties:
-        quotes:
+        result:
           type: array
           description: ''
           items:
-            $ref: '#/components/schemas/QuoteBaseVO'
-        received_date:
-          type: string
-          format: date
-          description: ''
-        rfq_id:
+            $ref: '#/components/schemas/RfqSimpleVO'
+        status_code:
           type: integer
-          format: int64
+          format: int32
           example: '1'
           description: ''
-        rfq_title:
+        status_reason:
           type: string
-          example: sample rfq_title
+          example: sample status_reason
           description: ''
-        status:
-          type: string
-          example: sample status
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfqSimpleVO'
+      description: 'Java type: com.noosh.nooshapi.vo.RfqListVO'
     QuoteBaseVO:
       properties:
         currency:
@@ -327,71 +384,31 @@ components:
           description: ''
           $ref: '#/components/schemas/BigDecimal'
       description: 'Java type: com.noosh.nooshapi.vo.QuoteBaseVO'
-    HTTPStatusVO:
+    RfqSimpleVO:
       properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
+        quotes:
+          type: array
           description: ''
-        status_reason:
+          items:
+            $ref: '#/components/schemas/QuoteBaseVO'
+        received_date:
           type: string
-          example: sample status_reason
+          format: date
           description: ''
-      description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    BigDecimal:
-      description: 'Java type: java.math.BigDecimal'
-    ErgoSpecSimpleVO:
-      properties:
-        is_active:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        is_template:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        quantity_1:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity_2:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity_3:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity_4:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        quantity_5:
-          type: number
-          format: double
-          example: '1.1'
-          description: ''
-        reference_number:
-          type: string
-          example: sample reference_number
-          description: ''
-        spec_id:
+        rfq_id:
           type: integer
           format: int64
           example: '1'
           description: ''
-        spec_name:
+        rfq_title:
           type: string
-          example: sample spec_name
+          example: sample rfq_title
           description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.ergo.ErgoSpecSimpleVO'
+        status:
+          type: string
+          example: sample status
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.RfqSimpleVO'
     RfqExpandVO:
       properties:
         result:
@@ -423,23 +440,6 @@ components:
           description: ''
           $ref: '#/components/schemas/ErgoSpecSimpleVO'
       description: 'Java type: com.noosh.nooshapi.vo.RfqItemBaseVO'
-    RfqListVO:
-      properties:
-        result:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/RfqSimpleVO'
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.RfqListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http

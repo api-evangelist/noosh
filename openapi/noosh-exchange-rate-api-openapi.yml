@@ -221,18 +221,8 @@ paths:
               $ref: '#/components/schemas/MultiExchangeRatePersistListVO'
 components:
   schemas:
-    MultiExchangeRateListVO:
-      properties:
-        status_code:
-          type: integer
-          format: int32
-          example: '1'
-          description: ''
-        status_reason:
-          type: string
-          example: sample status_reason
-          description: ''
-      description: 'Java type: com.noosh.nooshapi.vo.MultiExchangeRateListVO'
+    HTTPStatus:
+      description: 'Java type: com.noosh.domain.constant.HTTPStatus'
     HTTPStatusVO:
       properties:
         status_code:
@@ -245,16 +235,6 @@ components:
           example: sample status_reason
           description: ''
       description: 'Java type: com.noosh.core.vo.HTTPStatusVO'
-    MultiExchangeRatePersistListVO:
-      properties:
-        exchange_rates:
-          type: array
-          description: ''
-          items:
-            $ref: '#/components/schemas/MultiExchangeRatePersisitVO'
-      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersistListVO'
-    HTTPStatus:
-      description: 'Java type: com.noosh.domain.constant.HTTPStatus'
     MultiExchangeRatePersisitVO:
       properties:
         activate_date:
@@ -280,6 +260,26 @@ components:
       description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersisitVO'
     BigDecimal:
       description: 'Java type: java.math.BigDecimal'
+    MultiExchangeRateListVO:
+      properties:
+        status_code:
+          type: integer
+          format: int32
+          example: '1'
+          description: ''
+        status_reason:
+          type: string
+          example: sample status_reason
+          description: ''
+      description: 'Java type: com.noosh.nooshapi.vo.MultiExchangeRateListVO'
+    MultiExchangeRatePersistListVO:
+      properties:
+        exchange_rates:
+          type: array
+          description: ''
+          items:
+            $ref: '#/components/schemas/MultiExchangeRatePersisitVO'
+      description: 'Java type: com.noosh.domain.nooshapi.persist.vo.MultiExchangeRatePersistListVO'
   securitySchemes:
     HTTP_BASIC:
       type: http
