@@ -64,10 +64,139 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Noosh is marketing execution and print/procurement management software for enterprise marketing teams, surfaced as a portfolio company of Accel and profiled in the API Evangelist network.
+Noosh is a marketing execution and print/procurement management platform that gives enterprise marketing teams visibility and control over campaigns spanning direct mail, print, and point-of-sale (POS) materials. The software coordinates collaborative marketing workflows, agency and supplier performance tracking, vendor diversity management, and cost, quality, time, and sustainability data, and integrates with procurement and other enterprise systems. Noosh publishes a public, machine-readable Swagger 2.0 contract for the Noosh API at api.noosh.com — 86 paths, 107 operations and 214 schema definitions covering projects, specs, RFQs, quotes, estimates, buy and sell orders, shipments, invoices, files, tasks, time cards and workgroups — with a Swagger UI as its only documentation surface. There is no developer portal, no SDK in any registry, no published pricing and no rate limits; authentication is HTTP Basic and every route is customer-credentialed. Noosh was surfaced as a portfolio company of Accel and profiled in the API Evangelist network.
 
-Noosh publishes a public, machine-readable Swagger 2.0 contract for the Noosh API at `https://api.noosh.com/api/swagger.json` — 86 paths, 107 operations and 214 schema definitions covering projects, specs, RFQs, quotes, estimates, buy and sell orders, shipments, invoices, files, tasks, time cards and workgroups. A Swagger UI at `https://api.noosh.com/api/developer/index.html` is the only documentation Noosh publishes for it: there is no developer portal, no getting-started guide, no SDK in any public registry, no API changelog, no published pricing and no documented rate limits. Authentication is HTTP Basic with no scope model, and four URI-path generations (`/v1`, `/1.1`, `/1.2`, `/3`) are served simultaneously with no operation marked deprecated.
+**Areas:** Company · Marketing · Marketing Execution · Procurement · Print · Direct Mail · Workflows · Sourcing · Print Procurement · Project Management · Supplier Management · Quotes
 
-Harvested and enriched 2026-08-13. See `apis.yml` for the artifact pointers.
+## Noosh on APIs.io
 
-Backed by: accel — https://noosh.com/
+Everything profiled for Noosh is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/noosh/](https://apis.io/providers/noosh/)** — or go straight to one of the APIs or properties below.
+
+### APIs (25)
+
+- [Noosh Contact API](https://apis.io/apis/noosh/noosh-contact-api/) — The Contact API from Noosh — 3 operation(s) for contact.
+- [Noosh Country API](https://apis.io/apis/noosh/noosh-country-api/) — The Country API from Noosh — 1 operation(s) for country.
+- [Noosh Deactivation Reason API](https://apis.io/apis/noosh/noosh-deactivation-reason-api/) — The Deactivation Reason API from Noosh — 1 operation(s) for deactivation reason.
+- [Noosh Estimate API](https://apis.io/apis/noosh/noosh-estimate-api/) — The Estimate API from Noosh — 2 operation(s) for estimate.
+- [Noosh Exchange Rate API](https://apis.io/apis/noosh/noosh-exchange-rate-api/) — The Exchange Rate API from Noosh — 1 operation(s) for exchange rate.
+- [Noosh File API](https://apis.io/apis/noosh/noosh-file-api/) — The File API from Noosh — 7 operation(s) for file.
+- [Noosh Invoice API](https://apis.io/apis/noosh/noosh-invoice-api/) — The Invoice API from Noosh — 3 operation(s) for invoice.
+- [Noosh My Info API](https://apis.io/apis/noosh/noosh-my-info-api/) — The My Info API from Noosh — 4 operation(s) for my info.
+- [Noosh Order API](https://apis.io/apis/noosh/noosh-order-api/) — The Order API from Noosh — 9 operation(s) for order.
+- [Noosh Project API](https://apis.io/apis/noosh/noosh-project-api/) — The Project API from Noosh — 3 operation(s) for project.
+- [Noosh Project Category API](https://apis.io/apis/noosh/noosh-project-category-api/) — The Project Category API from Noosh — 2 operation(s) for project category.
+- [Noosh Project Status API](https://apis.io/apis/noosh/noosh-project-status-api/) — The Project Status API from Noosh — 2 operation(s) for project status.
+- [Noosh Quote API](https://apis.io/apis/noosh/noosh-quote-api/) — The Quote API from Noosh — 4 operation(s) for quote.
+- [Noosh RFE API](https://apis.io/apis/noosh/noosh-rfe-api/) — The RFE API from Noosh — 2 operation(s) for rfe.
+- [Noosh Rfq API](https://apis.io/apis/noosh/noosh-rfq-api/) — The Rfq API from Noosh — 2 operation(s) for rfq.
+- [Noosh Shipment API](https://apis.io/apis/noosh/noosh-shipment-api/) — The Shipment API from Noosh — 3 operation(s) for shipment.
+- [Noosh Spec API](https://apis.io/apis/noosh/noosh-spec-api/) — The Spec API from Noosh — 7 operation(s) for spec.
+- [Noosh Spec Template API](https://apis.io/apis/noosh/noosh-spec-template-api/) — The Spec Template API from Noosh — 2 operation(s) for spec template.
+- [Noosh Task API](https://apis.io/apis/noosh/noosh-task-api/) — The Task API from Noosh — 9 operation(s) for task.
+- [Noosh Team Member API](https://apis.io/apis/noosh/noosh-team-member-api/) — The Team Member API from Noosh — 4 operation(s) for team member.
+- [Noosh Team Member Role API](https://apis.io/apis/noosh/noosh-team-member-role-api/) — The Team Member Role API from Noosh — 1 operation(s) for team member role.
+- [Noosh Time Card API](https://apis.io/apis/noosh/noosh-time-card-api/) — The Time Card API from Noosh — 4 operation(s) for time card.
+- [Noosh User Fields API](https://apis.io/apis/noosh/noosh-user-fields-api/) — The User Fields API from Noosh — 2 operation(s) for user fields.
+- [Noosh Workgroup API](https://apis.io/apis/noosh/noosh-workgroup-api/) — The Workgroup API from Noosh — 6 operation(s) for workgroup.
+- [Noosh Workgroup Members API](https://apis.io/apis/noosh/noosh-workgroup-members-api/) — The Workgroup Members API from Noosh — 2 operation(s) for workgroup members.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Noosh Agentic Access](https://apis.io/agentic-access/noosh/noosh-agentic-access/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Noosh Openapi Overlay](https://apis.io/overlays/noosh/noosh-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Noosh Authentication](https://apis.io/security/noosh/noosh-authentication/)
+- [Noosh Domain Security](https://apis.io/security/noosh/noosh-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Noosh Plans Pricing](https://apis.io/plans/noosh/noosh-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Noosh Rate Limits](https://apis.io/rate-limits/noosh/noosh-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://noosh.com/)
+- [Documentation](https://api.noosh.com/api/developer/index.html)
+- [API reference](https://api.noosh.com/api/developer/index.html)
+- [Support](https://noosh.com/support/)
+- [Blog](https://www.noosh.com/resources/)
+- [Terms of service](https://www.noosh.com/terms-of-service/)
+- [Privacy policy](https://www.noosh.com/privacy-policy/)
+- [Status](https://stats.pingdom.com/qcecd0tzzhpr/667653)
+
+## API Evangelist rating
+
+**Kin Score 35.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 38.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 37.5 |
+| Access clarity | 27.6 |
+
+**Agent readiness 26.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/noosh/](https://apis.io/providers/noosh/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Noosh: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/noosh/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
